@@ -1,21 +1,71 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Página Personal</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Dinorah Ortiz Ramírez - Personal Page</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .buttons a {
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .buttons a:hover {
+            background-color: #2c3e50;
+            color: #fff;
+        }
+        .resume { background-color: #3498db; color: #fff; }
+        .projects { background-color: #2ecc71; color: #fff; }
+        .portfolio { background-color: #f39c12; color: #fff; }
+        .blank { background-color: #7f8c8d; color: #fff; }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Bienvenido a Mi Página Personal</h1>
-    </header>
-    <section>
-        <h2>Sobre Mí</h2>
-        <p>Esta es una descripción sobre mí.</p>
-    </section>
-    <footer>
-        <p>&copy; 2024 Tu Nombre</p>
-    </footer>
+    <div class="container">
+        <h1>Dinorah Ortiz Ramírez</h1>
+        <p>
+            Highly skilled and proactive professional with a Bachelor of Science in Physics and extensive experience in data analysis, software engineering, and research. Adept at utilizing a wide range of programming languages and tools to enhance user experiences and optimize processes. Demonstrated ability to lead innovative projects, develop predictive models, and provide data-driven insights for informed decision-making. Committed to continuous growth and excellence, with a strong background in international education and diverse technical skills.
+        </p>
+        <div class="buttons">
+            <a href="#" class="resume">Resume</a>
+            <a href="#" class="projects">Proyectos</a>
+            <a href="#" class="portfolio">Portafolio</a>
+            <a href="#" class="blank"></a>
+        </div>
+    </div>
 </body>
 </html>
