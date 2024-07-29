@@ -7,8 +7,8 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #f7f7f7;
-            color: #333;
+            background-color: #1c1c1c;
+            color: #f0f0f0;
             margin: 0;
             padding: 0;
         }
@@ -16,7 +16,7 @@
             max-width: 800px;
             margin: 50px auto;
             padding: 20px;
-            background-color: #ffffff;
+            background-color: #2c2c2c;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
@@ -24,12 +24,13 @@
         h1 {
             font-size: 2.5em;
             margin-bottom: 20px;
-            color: #2c3e50;
+            color: #cfcfcf;
         }
         p {
             font-size: 1.1em;
             line-height: 1.6;
             margin-bottom: 30px;
+            color: #d1d1d1;
         }
         .buttons {
             display: flex;
@@ -45,13 +46,13 @@
             transition: background-color 0.3s, color 0.3s;
         }
         .buttons a:hover {
-            background-color: #2c3e50;
+            background-color: #333;
             color: #fff;
         }
-        .resume { background-color: #3498db; color: #fff; }
-        .projects { background-color: #2ecc71; color: #fff; }
-        .portfolio { background-color: #f39c12; color: #fff; }
-        .art { background-color: #7f8c8d; color: #fff; }
+        .resume { background-color: #444; color: #fff; }
+        .projects { background-color: #555; color: #fff; }
+        .portfolio { background-color: #666; color: #fff; }
+        .art { background-color: #777; color: #fff; }
         .pdf-container {
             margin-top: 30px;
             width: 100%;
@@ -64,15 +65,33 @@
             padding: 15px;
             border-radius: 5px;
             text-align: left;
+            background-color: #333;
         }
         .research {
-            background-color: #e3f2fd; /* light blue for research */
+            border-left: 5px solid #3498db; /* blue accent for research */
         }
         .development {
-            background-color: #fff3e0; /* light orange for development */
+            border-left: 5px solid #2ecc71; /* green accent for development */
         }
         .innovation {
-            background-color: #e8f5e9; /* light green for innovation */
+            border-left: 5px solid #f39c12; /* orange accent for innovation */
+        }
+        .portfolio-container {
+            display: none;
+            margin-top: 20px;
+        }
+        .portfolio-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #444;
+        }
+        .portfolio-item h4 {
+            margin-bottom: 10px;
+            color: #e0e0e0;
+        }
+        .portfolio-item p {
+            color: #b0b0b0;
         }
     </style>
     <script>
@@ -82,6 +101,12 @@
 
         function openProjects() {
             document.getElementById('projects-container').style.display = 'block';
+            document.getElementById('portfolio-container').style.display = 'none';
+        }
+
+        function openPortfolio() {
+            document.getElementById('portfolio-container').style.display = 'block';
+            document.getElementById('projects-container').style.display = 'none';
         }
     </script>
 </head>
@@ -94,10 +119,11 @@
         <div class="buttons">
             <a href="javascript:void(0)" class="resume" onclick="showResume()">Resume</a>
             <a href="javascript:void(0)" class="projects" onclick="openProjects()">Projects</a>
-            <a href="#" class="portfolio">Portafolio</a>
+            <a href="javascript:void(0)" class="portfolio" onclick="openPortfolio()">Portafolio</a>
             <a href="#" class="art">Art</a>
         </div>
         <iframe id="pdf-frame" class="pdf-container" src="https://github.com/paremica/--/raw/master/RESUME_E.pdf"></iframe>
+
         <div id="projects-container" style="display: none;">
             <div class="project-block research">
                 <h3>Advanced Materials Research Center | Detection of the Percolation Threshold Using Image Classification Algorithms</h3>
@@ -124,6 +150,40 @@
                 </p>
             </div>
         </div>
+
+        <div id="portfolio-container" class="portfolio-container">
+            <div class="portfolio-item">
+                <h4>Análisis estadístico MA1001B</h4>
+                <p>
+                    Aquí se presentan los proyectos de mayor impacto en esta materia. En primer lugar, se encuentra un artículo científico que utiliza un modelo matemático similar al que se usa para estudiar el COVID-19, específicamente el modelo depredador-presa con el modelo Lotka-Volterra, y se realiza un análisis de su aplicación en animales. Además, se presenta el proyecto final de la materia, que consiste en un análisis de la pandemia COVID-19 basado en datos proporcionados por la Secretaría de Salud del Gobierno de México.
+                </p>
+            </div>
+            <div class="portfolio-item">
+                <h4>Matemáticas y ciencia de datos para la toma de decisiones MA1042</h4>
+                <p>
+                    En esta evidencia se presenta una problemática solucionada. Como es bien sabido, México ha sido uno de los países con mayores índices de obesidad. Es por eso que como solución, se realizó un análisis de la disminución en la grasa corporal durante un periodo de 3 meses. Asimismo, se desarrolló un código en Python para comprobar los resultados obtenidos.
+                </p>
+            </div>
+            <div class="portfolio-item">
+                <h4>Análisis de métodos matemáticos para la física F1009</h4>
+                <p>
+                    En la actualidad, las aplicaciones para identificar canciones, como Shazam, son muy populares. Estas aplicaciones utilizan la transformada de Fourier rápida para identificar canciones. En nuestro caso, para crear un algoritmo similar, descargamos algunas canciones y las agregamos a nuestra base de datos para tener canciones "base" que el algoritmo pudiera identificar. Creamos dos archivos .mlx para el reconocimiento de la canción: uno para el audio y otro para la base de datos, al cual agregamos todas las canciones que descargamos.
+                </p>
+            </div>
+            <div class="portfolio-item">
+                <h4>Análisis de fenómenos ópticos F2005B</h4>
+                <p>
+                    El socio formador ha planteado la necesidad de integrar guías de onda acopladas al chip (en el sustrato), encargadas de dirigir y focalizar la luz en una región determinada (a 70 um) sobre la superficie de la trampa de iones. En el presente documento se presenta la solución a la problemática, así como una simulación en COMSOL Multiphysics.
+                </p>
+            </div>
+            <div class="portfolio-item">
+                <h4>Caracterización experimental de sistemas ópticos (Gpo 302)</h4>
+                <p>
+                    El objetivo del reto es que el estudiante maneje a nivel introductorio la técnica de proyección de franjas para la obtención de información 3D. El reto consiste en diseñar y construir un sistema óptico que permita obtener una imagen tridimensional, a nivel de superficie, de algún objeto. La elección del objeto a reconstruir puede ser arbitraria, pero se sugieren algunos objetos al final de esta descripción para tener mejores resultados.
+                </p>
+            </div>
+        </div>
     </div>
 </body>
 </html>
+
