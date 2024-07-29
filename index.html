@@ -51,8 +51,39 @@
         .resume { background-color: #3498db; color: #fff; }
         .projects { background-color: #2ecc71; color: #fff; }
         .portfolio { background-color: #f39c12; color: #fff; }
-        .blank { background-color: #7f8c8d; color: #fff; }
+        .art { background-color: #7f8c8d; color: #fff; }
+        .pdf-container {
+            margin-top: 30px;
+            width: 100%;
+            height: 500px;
+            border: none;
+            display: none;
+        }
+        .project-block {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: left;
+        }
+        .research {
+            background-color: #e3f2fd; /* light blue for research */
+        }
+        .development {
+            background-color: #fff3e0; /* light orange for development */
+        }
+        .innovation {
+            background-color: #e8f5e9; /* light green for innovation */
+        }
     </style>
+    <script>
+        function showResume() {
+            document.getElementById('pdf-frame').style.display = 'block';
+        }
+
+        function openProjects() {
+            document.getElementById('projects-container').style.display = 'block';
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -61,10 +92,37 @@
             Highly skilled and proactive professional with a Bachelor of Science in Physics and extensive experience in data analysis, software engineering, and research. Adept at utilizing a wide range of programming languages and tools to enhance user experiences and optimize processes. Demonstrated ability to lead innovative projects, develop predictive models, and provide data-driven insights for informed decision-making. Committed to continuous growth and excellence, with a strong background in international education and diverse technical skills.
         </p>
         <div class="buttons">
-            <a href="#" class="resume">Resume</a>
-            <a href="#" class="projects">Proyectos</a>
+            <a href="javascript:void(0)" class="resume" onclick="showResume()">Resume</a>
+            <a href="javascript:void(0)" class="projects" onclick="openProjects()">Projects</a>
             <a href="#" class="portfolio">Portafolio</a>
-            <a href="#" class="blank"></a>
+            <a href="#" class="art">Art</a>
+        </div>
+        <iframe id="pdf-frame" class="pdf-container" src="https://github.com/paremica/--/raw/master/RESUME_E.pdf"></iframe>
+        <div id="projects-container" style="display: none;">
+            <div class="project-block research">
+                <h3>Advanced Materials Research Center | Detection of the Percolation Threshold Using Image Classification Algorithms</h3>
+                <p><strong>Advisor:</strong> Pavel Vorobiev</p>
+                <p>
+                    • Detected the percolation threshold using image classification algorithms by simulating circular particles in a 2D space and classifying images into "percolates" and "does not percolate" categories to generate a database.<br>
+                    • Trained an image detection algorithm using the Prophet library and tested its effectiveness with images obtained from scanning electron microscopy.
+                </p>
+            </div>
+            <div class="project-block development">
+                <h3>Gemma Multi-device | \LaTeX, Comsol Multiphysics 6.0, Matlab</h3>
+                <p><strong>Advisor:</strong> José Ignacio Huertas Cardozo</p>
+                <p>
+                    • Developed a device that combines luminous, voltaic, and thermal energy.<br>
+                    • Utilized fiber optics to transport energy to locations requiring natural lighting and generated electrical energy through third-generation semi-transparent photovoltaic modules and thermal energy through a heat exchanger.<br>
+                    • Programmed the Arduino light tracker and used COMSOL Multiphysics 6.0 to monitor and optimize the Fresnel lens.<br>
+                    • Principal competitor in XIGNUX Challenge 2023 and presenter in EXPOINGENIERÍAS 2023.
+                </p>
+            </div>
+            <div class="project-block innovation">
+                <h3>Dynamic Load Transfer Systems for Uninterrupted Power Supply</h3>
+                <p>
+                    Dynamic load transfer systems use advanced algorithms, real-time monitoring, and artificial intelligence (AI) to manage and transfer loads between multiple power sources and breakers seamlessly. These systems ensure uninterrupted power during maintenance activities by dynamically balancing and transferring loads based on real-time data and predictive analytics.
+                </p>
+            </div>
         </div>
     </div>
 </body>
