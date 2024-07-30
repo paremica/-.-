@@ -49,10 +49,11 @@
             background-color: #333;
             color: #fff;
         }
-        .resume { background-color: #444; color: #fff; }
         .projects { background-color: #555; color: #fff; }
         .portfolio { background-color: #666; color: #fff; }
         .art { background-color: #777; color: #fff; }
+        .certifications { background-color: #888; color: #fff; }
+        .resume { background-color: #444; color: #fff; }
         .pdf-container {
             margin-top: 30px;
             width: 100%;
@@ -92,6 +93,15 @@
         .portfolio-item p {
             color: #b0b0b0;
         }
+        .image-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .image-container img {
+            max-width: 30%;
+            border-radius: 5px;
+        }
     </style>
     <script>
         function showResume() {
@@ -116,10 +126,11 @@
             Highly skilled and proactive professional with a Bachelor of Science in Physics and extensive experience in data analysis, software engineering, and research. Adept at utilizing a wide range of programming languages and tools to enhance user experiences and optimize processes. Demonstrated ability to lead innovative projects, develop predictive models, and provide data-driven insights for informed decision-making. Committed to continuous growth and excellence, with a strong background in international education and diverse technical skills.
         </p>
         <div class="buttons">
-            <a href="javascript:void(0)" class="resume" onclick="showResume()">Resume</a>
             <a href="javascript:void(0)" class="projects" onclick="openProjects()">Projects</a>
             <a href="javascript:void(0)" class="portfolio" onclick="openPortfolio()">Portafolio</a>
             <a href="#" class="art">Art</a>
+            <a href="#" class="certifications">Certifications</a>
+            <a href="javascript:void(0)" class="resume" onclick="showResume()">Resume</a>
         </div>
         <iframe id="pdf-frame" class="pdf-container" src="https://github.com/paremica/-.-/raw/master/resume.pdf"></iframe>
 
@@ -141,12 +152,29 @@
                     • Programmed the Arduino light tracker and used COMSOL Multiphysics 6.0 to monitor and optimize the Fresnel lens.<br>
                     • Principal competitor in XIGNUX Challenge 2023 and presenter in EXPOINGENIERÍAS 2023.
                 </p>
+                <div class="image-container">
+                    <img src="https://github.com/paremica/-.-/raw/master/J1.jpeg" alt="GEMMA 1">
+                    <img src="https://github.com/paremica/-.-/raw/master/J.JPG" alt="GEMMA 2">
+                    <img src="https://github.com/paremica/-.-/raw/master/J2.png" alt="GEMMA 3">
+                </div>
+              
             </div>
             <div class="project-block innovation">
                 <h3>Dynamic Load Transfer Systems for Uninterrupted Power Supply</h3>
                 <p>
                     Dynamic load transfer systems use advanced algorithms, real-time monitoring, and artificial intelligence (AI) to manage and transfer loads between multiple power sources and breakers seamlessly. These systems ensure uninterrupted power during maintenance activities by dynamically balancing and transferring loads based on real-time data and predictive analytics.
                 </p>
+            </div>
+            <div class="project-block innovation">
+                <h3>iSolenum | Solar Stove Project</h3>
+                <p>
+                    The intent of this study is to conduct a thorough evaluation and propose an optimized redesign of the iSolenum solar stove, enhancing its utility and efficacy for impoverished communities in Chiapas, Mexico. The primary aim of this research is to devise a viable and cost-effective solution to the grave health and environmental challenges posed by the reliance on conventional fuels. The proposed innovation encompasses the development of an advanced solar stove, which leverages a heliodome to concentrate solar radiation, thereby generating adequate thermal energy for cooking purposes. This methodology is firmly rooted in the principles of thermodynamics and solar energy harnessing, aspiring to present a sustainable and health-conscious alternative to the prevalent use of traditional wood-burning stoves.
+                </p>
+                <div class="image-container">
+                    <img src="https://github.com/paremica/-.-/raw/master/M.jpeg" alt="iSolenum Image 1">
+                    <img src="https://github.com/paremica/-.-/raw/master/M1.JPG" alt="iSolenum Image 2">
+                    <img src="https://github.com/paremica/-.-/raw/master/M2.png" alt="iSolenum Image 3">
+                </div>
             </div>
         </div>
 
