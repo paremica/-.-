@@ -100,17 +100,19 @@
             flex-wrap: wrap;
             margin-top: 20px;
         }
-        .image-container img {
+        .image-container .image-wrapper {
             width: 32%;
+            height: 200px;
+            overflow: hidden;
             border-radius: 5px;
             margin-bottom: 10px;
-        }
-        .image-full {
-            width: 100%;
+            background-size: cover;
+            background-position: center;
         }
         @media (max-width: 768px) {
-            .image-container img {
+            .image-container .image-wrapper {
                 width: 100%;
+                height: 200px;
             }
         }
     </style>
@@ -164,9 +166,9 @@
                     • Principal competitor in XIGNUX Challenge 2023 and presenter in EXPOINGENIERÍAS 2023.
                 </p>
                 <div class="image-container">
-                    <img src="https://github.com/paremica/-.-/raw/master/J1.jpeg" alt="GEMMA 1" class="image-full">
-                    <img src="https://github.com/paremica/-.-/raw/master/J.JPG" alt="GEMMA 2" class="image-full">
-                    <img src="https://github.com/paremica/-.-/raw/master/J2.png" alt="GEMMA 3" class="image-full">
+                    <div class="image-wrapper" style="background-image: url('https://github.com/paremica/-.-/raw/master/J.jpeg');"></div>
+                    <div class="image-wrapper" style="background-image: url('https://github.com/paremica/-.-/raw/master/J1.JPG');"></div>
+                    <div class="image-wrapper" style="background-image: url('https://github.com/paremica/-.-/raw/master/J2.png');"></div>
                 </div>
             </div>
             <div class="project-block innovation">
@@ -181,9 +183,9 @@
                     The intent of this study is to conduct a thorough evaluation and propose an optimized redesign of the iSolenum solar stove, enhancing its utility and efficacy for impoverished communities in Chiapas, Mexico. The primary aim of this research is to devise a viable and cost-effective solution to the grave health and environmental challenges posed by the reliance on conventional fuels. The proposed innovation encompasses the development of an advanced solar stove, which leverages a heliodome to concentrate solar radiation, thereby generating adequate thermal energy for cooking purposes. This methodology is firmly rooted in the principles of thermodynamics and solar energy harnessing, aspiring to present a sustainable and health-conscious alternative to the prevalent use of traditional wood-burning stoves.
                 </p>
                 <div class="image-container">
-                    <img src="https://github.com/paremica/-.-/raw/master/M.jpeg" alt="iSolenum Image 1" class="image-full">
-                    <img src="https://github.com/paremica/-.-/raw/master/M1.JPG" alt="iSolenum Image 2" class="image-full">
-                    <img src="https://github.com/paremica/-.-/raw/master/M2.png" alt="iSolenum Image 3" class="image-full">
+                    <div class="image-wrapper" style="background-image: url('https://github.com/paremica/-.-/raw/master/M.jpeg');"></div>
+                    <div class="image-wrapper" style="background-image: url('https://github.com/paremica/-.-/raw/master/M1.JPG');"></div>
+                    <div class="image-wrapper" style="background-image: url('https://github.com/paremica/-.-/raw/master/M2.png');"></div>
                 </div>
             </div>
         </div>
