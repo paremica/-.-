@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dinorah Ortiz Ramírez - Personal Page</title>
+    <title>Dinorah Ramírez - Personal Page</title>
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -13,8 +13,8 @@
             padding: 0;
         }
         .container {
-            max-width: 800px;
-            margin: 50px auto;
+            max-width: 1000px;
+            margin: 20px auto;
             padding: 20px;
             background-color: #2c2c2c;
             border-radius: 10px;
@@ -55,10 +55,11 @@
         .certifications { background-color: #888; color: #fff; }
         .resume { background-color: #444; color: #fff; }
         .pdf-container {
-            margin-top: 30px;
+            display: none;
             width: 100%;
-            height: 500px;
+            height: 600px;
             border: none;
+            margin-top: 30px;
         }
         .project-block {
             margin-top: 20px;
@@ -68,13 +69,13 @@
             background-color: #333;
         }
         .research {
-            border-left: 5px solid #3498db; /* Blue accent for research */
+            border-left: 5px solid #3498db;
         }
         .development {
-            border-left: 5px solid #2ecc71; /* Green accent for development */
+            border-left: 5px solid #2ecc71;
         }
         .innovation {
-            border-left: 5px solid #f39c12; /* Orange accent for innovation */
+            border-left: 5px solid #f39c12;
         }
         .portfolio-container {
             display: none;
@@ -96,11 +97,18 @@
         .image-container {
             display: flex;
             justify-content: space-between;
+            flex-wrap: wrap;
             margin-top: 20px;
         }
         .image-container img {
-            max-width: 30%;
+            width: 32%;
             border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        @media (max-width: 768px) {
+            .image-container img {
+                width: 100%;
+            }
         }
     </style>
     <script>
@@ -153,11 +161,10 @@
                     • Principal competitor in XIGNUX Challenge 2023 and presenter in EXPOINGENIERÍAS 2023.
                 </p>
                 <div class="image-container">
-                    <img src="https://github.com/paremica/-.-/raw/master/J1.jpeg" alt="GEMMA 1">
-                    <img src="https://github.com/paremica/-.-/raw/master/J.JPG" alt="GEMMA 2">
-                    <img src="https://github.com/paremica/-.-/raw/master/J2.png" alt="GEMMA 3">
+                    <img src="/mnt/data/image.png" alt="GEMMA 1">
+                    <img src="/mnt/data/image.png" alt="GEMMA 2">
+                    <img src="/mnt/data/image.png" alt="GEMMA 3">
                 </div>
-              
             </div>
             <div class="project-block innovation">
                 <h3>Dynamic Load Transfer Systems for Uninterrupted Power Supply</h3>
@@ -171,9 +178,9 @@
                     The intent of this study is to conduct a thorough evaluation and propose an optimized redesign of the iSolenum solar stove, enhancing its utility and efficacy for impoverished communities in Chiapas, Mexico. The primary aim of this research is to devise a viable and cost-effective solution to the grave health and environmental challenges posed by the reliance on conventional fuels. The proposed innovation encompasses the development of an advanced solar stove, which leverages a heliodome to concentrate solar radiation, thereby generating adequate thermal energy for cooking purposes. This methodology is firmly rooted in the principles of thermodynamics and solar energy harnessing, aspiring to present a sustainable and health-conscious alternative to the prevalent use of traditional wood-burning stoves.
                 </p>
                 <div class="image-container">
-                    <img src="https://github.com/paremica/-.-/raw/master/M.jpeg" alt="iSolenum Image 1">
-                    <img src="https://github.com/paremica/-.-/raw/master/M1.JPG" alt="iSolenum Image 2">
-                    <img src="https://github.com/paremica/-.-/raw/master/M2.png" alt="iSolenum Image 3">
+                    <img src="/mnt/data/image.png" alt="iSolenum Image 1">
+                    <img src="/mnt/data/image.png" alt="iSolenum Image 2">
+                    <img src="/mnt/data/image.png" alt="iSolenum Image 3">
                 </div>
             </div>
         </div>
@@ -182,35 +189,34 @@
             <div class="portfolio-item">
                 <h4>Statistical Analysis MA1001B</h4>
                 <p>
-                  Here are the projects with the greatest impact in this course. First, there is a scientific article that uses a mathematical model similar to that used to study COVID-19, specifically the predator-prey model with the Lotka-Volterra model, and an analysis of its application to animals is conducted. Additionally, the final project of the course is presented, which consists of an analysis of the COVID-19 pandemic based on data provided by the Ministry of Health of the Government of Mexico.
+                    Here are the projects with the greatest impact in this course. First, there is a scientific article that uses a mathematical model similar to that used to study COVID-19, specifically the predator-prey model with the Lotka-Volterra model, and an analysis of its application to animals is conducted. Additionally, the final project of the course is presented, which consists of an analysis of the COVID-19 pandemic based on data provided by the Ministry of Health of the Government of Mexico.
                 </p>
             </div>
             <div class="portfolio-item">
                 <h4>Mathematics and Data Science for Decision Making MA1042</h4>
                 <p>
-                  This evidence presents a solved problem. As is well known, Mexico has been one of the countries with the highest obesity rates. Therefore, as a solution, an analysis of the reduction in body fat over a period of 3 months was conducted. Additionally, a Python code was developed to verify the obtained results.
+                    This evidence presents a solved problem. As is well known, Mexico has been one of the countries with the highest obesity rates. Therefore, as a solution, an analysis of the reduction in body fat over a period of 3 months was conducted. Additionally, a Python code was developed to verify the obtained results.
                 </p>
             </div>
             <div class="portfolio-item">
                 <h4>Analysis of Mathematical Methods for Physics F1009</h4>
                 <p>
-                  Currently, applications for identifying songs, such as Shazam, are very popular. These applications use the fast Fourier transform to identify songs. In our case, to create a similar algorithm, we downloaded some songs and added them to our database to have "base" songs that the algorithm could identify. We created two .mlx files for song recognition: one for the audio and another for the database, to which we added all the downloaded songs.
+                    Currently, applications for identifying songs, such as Shazam, are very popular. These applications use the fast Fourier transform to identify songs. In our case, to create a similar algorithm, we downloaded some songs and added them to our database to have "base" songs that the algorithm could identify. We created two .mlx files for song recognition: one for the audio and another for the database, to which we added all the downloaded songs.
                 </p>
             </div>
             <div class="portfolio-item">
                 <h4>Analysis of Optical Phenomena F2005B</h4>
                 <p>
-                  The training partner has raised the need to integrate waveguides coupled to the chip (in the substrate), responsible for directing and focusing light in a specific region (at 70 um) on the surface of the ion trap. This document presents the solution to the problem, as well as a simulation in COMSOL Multiphysics.
+                    The training partner has raised the need to integrate waveguides coupled to the chip (in the substrate), responsible for directing and focusing light in a specific region (at 70 um) on the surface of the ion trap. This document presents the solution to the problem, as well as a simulation in COMSOL Multiphysics.
                 </p>
             </div>
             <div class="portfolio-item">
                 <h4>Experimental Characterization of Optical Systems</h4>
                 <p>
-                     The objective of the challenge is for the student to handle the fringe projection technique at an introductory level for obtaining 3D information. The challenge consists of designing and constructing an optical system that allows obtaining a three-dimensional image, at the surface level, of an object. The choice of the object to be reconstructed can be arbitrary, but some objects are suggested at the end of this description for better results.
+                    The objective of the challenge is for the student to handle the fringe projection technique at an introductory level for obtaining 3D information. The challenge consists of designing and constructing an optical system that allows obtaining a three-dimensional image, at the surface level, of an object. The choice of the object to be reconstructed can be arbitrary, but some objects are suggested at the end of this description for better results.
                 </p>
             </div>
         </div>
     </div>
 </body>
 </html>
-
