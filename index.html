@@ -51,9 +51,7 @@
         }
         .projects { background-color: #555; color: #fff; }
         .portfolio { background-color: #666; color: #fff; }
-        .art { background-color: #777; color: #fff; }
         .certifications { background-color: #888; color: #fff; }
-        .resume { background-color: #444; color: #fff; }
         .pdf-container {
             display: none;
             width: 100%;
@@ -68,14 +66,18 @@
             text-align: left;
             background-color: #333;
         }
-        .research {
-            border-left: 5px solid #3498db;
+        .special-project {
+            background-color: #fff;
+            color: #000 !important; /* Aplicación del color negro con alta prioridad */
+            border-left: 5px solid #3498db; /* Puedes ajustar este color si lo necesitas */
         }
-        .development {
-            border-left: 5px solid #2ecc71;
+        .special-project h3, .special-project p {
+            color: #000 !important; /* Asegurando que los títulos y párrafos sean negros */
         }
-        .innovation {
-            border-left: 5px solid #f39c12;
+        .gif-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
         }
         .portfolio-container {
             display: none;
@@ -117,10 +119,6 @@
         }
     </style>
     <script>
-        function showResume() {
-            document.getElementById('pdf-frame').style.display = 'block';
-        }
-
         function openProjects() {
             document.getElementById('projects-container').style.display = 'block';
             document.getElementById('portfolio-container').style.display = 'none';
@@ -140,21 +138,22 @@
         </p>
         <div class="buttons">
             <a href="javascript:void(0)" class="projects" onclick="openProjects()">Projects</a>
-            <a href="javascript:void(0)" class="portfolio" onclick="openPortfolio()">Portafolio</a>
-            <a href="#" class="art">Art</a>
+            <a href="javascript:void(0)" class="portfolio" onclick="openPortfolio()">Portfolio</a>
             <a href="#" class="certifications">Certifications</a>
-            <a href="javascript:void(0)" class="resume" onclick="showResume()">Resume</a>
         </div>
         <iframe id="pdf-frame" class="pdf-container" src="https://github.com/paremica/-.-/raw/master/resume.pdf"></iframe>
 
         <div id="projects-container" style="display: none;">
-            <div class="project-block research">
+            <div class="project-block research special-project">
                 <h3>Advanced Materials Research Center | Detection of the Percolation Threshold Using Image Classification Algorithms</h3>
                 <p><strong>Advisor:</strong> Pavel Vorobiev</p>
                 <p>
                     • Detected the percolation threshold using image classification algorithms by simulating circular particles in a 2D space and classifying images into "percolates" and "does not percolate" categories to generate a database.<br>
                     • Trained an image detection algorithm using the Prophet library and tested its effectiveness with images obtained from scanning electron microscopy.
                 </p>
+                <div class="gif-container">
+                    <img src="https://raw.githubusercontent.com/paremica/-.-/master/percolationz.gif" alt="Percolation GIF" style="width:100%; max-width:500px;">
+                </div>
             </div>
             <div class="project-block development">
                 <h3>Gemma Multi-device | \LaTeX, Comsol Multiphysics 6.0, Matlab</h3>
@@ -166,16 +165,19 @@
                     • Principal competitor in XIGNUX Challenge 2023 and presenter in EXPOINGENIERÍAS 2023.
                 </p>
                 <div class="image-container">
-                    <div class="image-wrapper" style="background-image: url('https://github.com/paremica/-.-/raw/master/J.jpeg');"></div>
-                    <div class="image-wrapper" style="background-image: url('https://github.com/paremica/-.-/raw/master/J1.jpeg');"></div>
-                    <div class="image-wrapper" style="background-image: url('https://github.com/paremica/-.-/raw/master/J2.jpeg');"></div>
+                    <div class="image-wrapper" style="background-image: url('https://raw.githubusercontent.com/paremica/-.-/master/J.jpeg');"></div>
+                    <div class="image-wrapper" style="background-image: url('https://raw.githubusercontent.com/paremica/-.-/master/J1.jpeg');"></div>
+                    <div class="image-wrapper" style="background-image: url('https://raw.githubusercontent.com/paremica/-.-/master/J2.jpeg');"></div>
                 </div>
             </div>
-            <div class="project-block innovation">
+            <div class="project-block innovation special-project">
                 <h3>Dynamic Load Transfer Systems for Uninterrupted Power Supply</h3>
                 <p>
                     Dynamic load transfer systems use advanced algorithms, real-time monitoring, and artificial intelligence (AI) to manage and transfer loads between multiple power sources and breakers seamlessly. These systems ensure uninterrupted power during maintenance activities by dynamically balancing and transferring loads based on real-time data and predictive analytics.
                 </p>
+                <div class="gif-container">
+                    <img src="https://raw.githubusercontent.com/paremica/-.-/master/anomaliez.gif" alt="Anomalies GIF" style="width:100%; max-width:500px;">
+                </div>
             </div>
             <div class="project-block innovation">
                 <h3>iSolenum | Solar Stove Project</h3>
@@ -183,9 +185,9 @@
                     The intent of this study is to conduct a thorough evaluation and propose an optimized redesign of the iSolenum solar stove, enhancing its utility and efficacy for impoverished communities in Chiapas, Mexico. The primary aim of this research is to devise a viable and cost-effective solution to the grave health and environmental challenges posed by the reliance on conventional fuels. The proposed innovation encompasses the development of an advanced solar stove, which leverages a heliodome to concentrate solar radiation, thereby generating adequate thermal energy for cooking purposes. This methodology is firmly rooted in the principles of thermodynamics and solar energy harnessing, aspiring to present a sustainable and health-conscious alternative to the prevalent use of traditional wood-burning stoves.
                 </p>
                 <div class="image-container">
-                    <div class="image-wrapper" style="background-image: url('https://github.com/paremica/-.-/raw/master/M.jpeg');"></div>
-                    <div class="image-wrapper" style="background-image: url('https://github.com/paremica/-.-/raw/master/M1.JPG');"></div>
-                    <div class="image-wrapper" style="background-image: url('https://github.com/paremica/-.-/raw/master/M2.png');"></div>
+                    <div class="image-wrapper" style="background-image: url('https://raw.githubusercontent.com/paremica/-.-/master/M.jpeg');"></div>
+                    <div class="image-wrapper" style="background-image: url('https://raw.githubusercontent.com/paremica/-.-/master/M1.JPG');"></div>
+                    <div class="image-wrapper" style="background-image: url('https://raw.githubusercontent.com/paremica/-.-/master/M2.png');"></div>
                 </div>
             </div>
         </div>
@@ -225,3 +227,4 @@
     </div>
 </body>
 </html>
+
