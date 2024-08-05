@@ -53,22 +53,47 @@
         .portfolio { background-color: #666; color: #fff; }
         .certifications { background-color: #888; color: #fff; }
         .download-button {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 8px 15px;
-            background-color: #3498db;
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #666;
             color: #fff;
-            border-radius: 5px;
+            border-radius: 50px;
             text-decoration: none;
-            transition: background-color 0.3s ease;
+            font-size: 1em;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+            position: relative;
         }
-        .download-button i {
-            vertical-align: middle;
-            margin-right: 5px;
-            font-size: 1.2em;
+
+        .download-button::before {
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            border-left: 7px solid transparent;
+            border-right: 7px solid transparent;
+            border-top: 10px solid #fff;
+            margin-right: 10px;
+            margin-left: -10px; /* Ajuste para centrar el icono */
+            position: relative;
+            top: 1px; /* Ajuste vertical */
         }
+
         .download-button:hover {
-            background-color: #2980b9;
+            background-color: #555;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border: 2px solid #fff;
+        }
+
+        .download-button:focus {
+            outline: none;
+            border: 2px solid #fff;
+        }
+
+        .download-button:active {
+            background-color: #444;
         }
         .pdf-container {
             display: none;
