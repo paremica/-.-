@@ -1,390 +1,1103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dinorah Ortiz Ramírez - Personal Page</title>
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #1c1c1c;
-            color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #2c2c2c;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #cfcfcf;
-        }
-        p {
-            font-size: 1.1em;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            color: #d1d1d1;
-        }
-        .buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        .buttons a {
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 1em;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .buttons a:hover {
-            background-color: #333;
-            color: #fff;
-        }
-        .projects { background-color: #555; color: #fff; }
-        .portfolio { background-color: #666; color: #fff; }
-        .certifications { background-color: #888; color: #fff; }
-        .download-button {
-            display: inline-flex;
-            align-items: center;
-            padding: 10px 20px;
-            background-color: #666;
-            color: #fff;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 1em;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-            border: 2px solid transparent;
-            cursor: pointer;
-            position: relative;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dinorah Ramírez</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
-        .download-button::before {
-            content: "";
-            display: block;
-            width: 0;
-            height: 0;
-            border-left: 7px solid transparent;
-            border-right: 7px solid transparent;
-            border-top: 10px solid #fff;
-            margin-right: 10px;
-            margin-left: -10px; /* Ajuste para centrar el icono */
-            position: relative;
-            top: 1px; /* Ajuste vertical */
-        }
+    :root {
+      --bg:    #faf8f5;
+      --ink:   #1a1714;
+      --rose:  #808000;
+      --blue:  #3a8db0;
+      --muted: rgba(26,23,20,0.42);
+      --rule:  rgba(26,23,20,0.09);
+      --soft:  rgba(26,23,20,0.03);
+    }
 
-        .download-button:hover {
-            background-color: #555;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-            border: 2px solid #fff;
-        }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Jost', system-ui, sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
 
-        .download-button:focus {
-            outline: none;
-            border: 2px solid #fff;
-        }
+    /* ── canvas ── */
+    #bg-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
 
-        .download-button:active {
-            background-color: #444;
-        }
-        .pdf-container {
-            display: none;
-            width: 100%;
-            height: 600px;
-            border: none;
-            margin-top: 30px;
-        }
-        .project-block {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 5px;
-            text-align: left;
-            background-color: #333;
-        }
-        .special-project {
-            background-color: #fff;
-            color: #000 !important;
-            border-left: 5px solid #3498db;
-        }
-        .special-project h3, .special-project p {
-            color: #000 !important;
-        }
-        .gif-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        .portfolio-container {
-            display: none;
-            margin-top: 20px;
-        }
-        .portfolio-item {
-            margin-bottom: 20px;
-            padding: 15px;
-            border-radius: 5px;
-            background-color: #444;
-        }
-        .portfolio-item h4 {
-            margin-bottom: 10px;
-            color: #e0e0e0;
-        }
-        .portfolio-item p {
-            color: #b0b0b0;
-        }
-        .image-container {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-        .image-container .image-wrapper {
-            width: 32%;
-            height: 200px;
-            overflow: hidden;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            background-size: cover;
-            background-position: center;
-        }
-        @media (max-width: 768px) {
-            .image-container .image-wrapper {
-                width: 100%;
-                height: 200px;
-            }
-        }
-        .carousel-container {
-            position: relative;
-            width: 80%;
-            max-width: 1000px;
-            margin: 20px auto;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            display: none;
-        }
-        .carousel-slide {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-        .carousel-item {
-            min-width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #1c1c1c;
-        }
-        .carousel-item img, .carousel-item iframe {
-            width: auto;
-            height: 100%;
-            max-height: 600px;
-            border-radius: 10px;
-        }
-        .prev-btn, .next-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: 2px solid #f0f0f0;
-            color: #f0f0f0;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 50%;
-            font-size: 18px;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: border-color 0.3s ease, color 0.3s ease;
-        }
-        .prev-btn:hover, .next-btn:hover {
-            border-color: #aaa;
-            color: #aaa;
-        }
-        .prev-btn {
-            left: 20px;
-        }
-        .next-btn {
-            right: 20px;
-        }
-        .prev-btn:focus, .next-btn:focus {
-            outline: none;
-        }
-    </style>
-    <script>
-        function openProjects() {
-            document.getElementById('projects-container').style.display = 'block';
-            document.getElementById('portfolio-container').style.display = 'none';
-            document.getElementById('certifications-container').style.display = 'none';
-        }
+    /* ── nav ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 72px;
+      transition: background 0.5s, backdrop-filter 0.5s, border-color 0.5s;
+    }
+    .nav.scrolled {
+      background: rgba(250,248,245,0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 0.95rem;
+      letter-spacing: 0.16em;
+      color: var(--ink);
+      text-decoration: none;
+      opacity: 0.6;
+      transition: opacity 0.3s;
+    }
+    .nav-brand:hover { opacity: 1; }
+    .nav-links { display: flex; gap: 44px; list-style: none; }
+    .nav-links a {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 0.68rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      opacity: 0.4;
+      transition: opacity 0.25s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+    .nav-links a::after {
+      content: '';
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--rose);
+      transform: scale(0);
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .nav-links a:hover { opacity: 1; }
+    .nav-links a:hover::after { transform: scale(1); }
 
-        function openPortfolio() {
-            document.getElementById('portfolio-container').style.display = 'block';
-            document.getElementById('projects-container').style.display = 'none';
-            document.getElementById('certifications-container').style.display = 'none';
-        }
+    /* ── hero ── */
+    .hero {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 72px 80px;
+    }
 
-        function openCertifications() {
-            document.getElementById('certifications-container').style.display = 'block';
-            document.getElementById('projects-container').style.display = 'none';
-            document.getElementById('portfolio-container').style.display = 'none';
-        }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 80px;
+      align-items: center;
+    }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const carouselSlide = document.getElementById('carousel-slide');
-            const carouselItems = document.querySelectorAll('.carousel-item');
+    .hero-left { display: flex; flex-direction: column; gap: 32px; }
 
-            const prevBtn = document.getElementById('prev-btn');
-            const nextBtn = document.getElementById('next-btn');
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+    .hero-name em {
+      font-style: italic;
+      color: var(--rose);
+    }
 
-            let counter = 0;
+    .hero-tagline {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.9;
+      max-width: 420px;
+    }
 
-            nextBtn.addEventListener('click', () => {
-                if (counter >= carouselItems.length - 1) return;
-                counter++;
-                carouselSlide.style.transition = 'transform 0.5s ease-in-out';
-                carouselSlide.style.transform = 'translateX(' + (-counter * 100) + '%)';
-            });
+    .hero-work {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid var(--rule);
+      margin-top: 8px;
+    }
+    .hw-item {
+      padding: 18px 20px;
+      border-right: 1px solid var(--rule);
+      transition: background 0.25s;
+    }
+    .hw-item:last-child { border-right: none; }
+    .hw-item:hover { background: rgba(192,90,120,0.04); }
+    .hw-label {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 0.62rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 5px;
+    }
+    .hw-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 0.92rem;
+      color: var(--ink);
+      line-height: 1.4;
+    }
 
-            prevBtn.addEventListener('click', () => {
-                if (counter <= 0) return;
-                counter--;
-                carouselSlide.style.transition = 'transform 0.5s ease-in-out';
-                carouselSlide.style.transform = 'translateX(' + (-counter * 100) + '%)';
-            });
-        });
-    </script>
+    .hero-actions { display: flex; gap: 20px; align-items: center; }
+
+    .btn-pill {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--rose);
+      padding: 13px 34px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .btn-pill:hover {
+      background: #b54d6c;
+      box-shadow: 0 6px 24px rgba(192,90,120,0.22);
+    }
+    .btn-line {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      opacity: 0.4;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 2px;
+      transition: opacity 0.25s, border-color 0.25s;
+    }
+    .btn-line:hover { opacity: 0.8; border-color: var(--ink); }
+
+    .hero-eq {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 0.82rem;
+      color: rgba(58,141,176,0.35);
+      letter-spacing: 0.04em;
+      line-height: 2.4;
+      animation: eqFloat 8s ease-in-out infinite;
+    }
+    @keyframes eqFloat {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-8px); }
+    }
+
+    /* photo */
+    .hero-photo {
+      position: relative;
+    }
+    .hero-photo img {
+      width: 100%;
+      aspect-ratio: 4/4;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    /* professional two-col */
+    .pro-two-col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 64px;
+      position: relative;
+      z-index: 1;
+    }
+    .pro-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding-top: 0;
+      border-top: 1px solid var(--rule);
+      padding-top: 40px;
+    }
+
+    /* professional links + video */
+    .pro-entry-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 14px;
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--rose);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(192,90,120,0.25);
+      padding-bottom: 1px;
+      transition: border-color 0.2s, opacity 0.2s;
+    }
+    .pro-entry-link:hover { border-color: var(--rose); opacity: 0.75; }
+    .pro-video {
+      width: 100%;
+      max-width: 560px;
+      margin-top: 20px;
+      border: 1px solid var(--rule);
+      display: block;
+    }
+
+    /* academic text grid */
+    .ac-text-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px 80px;
+      margin-bottom: 72px;
+      position: relative;
+      z-index: 1;
+    }
+    .ac-media-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .ac-media-grid img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .ac-media-grid img:hover { transform: scale(1.02); }
+
+    /* ── ticker ── */
+    .ticker {
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      padding: 15px 0;
+    }
+    .ticker-track {
+      display: flex;
+      width: max-content;
+      animation: ticker-go 30s linear infinite;
+    }
+    .ticker-item {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 0.66rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+      padding: 0 32px;
+    }
+    .ticker-dot { color: var(--rose); padding: 0 6px; opacity: 0.5; }
+    @keyframes ticker-go {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── sections ── */
+    .sec {
+      position: relative;
+      z-index: 1;
+      padding: 112px 72px;
+      border-top: 1px solid var(--rule);
+      overflow: hidden;
+    }
+    .sec::before {
+      content: attr(data-n);
+      position: absolute;
+      right: 56px;
+      top: 50%;
+      transform: translateY(-50%) rotate(90deg);
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 200;
+      font-size: 20rem;
+      color: rgba(26,23,20,0.025);
+      letter-spacing: -0.06em;
+      pointer-events: none;
+      user-select: none;
+      line-height: 1;
+    }
+
+    .sec-tag {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 0.64rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 56px;
+    }
+    .sec-tag .dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--rose);
+      opacity: 0.65;
+      flex-shrink: 0;
+    }
+
+    .sec-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2.2rem, 4.5vw, 4.6rem);
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 68px;
+      max-width: 800px;
+      position: relative;
+      z-index: 1;
+    }
+    .sec-title em { font-style: italic; color: var(--rose); }
+
+    /* ── professional ── */
+    .pro-layout {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 80px;
+      position: relative;
+      z-index: 1;
+    }
+    .pro-sidebar { display: flex; flex-direction: column; gap: 34px; }
+    .pro-sidebar-item { display: flex; flex-direction: column; gap: 5px; }
+    .pro-roman {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: var(--rose);
+      opacity: 0.7;
+    }
+    .pro-company {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 1.1rem;
+      color: var(--ink);
+    }
+    .pro-role {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 0.76rem;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+    }
+
+    .pro-entries { display: grid; gap: 0; }
+    .pro-entry {
+      padding: 42px 0;
+      border-bottom: 1px solid var(--rule);
+      transition: border-color 0.3s;
+    }
+    .pro-entry:first-child { padding-top: 0; }
+    .pro-entry:hover { border-color: rgba(192,90,120,0.25); }
+    .pro-entry-head {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 1.55rem;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+    .pro-entry-body {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.95;
+      max-width: 560px;
+    }
+    .pro-entry-body strong { color: var(--ink); font-weight: 400; }
+
+    /* ── academic ── */
+    .ac-project {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      margin-bottom: 96px;
+      position: relative;
+      z-index: 1;
+    }
+    .ac-project:last-of-type { margin-bottom: 0; }
+    .ac-project.flip .ac-text  { order: 2; }
+    .ac-project.flip .ac-media { order: 1; }
+
+    .ac-advisor {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 0.64rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--blue);
+      opacity: 0.7;
+      margin-bottom: 18px;
+    }
+    .ac-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(1.5rem, 2.6vw, 2.4rem);
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+    .ac-body {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.94rem;
+      color: var(--muted);
+      line-height: 1.95;
+    }
+    .ac-media img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease, filter 0.6s ease;
+    }
+    .ac-media:hover img { transform: scale(1.02); filter: brightness(1.04); }
+
+    .ac-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-bottom: 96px;
+      position: relative;
+      z-index: 1;
+    }
+    .ac-pair-item { display: flex; flex-direction: column; gap: 14px; }
+    .ac-pair-sep {
+      width: 20px; height: 1px;
+      background: var(--rose);
+      opacity: 0.4;
+      margin-bottom: 4px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 68px 0;
+      position: relative;
+      z-index: 1;
+    }
+    .gallery img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease, filter 0.5s ease;
+    }
+    .gallery img:hover { transform: scale(1.02); filter: brightness(1.04); }
+    .gallery img:nth-child(2) { transform: translateY(20px); }
+    .gallery img:nth-child(2):hover { transform: translateY(20px) scale(1.02); }
+
+    /* ── certifications ── */
+    .cert-wrap {
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      background: var(--soft);
+      position: relative;
+      z-index: 1;
+    }
+    .cert-slide {
+      display: flex;
+      transition: transform 0.7s cubic-bezier(0.77,0,0.175,1);
+    }
+    .cert-item {
+      min-width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 500px;
+      padding: 56px;
+    }
+    .cert-item img {
+      max-height: 440px;
+      max-width: 100%;
+      object-fit: contain;
+    }
+    .cert-item iframe {
+      width: 100%;
+      max-width: 660px;
+      height: 440px;
+      border: none;
+    }
+    .cert-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      position: relative;
+      z-index: 1;
+    }
+    .cert-count {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 0.88rem;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+    .cert-btns { display: flex; gap: 10px; }
+    .cert-btn {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--rule);
+      background: none;
+      color: var(--ink);
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: grid;
+      place-items: center;
+      transition: border-color 0.25s, background 0.25s, transform 0.25s;
+    }
+    .cert-btn:hover {
+      border-color: var(--rose);
+      background: rgba(192,90,120,0.06);
+      transform: scale(1.08);
+    }
+
+    .resume-block { margin-top: 84px; position: relative; z-index: 1; }
+    .resume-label {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 0.64rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .resume-label::before {
+      content: '';
+      width: 18px; height: 1px;
+      background: var(--rose);
+      opacity: 0.45;
+    }
+    .resume-block iframe {
+      width: 100%;
+      height: 560px;
+      border: 1px solid var(--rule);
+      background: var(--soft);
+    }
+
+    /* ── projects ── */
+    .proj-list { display: grid; gap: 0; position: relative; z-index: 1; }
+    .proj-row {
+      display: grid;
+      grid-template-columns: 60px 1fr auto;
+      gap: 40px;
+      padding: 36px 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: start;
+      transition: border-color 0.3s;
+    }
+    .proj-row:first-child { border-top: 1px solid var(--rule); }
+    .proj-row:hover { border-color: rgba(192,90,120,0.2); }
+    .proj-n {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      padding-top: 3px;
+    }
+    .proj-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(1.15rem, 2vw, 1.65rem);
+      color: var(--ink);
+      line-height: 1.2;
+      margin-bottom: 9px;
+    }
+    .proj-desc {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.88;
+      max-width: 540px;
+    }
+    .proj-links {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      align-items: flex-end;
+      padding-top: 2px;
+    }
+    .proj-dl {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 0.64rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      border: 1px solid var(--rule);
+      padding: 8px 16px;
+      border-radius: 100px;
+      white-space: nowrap;
+      opacity: 0.5;
+      transition: opacity 0.25s, border-color 0.25s, color 0.25s;
+    }
+    .proj-dl:hover { opacity: 1; border-color: var(--rose); color: var(--rose); }
+
+    /* ── footer ── */
+    .foot {
+      position: relative;
+      z-index: 1;
+      padding: 64px 72px;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 48px;
+    }
+    .foot-eq {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 0.85rem;
+      color: rgba(58,141,176,0.35);
+      letter-spacing: 0.06em;
+      line-height: 2.4;
+    }
+    .foot-copy {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 0.64rem;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      text-align: right;
+      line-height: 2;
+    }
+
+    /* ── reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    .reveal.on { opacity: 1; transform: none; }
+
+    /* ── responsive ── */
+    @media (max-width: 1100px) {
+      .nav { padding: 24px 40px; }
+      .hero { padding: 100px 40px 64px; }
+      .sec { padding: 88px 40px; }
+      .foot { padding: 56px 40px; }
+      .hero-inner { grid-template-columns: 1fr 300px; gap: 56px; }
+      .pro-layout { grid-template-columns: 1fr; gap: 48px; }
+      .pro-sidebar { flex-direction: row; flex-wrap: wrap; gap: 24px; }
+    }
+    @media (max-width: 860px) {
+      .nav { padding: 18px 24px; }
+      .nav-links { gap: 20px; }
+      .hero { padding: 88px 24px 48px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-photo { max-width: 280px; }
+      .pro-two-col { grid-template-columns: 1fr 1fr; }
+      .ac-text-grid { grid-template-columns: 1fr; }
+      .sec { padding: 64px 24px; }
+      .sec::before { font-size: 12rem; right: 12px; }
+      .ac-project, .ac-pair { grid-template-columns: 1fr; gap: 36px; }
+      .ac-project.flip .ac-text,
+      .ac-project.flip .ac-media { order: initial; }
+      .gallery { grid-template-columns: 1fr; gap: 10px; }
+      .gallery img:nth-child(2) { transform: none; }
+      .gallery img:nth-child(2):hover { transform: scale(1.02); }
+      .proj-row { grid-template-columns: 48px 1fr; gap: 20px; }
+      .proj-links { grid-column: 2; flex-direction: row; flex-wrap: wrap; align-items: flex-start; margin-top: 10px; }
+      .foot { flex-direction: column; align-items: flex-start; padding: 48px 24px; }
+      .foot-copy { text-align: left; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Myrna Dinorah Ortiz Ramírez</h1>
-        <p>
-            Highly skilled and proactive professional with a Bachelor of Science in Physics and extensive experience in data analysis, software engineering, and research. Adept at utilizing a wide range of programming languages and tools to enhance user experiences and optimize processes. Demonstrated ability to lead innovative projects, develop predictive models, and provide data-driven insights for informed decision-making. Committed to continuous growth and excellence, with a strong background in international education and diverse technical skills.
-        </p>
-        <div class="buttons">
-            <a href="javascript:void(0)" class="projects" onclick="openProjects()">Projects</a>
-            <a href="javascript:void(0)" class="portfolio" onclick="openPortfolio()">Portfolio</a>
-            <a href="javascript:void(0)" class="certifications" onclick="openCertifications()">Certifications</a>
-        </div>
 
-        <div class="carousel-container" id="certifications-container">
-            <div class="carousel-slide" id="carousel-slide">
-                <div class="carousel-item">
-                    <img src="https://raw.githubusercontent.com/paremica/-.-/master/C2.jpg" alt="Certification 1">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://raw.githubusercontent.com/paremica/-.-/master/C3.jpg" alt="Certification 3">
-                </div>
-                <div class="carousel-item">
-                    <iframe src="https://docs.google.com/gview?url=https://raw.githubusercontent.com/paremica/-.-/master/CO1.pdf&embedded=true" style="width:100%; height:100%;" frameborder="0"></iframe> 
-                </div>
-                <div class="carousel-item">
-                    <iframe src="https://docs.google.com/gview?url=https://raw.githubusercontent.com/paremica/-.-/master/CO2.pdf&embedded=true" style="width:100%; height:100%;" frameborder="0"></iframe> 
-                </div>
-            </div>
-            <button class="prev-btn" id="prev-btn">&#10094;</button>
-            <button class="next-btn" id="next-btn">&#10095;</button>
-        </div>
-      
-        <iframe id="pdf-frame" class="pdf-container" src="https://github.com/paremica/-.-/raw/master/resume.pdf"></iframe>
+<canvas id="bg-canvas"></canvas>
 
-        <div id="projects-container" style="display: none;">
-            <div class="project-block research special-project">
-                <h3>Advanced Materials Research Center | Detection of the Percolation Threshold Using Image Classification Algorithms</h3>
-                <p><strong>Advisor:</strong> Pavel Vorobiev</p>
-                <p>
-                    • Detected the percolation threshold using image classification algorithms by simulating circular particles in a 2D space and classifying images into "percolates" and "does not percolate" categories to generate a database.<br>
-                    • Trained an image detection algorithm using the Prophet library and tested its effectiveness with images obtained from scanning electron microscopy.
-                </p>
-                <div class="gif-container">
-                    <img src="https://raw.githubusercontent.com/paremica/-.-/master/percolationz.gif" alt="Percolation GIF" style="width:100%; max-width:500px;">
-                </div>
-            </div>
-          
-            <div class="project-block development">
-                <h3>Gemma Multi-device | \LaTeX, Comsol Multiphysics 6.0, Matlab</h3>
-                <p><strong>Advisor:</strong> José Ignacio Huertas Cardozo</p>
-                <p>
-                    • Developed a device that combines luminous, voltaic, and thermal energy.<br>
-                    • Utilized fiber optics to transport energy to locations requiring natural lighting and generated electrical energy through third-generation semi-transparent photovoltaic modules and thermal energy through a heat exchanger.<br>
-                    • Programmed the Arduino light tracker and used COMSOL Multiphysics 6.0 to monitor and optimize the Fresnel lens.<br>
-                    • Principal competitor in XIGNUX Challenge 2023 and presenter in EXPOINGENIERÍAS 2023.
-                </p>
-                <div class="image-container">
-                    <div class="image-wrapper" style="background-image: url('https://raw.githubusercontent.com/paremica/-.-/master/J.jpeg');"></div>
-                    <div class="image-wrapper" style="background-image: url('https://raw.githubusercontent.com/paremica/-.-/master/J1.jpeg');"></div>
-                    <div class="image-wrapper" style="background-image: url('https://raw.githubusercontent.com/paremica/-.-/master/J2.jpeg');"></div>
-                </div>
-            </div>
-            <div class="project-block innovation special-project">
-                <h3>Dynamic Load Transfer Systems for Uninterrupted Power Supply | Summer Innovation Challenge Schneider</h3>
-                <p>
-                    Dynamic load transfer systems use advanced algorithms, real-time monitoring, and artificial intelligence (AI) to manage and transfer loads between multiple power sources and breakers seamlessly. These systems ensure uninterrupted power during maintenance activities by dynamically balancing and transferring loads based on real-time data and predictive analytics.
-                </p>
-                <div class="gif-container">
-                    <img src="https://raw.githubusercontent.com/paremica/-.-/master/anomaliez.gif" alt="Anomalies GIF" style="width:100%; max-width:500px;">
-                </div>
-            </div>
-            <div class="project-block innovation">
-                <h3>iSolenum | Solar Stove Project</h3>
-                <p>
-                    The intent of this study is to conduct a thorough evaluation and propose an optimized redesign of the iSolenum solar stove, enhancing its utility and efficacy for impoverished communities in Chiapas, Mexico. The primary aim of this research is to devise a viable and cost-effective solution to the grave health and environmental challenges posed by the reliance on conventional fuels. The proposed innovation encompasses the development of an advanced solar stove, which leverages a heliodome to concentrate solar radiation, thereby generating adequate thermal energy for cooking purposes. This methodology is firmly rooted in the principles of thermodynamics and solar energy harnessing, aspiring to present a sustainable and health-conscious alternative to the prevalent use of traditional wood-burning stoves.
-                </p>
-                <div class="image-container">
-                    <div class="image-wrapper" style="background-image: url('https://raw.githubusercontent.com/paremica/-.-/master/M.jpeg');"></div>
-                    <div class="image-wrapper" style="background-image: url('https://raw.githubusercontent.com/paremica/-.-/master/M1.JPG');"></div>
-                    <div class="image-wrapper" style="background-image: url('https://raw.githubusercontent.com/paremica/-.-/master/M2.png');"></div>
-                </div>
-            </div>
-        </div>
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#home" class="nav-brand">Dinorah Ramírez</a>
+  <ul class="nav-links">
+    <li><a href="#professional">Professional</a></li>
+    <li><a href="#academic">Academic</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#projects">Projects</a></li>
+  </ul>
+</nav>
 
-        <div id="portfolio-container" class="portfolio-container" style="display: none;">
-            <div class="portfolio-item">
-                <h4>Statistical Analysis MA1001B</h4>
-                <p>
-                    Here are the projects with the greatest impact in this course. First, there is a scientific article that uses a mathematical model similar to that used to study COVID-19, specifically the predator-prey model with the Lotka-Volterra model, and an analysis of its application to animals is conducted. Additionally, the final project of the course is presented, which consists of an analysis of the COVID-19 pandemic based on data provided by the Ministry of Health of the Government of Mexico.
-                </p>
-                <a href="https://github.com/paremica/-.-/raw/master/SA1.pdf" download="Statistical Analysis MA1001B.pdf" class="download-button">Download PDF</a>
-                <a href="https://github.com/paremica/-.-/raw/master/SA2.pdf" download="Mathematics and Data Science for Decision Making MA1042.pdf" class="download-button">Download PDF</a>
+<!-- HERO -->
+<div id="home" class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <span class="hero-name">Personal <em>Portfolio</em></span>
 
-            </div>
-            <div class="portfolio-item">
-                <h4>Mathematics and Data Science for Decision Making MA1042</h4>
-                <p>
-                    This evidence presents a solved problem. As is well known, Mexico has been one of the countries with the highest obesity rates. Therefore, as a solution, an analysis of the reduction in body fat over a period of 3 months was conducted. Additionally, a Python code was developed to verify the obtained results.
-                </p>
-                <a href="https://github.com/paremica/-.-/raw/master/MA1.pdf" download="Mathematics and Data Science for Decision Making MA1042.pdf" class="download-button">Download PDF</a>
-            </div>
-            <div class="portfolio-item">
-                <h4>Analysis of Mathematical Methods for Physics F1009</h4>
-                <p>
-                    Currently, applications for identifying songs, such as Shazam, are very popular. These applications use the fast Fourier transform to identify songs. In our case, to create a similar algorithm, we downloaded some songs and added them to our database to have "base" songs that the algorithm could identify. We created two .mlx files for song recognition: one for the audio and another for the database, to which we added all the downloaded songs.
-                </p>
-                <a href="https://github.com/paremica/-.-/raw/master/AM1.pdf" download="Mathematics and Data Science for Decision Making MA1042.pdf" class="download-button">Download PDF</a>
-            </div>
-            <div class="portfolio-item">
-                <h4>Analysis of Optical Phenomena F2005B</h4>
-                <p>
-                    The training partner has raised the need to integrate waveguides coupled to the chip (in the substrate), responsible for directing and focusing light in a specific region (at 70 um) on the surface of the ion trap. This document presents the solution to the problem, as well as a simulation in COMSOL Multiphysics.
-                </p>
-                <a href="https://github.com/paremica/-.-/raw/master/AO1.pdf" download="Mathematics and Data Science for Decision Making MA1042.pdf" class="download-button">Download PDF</a>
-            </div>
-            <div class="portfolio-item">
-                <h4>Experimental Characterization of Optical Systems</h4>
-                <p>
-                    The objective of the challenge is for the student to handle the fringe projection technique at an introductory level for obtaining 3D information. The challenge consists of designing and constructing an optical system that allows obtaining a three-dimensional image, at the surface level, of an object. The choice of the object to be reconstructed can be arbitrary, but some objects are suggested at the end of this description for better results.
-                </p>
-                <a href="https://github.com/paremica/-.-/raw/master/OS1.pdf" download="Mathematics and Data Science for Decision Making MA1042.pdf" class="download-button">Download PDF</a>
-            </div>
-        </div>
+      <p class="hero-tagline">
+        Translating scientific insight into meaningful technology — AI product delivery, process automation and financial systems execution.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#professional" class="btn-pill">Explore work</a>
+        <a href="#projects" class="btn-line">Academical Work →</a>
+      </div>
+
     </div>
+
+    <div class="hero-photo">
+      <img src="lain.gif" alt="Dinorah Ramírez">
+    </div>
+  </div>
+</div>
+
+<!-- PROFESSIONAL -->
+<section id="professional" class="sec reveal" data-n="01">
+  <div class="sec-tag"><span class="dot"></span>01 · Professional</div>
+  <h2 class="sec-title">Projects </h2>
+
+  <div class="pro-two-col">
+    <div class="pro-col">
+      <div class="pro-entry-head">AI Product Delivery</div>
+      <p class="pro-entry-body">Designed and launched <strong>ai.momentocapital.com</strong> — a customer-centered machine learning platform with analytics and product-grade integration. Built to feel precise, fast and intelligently human.</p>
+      <a href="https://ai.momentocapital.com/home" target="_blank" class="pro-entry-link">Visit site ↗</a>
+      <video class="pro-video" src="janus.mp4" controls></video>
+    </div>
+    <div class="pro-col">
+      <div class="pro-entry-head">Today I Learned</div>
+      <p class="pro-entry-body">An educational platform built to make learning structured, accessible and beautifully simple — a curated space for knowledge built with care for the learner's experience.</p>
+      <a href="https://todayilearnedu.netlify.app/" target="_blank" class="pro-entry-link">Visit site ↗</a>
+      <video class="pro-video" src="todayIlearned.mp4" controls></video>
+    </div>
+    <div class="pro-col">
+      <div class="pro-entry-head">Emotion Recognition</div>
+      <p class="pro-entry-body">A real-time facial emotion recognition system trained on image datasets using deep learning — classifying expressions into core emotional states with computer vision and a convolutional neural network pipeline.</p>
+      <video class="pro-video" src="emotion-recognition.mp4" controls></video>
+    </div>
+  </div>
+</section>
+
+<!-- ACADEMIC -->
+<section id="academic" class="sec reveal" data-n="02">
+  <div class="sec-tag"><span class="dot"></span>02 · Academic</div>
+  <h2 class="sec-title">Research </h2>
+
+  <!-- 1. Percolation → percolationz.gif -->
+  <div class="ac-project">
+    <div class="ac-text">
+      <p class="ac-advisor">Advisor · Pavel Vorobiev</p>
+      <h3 class="ac-name">Percolation Threshold Detection</h3>
+      <p class="ac-body">Detected the percolation threshold using image classification algorithms by simulating circular particles in a 2D space and classifying images into "percolates" and "does not percolate" categories.<br><br>Trained an image detection algorithm with the Prophet library and validated against scanning electron microscopy images.</p>
+    </div>
+    <div class="ac-media">
+      <img src="https://raw.githubusercontent.com/paremica/-.-/master/percolationz.gif" alt="Percolation simulation">
+    </div>
+  </div>
+
+  <!-- 2. Gemma → J.jpeg, J1.jpeg, J2.jpeg -->
+  <div class="ac-project flip">
+    <div class="ac-text">
+      <p class="ac-advisor">Advisor · José Ignacio Huertas Cardozo</p>
+      <h3 class="ac-name">Gemma Multi-device</h3>
+      <p class="ac-body">Developed a device combining luminous, voltaic and thermal energy using fiber optics, semi-transparent PV modules and a Fresnel-based heat exchanger.<br><br>Programmed an Arduino light tracker and used COMSOL Multiphysics 6.0 to optimize focal performance. Principal competitor in XIGNUX Challenge 2023 and presenter in EXPOINGENIERÍAS 2023.</p>
+    </div>
+    <div class="ac-media ac-media-grid">
+      <img src="https://raw.githubusercontent.com/paremica/-.-/master/J.jpeg" alt="">
+      <img src="https://raw.githubusercontent.com/paremica/-.-/master/J1.jpeg" alt="">
+      <img src="https://raw.githubusercontent.com/paremica/-.-/master/J2.jpeg" alt="">
+    </div>
+  </div>
+
+  <!-- 3. Dynamic Load → anomaliez.gif -->
+  <div class="ac-project">
+    <div class="ac-text">
+      <h3 class="ac-name">Dynamic Load Transfer Systems</h3>
+      <p class="ac-body">Dynamic load transfer systems use advanced algorithms, real-time monitoring, and artificial intelligence to manage and transfer loads between multiple power sources and breakers seamlessly. These systems ensure uninterrupted power during maintenance activities by dynamically balancing loads based on real-time data and predictive analytics.<br><br><em style="font-family:'Cormorant Garamond',serif;font-size:0.9rem;opacity:0.6;">Summer Innovation Challenge · Schneider</em></p>
+    </div>
+    <div class="ac-media">
+      <img src="https://raw.githubusercontent.com/paremica/-.-/master/anomaliez.gif" alt="Dynamic load anomalies">
+    </div>
+  </div>
+
+  <!-- 4. iSolenum → M.jpeg, M1.JPG, M2.png -->
+  <div class="ac-project flip">
+    <div class="ac-text">
+      <h3 class="ac-name">iSolenum Solar Stove</h3>
+      <p class="ac-body">A thorough evaluation and redesign of the iSolenum solar stove, enhancing utility for communities in Chiapas, Mexico. The proposed innovation leverages a heliodome to concentrate solar radiation, generating adequate thermal energy for cooking — a sustainable alternative to wood-burning stoves rooted in thermodynamics and solar energy principles.</p>
+    </div>
+    <div class="ac-media ac-media-grid">
+      <img src="https://raw.githubusercontent.com/paremica/-.-/master/M.jpeg" alt="">
+      <img src="https://raw.githubusercontent.com/paremica/-.-/master/M1.JPG" alt="">
+      <img src="https://raw.githubusercontent.com/paremica/-.-/master/M2.png" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" class="sec reveal" data-n="03">
+  <div class="sec-tag"><span class="dot"></span>03 · Certifications</div>
+  <h2 class="sec-title">Credentials</h2>
+
+  <div class="cert-wrap">
+    <div class="cert-slide" id="cert-slide">
+      <div class="cert-item">
+        <img src="https://raw.githubusercontent.com/paremica/-.-/master/C2.jpg" alt="Certification">
+      </div>
+      <div class="cert-item">
+        <img src="https://raw.githubusercontent.com/paremica/-.-/master/C3.jpg" alt="Certification">
+      </div>
+      <div class="cert-item">
+        <iframe src="https://docs.google.com/gview?url=https://raw.githubusercontent.com/paremica/-.-/master/CO1.pdf&embedded=true"></iframe>
+      </div>
+      <div class="cert-item">
+        <iframe src="https://docs.google.com/gview?url=https://raw.githubusercontent.com/paremica/-.-/master/CO2.pdf&embedded=true"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="cert-bar">
+    <span class="cert-count" id="cert-count">01 / 04</span>
+    <div class="cert-btns">
+      <button class="cert-btn" id="cprev">&#8592;</button>
+      <button class="cert-btn" id="cnext">&#8594;</button>
+    </div>
+  </div>
+
+  <div class="resume-block">
+    <p class="resume-label">Full résumé</p>
+    <div class="resume-content">
+      <h3>Myrna Dinorah Ortiz Ramírez</h3>
+      <p>myrnadinorah460@gmail.com — +52 81-4044-1304<br>Linkedin — github.com/paremica</p>
+
+      <h4>Experience</h4>
+      <p><strong>Momento + Capital</strong> Feb 2024 – Present<br>Data Scientist Specialist Mexico<br>• Leading a team of 3 technical specialists while driving data science and quantitative analysis initiatives.<br>• Designed and deployed an AI-driven solution for the business, building scalable analytics pipelines and decision-support tools using Python and aws infrastructure.</p>
+      <p><strong>Junior Quant</strong> Jun 2024 – Aug 2025<br>San Pedro Garza García, Nuevo Leon, Mexico On-site<br>• Performed quantitative analysis for financial products using Python and MySQL.<br>• Built models and scripts to support trading, reporting, and portfolio monitoring.<br>• Assisted in the development of data-driven investment tools and dashboards.</p>
+      <p><strong>Quant Intern</strong> Feb 2024 – Jun 2024<br>San Pedro Garza García, Nuevo Leon, Mexico On-site<br>• Supported quantitative research and data preprocessing tasks using Python.<br>• Assisted senior team members in model testing and validation workflows.</p>
+      <p><strong>Monterrey Institute of Technology and Higher Education</strong> Jan 2022 – Jul 2023<br>Data Analyst Monterrey, Nuevo Leon<br>• Developed monthly KPI dashboards and reports using Python, Excel, and Google Analytics.<br>• Led BI projects to support academic operations and strategic planning.<br>• Designed automated data pipelines and centralized data storage to improve internal reporting and decision-making.</p>
+
+      <h4>Portfolio & Projects</h4>
+      <p><strong>Banorte</strong> March 2025 – May 2025<br>Data Scientist – Strategic Project (3 Months) Mexico City<br>• Developed advanced statistical analyses for pension fund performance using Python and R.<br>• Built predictive models to evaluate retirement outcomes and long-term fund sustainability.<br>• Automated analytical reports and dashboards to support strategic decision-making.</p>
+
+      <h4>Education</h4>
+      <p><strong>Monterrey Institute of Technology and Higher Education</strong> June 2020 - June 2024<br>Bachelor of Science in Physics Monterrey, Nuevo Leon<br>GPA: 3.7 (Percent Grade: 93)<br>Relevant Coursework: Quantum Systems, Optical Systems, Stochastic Models<br>International Experience in Madrid, Spain: Bachelor of Business Administration (BA)</p>
+
+      <h4>Technical Skills</h4>
+      <p><strong>Languages:</strong> Python, JavaScript, MySQL, C++, MATLAB, AWS, HTML, CSS, Git<br><strong>Technologies:</strong> AWS, Jupyter, Jupyterlab, Visual Studio Code, AI Technologies, Google Collab, PowerBI, MongoDB, Docker Hub<br><strong>Concepts:</strong> Machine Learning, Neural Networks, Data Mining, Business Intelligence, Cloud Integration</p>
+
+      <h4>Languages</h4>
+      <p>English: Advanced - IELTS<br>Spanish: Native</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="sec reveal" data-n="04">
+  <div class="sec-tag"><span class="dot"></span>04 · Technical Work</div>
+  <h2 class="sec-title">Technical work,<br>analysis and <em>academic builds.</em></h2>
+
+  <div class="proj-list">
+    <div class="proj-row">
+      <span class="proj-n">001</span>
+      <div>
+        <div class="proj-name">Statistical Analysis MA1001B</div>
+        <p class="proj-desc">Scientific modeling with a predator-prey / Lotka-Volterra approach and pandemic analysis using Ministry of Health data for Mexico.</p>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/paremica/-.-/raw/master/SA1.pdf" download class="proj-dl">↓ PDF I</a>
+        <a href="https://github.com/paremica/-.-/raw/master/SA2.pdf" download class="proj-dl">↓ PDF II</a>
+      </div>
+    </div>
+
+    <div class="proj-row">
+      <span class="proj-n">002</span>
+      <div>
+        <div class="proj-name">Mathematics &amp; Data Science MA1042</div>
+        <p class="proj-desc">Analysis of obesity reduction over three months and Python validation for a data-driven health outcome study.</p>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/paremica/-.-/raw/master/MA1.pdf" download class="proj-dl">↓ PDF</a>
+      </div>
+    </div>
+
+    <div class="proj-row">
+      <span class="proj-n">003</span>
+      <div>
+        <div class="proj-name">Mathematical Methods for Physics F1009</div>
+        <p class="proj-desc">Developed a song recognition algorithm inspired by FFT-based apps like Shazam, using audio datasets and MATLAB workflows.</p>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/paremica/-.-/raw/master/AM1.pdf" download class="proj-dl">↓ PDF</a>
+      </div>
+    </div>
+
+    <div class="proj-row">
+      <span class="proj-n">004</span>
+      <div>
+        <div class="proj-name">Analysis of Optical Phenomena F2005B</div>
+        <p class="proj-desc">Designed a waveguide-coupled chip solution and simulation using COMSOL Multiphysics for ion trap optics at 70 µm.</p>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/paremica/-.-/raw/master/AO1.pdf" download class="proj-dl">↓ PDF</a>
+      </div>
+    </div>
+
+    <div class="proj-row">
+      <span class="proj-n">005</span>
+      <div>
+        <div class="proj-name">Experimental Characterization of Optical Systems</div>
+        <p class="proj-desc">Implemented fringe projection techniques for 3D surface reconstruction in an optical system built for depth imaging.</p>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/paremica/-.-/raw/master/OS1.pdf" download class="proj-dl">↓ PDF</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="foot-eq">
+    E = mc² &nbsp;·&nbsp; Δx Δp ≥ ℏ/2 &nbsp;·&nbsp; ∫<sub>−∞</sub><sup>∞</sup> e<sup>−x²</sup>dx = √π
+  </div>
+  <p class="foot-copy">
+    AI systems · Physics intuition · Automation<br>
+    © 2025 Dinorah Ramírez
+  </p>
+</footer>
+
+<script>
+/* ─── nav scroll ─────────────────────────────────────── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+}, { passive: true });
+
+/* ─── canvas: subtle floating circles ───────────────────── */
+(function () {
+  const canvas = document.getElementById('bg-canvas');
+  const ctx    = canvas.getContext('2d');
+  let W, H;
+  const circles = [];
+  const N = 18;
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  function init() {
+    circles.length = 0;
+    for (let i = 0; i < N; i++) {
+      const r = Math.random() * 90 + 20;
+      circles.push({
+        x:      Math.random() * W,
+        y:      Math.random() * H,
+        baseX:  0,
+        baseY:  0,
+        r,
+        speedY: Math.random() * 0.0003 + 0.00015,
+        speedX: Math.random() * 0.0002 + 0.0001,
+        phaseY: Math.random() * Math.PI * 2,
+        phaseX: Math.random() * Math.PI * 2,
+        drift:  (Math.random() - 0.5) * 0.08,
+        alpha:  Math.random() * 0.04 + 0.008,
+        rose:   Math.random() < 0.5,
+        filled: Math.random() < 0.25,
+      });
+      circles[i].baseX = circles[i].x;
+      circles[i].baseY = circles[i].y;
+    }
+  }
+
+  let t = 0;
+  function loop() {
+    ctx.clearRect(0, 0, W, H);
+
+    for (const c of circles) {
+      c.x = c.baseX + Math.sin(t * c.speedX * 4000 + c.phaseX) * 14;
+      c.y = c.baseY + Math.sin(t * c.speedY * 6000 + c.phaseY) * 20;
+      c.baseX += c.drift * 0.18;
+      if (c.baseX > W + c.r) c.baseX = -c.r;
+      if (c.baseX < -c.r)    c.baseX = W + c.r;
+
+      const color = c.rose ? '192,90,120' : '58,141,176';
+      ctx.beginPath();
+      ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2);
+      if (c.filled) {
+        ctx.fillStyle = `rgba(${color},${c.alpha * 0.35})`;
+        ctx.fill();
+      } else {
+        ctx.strokeStyle = `rgba(${color},${c.alpha})`;
+        ctx.lineWidth = 0.7;
+        ctx.stroke();
+      }
+    }
+
+    t += 0.016;
+    requestAnimationFrame(loop);
+  }
+
+  resize(); init(); loop();
+  window.addEventListener('resize', () => { resize(); init(); }, { passive: true });
+}());
+
+/* ─── scroll reveal ──────────────────────────────────── */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.06 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ─── carousel ───────────────────────────────────────── */
+(function () {
+  const slide = document.getElementById('cert-slide');
+  const count = document.getElementById('cert-count');
+  const items = slide.querySelectorAll('.cert-item');
+  let cur = 0;
+
+  function go(n) {
+    cur = Math.max(0, Math.min(items.length - 1, n));
+    slide.style.transform = `translateX(-${cur * 100}%)`;
+    count.textContent =
+      String(cur + 1).padStart(2,'0') + ' / ' + String(items.length).padStart(2,'0');
+  }
+
+  document.getElementById('cnext').addEventListener('click', () => go(cur + 1));
+  document.getElementById('cprev').addEventListener('click', () => go(cur - 1));
+}());
+</script>
 </body>
 </html>
