@@ -217,18 +217,52 @@
     .hero-photo {
       position: relative;
     }
+    .hero-photo::before {
+      content: '';
+      position: absolute;
+      inset: 20px -20px -20px 20px;
+      background: var(--rose);
+      opacity: 0.16;
+      z-index: -1;
+    }
     .hero-photo img {
       width: 100%;
-      aspect-ratio: 4/4;
+      aspect-ratio: 4/5;
       object-fit: cover;
       object-position: center top;
       display: block;
+      border: 1px solid var(--rule);
+    }
+
+    /* ── stickers: my-web illustrations as personal accents ── */
+    .sticker {
+      position: absolute;
+      width: var(--w, 70px);
+      top: var(--top, auto);
+      left: var(--left, auto);
+      right: var(--right, auto);
+      bottom: var(--bottom, auto);
+      pointer-events: none;
+      filter: drop-shadow(0 10px 20px rgba(26,23,20,0.14));
+      animation: stickerFloat 6s ease-in-out infinite;
+      animation-delay: var(--delay, 0s);
+      z-index: 2;
+    }
+    .sticker img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transform: rotate(var(--rot, 0deg));
+    }
+    @keyframes stickerFloat {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-10px); }
     }
 
     /* professional two-col */
     .pro-two-col {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 64px;
       position: relative;
       z-index: 1;
@@ -704,6 +738,76 @@
       line-height: 2;
     }
 
+    /* ── creative portfolio gate ── */
+    .gate-wrap {
+      max-width: 420px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .gate-copy {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin-bottom: 36px;
+      line-height: 1.8;
+    }
+    .gate-form { display: flex; flex-direction: column; gap: 14px; }
+    .gate-input {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.85rem;
+      padding: 14px 18px;
+      border: 1px solid var(--rule);
+      background: var(--soft);
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.25s;
+    }
+    .gate-input:focus { border-color: var(--rose); }
+    .gate-submit {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--rose);
+      padding: 14px 34px;
+      border: none;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .gate-submit:hover { background: #b54d6c; box-shadow: 0 6px 24px rgba(192,90,120,0.22); }
+    .gate-error {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      color: var(--rose);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .gate-error.show { opacity: 1; }
+    .gate-wrap.shake { animation: gateShake 0.4s; }
+    @keyframes gateShake {
+      0%, 100% { transform: translateX(0); }
+      25%      { transform: translateX(-8px); }
+      75%      { transform: translateX(8px); }
+    }
+    .creative-content { display: none; position: relative; z-index: 1; }
+    .creative-content.on { display: block; }
+    .creative-teaser {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.3rem;
+      color: var(--muted);
+      text-align: center;
+      padding: 40px 0;
+    }
+
     /* ── reveal ── */
     .reveal {
       opacity: 0;
@@ -758,6 +862,7 @@
     <li><a href="#certifications">Certifications</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#blog">Blog</a></li>
+    <li><a href="#creative">Creative</a></li>
   </ul>
 </nav>
 
@@ -779,7 +884,9 @@
     </div>
 
     <div class="hero-photo">
-      <img src="https://raw.githubusercontent.com/paremica/-.-/master/asuka.png" alt="Dinorah Ramírez">
+      <div class="sticker" style="--w:92px; --top:-34px; --right:20px; --rot:-10deg; --delay:.1s;"><img src="my-web/dancing.png" alt=""></div>
+      <div class="sticker" style="--w:72px; --bottom:-20px; --left:-30px; --rot:8deg; --delay:1s;"><img src="my-web/sitting.png" alt=""></div>
+      <img src="foto_myrna.jpg" alt="Dinorah Ramírez">
     </div>
   </div>
 </div>
@@ -807,6 +914,11 @@
       <p class="pro-entry-body">A real-time facial emotion recognition system trained on image datasets using deep learning — classifying expressions into core emotional states with computer vision and a convolutional neural network pipeline.</p>
       <iframe class="pro-video" src="https://www.youtube.com/embed/LngZBPGNdlo" allowfullscreen></iframe>
     </div>
+    <div class="pro-col">
+      <div class="pro-entry-head">Ilumetria Challenge</div>
+      <p class="pro-entry-body">A hands-on innovation challenge exploring lighting and energy technology, documented here as part of an ongoing project record.</p>
+      <iframe class="pro-video" src="https://www.youtube.com/embed/Rlk0x3gHjK0" allowfullscreen></iframe>
+    </div>
   </div>
 </section>
 
@@ -814,6 +926,7 @@
 <section id="academic" class="sec reveal" data-n="02">
   <div class="sec-tag"><span class="dot"></span>02 · Academic</div>
   <h2 class="sec-title">Research </h2>
+  <div class="sticker" style="--w:80px; --top:0px; --right:60px; --rot:6deg; --delay:.4s;"><img src="my-web/meditating.png" alt=""></div>
 
   <!-- 1. Percolation → percolationz.gif -->
   <div class="ac-project">
@@ -991,6 +1104,7 @@
 <section id="blog" class="sec reveal" data-n="05">
   <div class="sec-tag"><span class="dot"></span>05 · Writing</div>
   <h2 class="sec-title">Poems &amp; <em>stories.</em></h2>
+  <div class="sticker" style="--w:76px; --top:4px; --right:50px; --rot:-7deg; --delay:.6s;"><img src="my-web/moshing.png" alt=""></div>
 
   <div class="ac-project">
     <div class="ac-text">
@@ -1004,6 +1118,27 @@
       <img src="my-web/dancing.png" alt="">
       <img src="my-web/sitting-reading.png" alt="">
     </div>
+  </div>
+</section>
+
+<!-- CREATIVE PORTFOLIO (protected) -->
+<section id="creative" class="sec reveal" data-n="06">
+  <div class="sec-tag"><span class="dot"></span>06 · Creative</div>
+  <h2 class="sec-title">Personal <em>portfolio.</em></h2>
+  <div class="sticker" style="--w:78px; --top:0px; --right:70px; --rot:8deg; --delay:.3s;"><img src="my-web/sprinting.gif" alt=""></div>
+
+  <div class="gate-wrap" id="gate-wrap">
+    <p class="gate-copy">This corner is just for me — a few close eyes only.<br>Enter the password to look inside.</p>
+    <form class="gate-form" id="gate-form" autocomplete="off">
+      <input type="text" class="gate-input" id="gate-user" placeholder="Username" autocomplete="username">
+      <input type="password" class="gate-input" id="gate-pass" placeholder="Password" autocomplete="current-password">
+      <button type="submit" class="gate-submit">Enter</button>
+      <p class="gate-error" id="gate-error">Incorrect username or password.</p>
+    </form>
+  </div>
+
+  <div class="creative-content" id="creative-content">
+    <p class="creative-teaser">Coming soon — this space is still being built.</p>
   </div>
 </section>
 
@@ -1118,6 +1253,39 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
   document.getElementById('cnext').addEventListener('click', () => go(cur + 1));
   document.getElementById('cprev').addEventListener('click', () => go(cur - 1));
+}());
+
+/* ─── creative portfolio gate ───────────────────────────
+   change the username/password here whenever you want ─── */
+(function () {
+  const CREDS = { user: 'dinorah', pass: 'cockroach' };
+
+  const wrap    = document.getElementById('gate-wrap');
+  const form    = document.getElementById('gate-form');
+  const content = document.getElementById('creative-content');
+  const error   = document.getElementById('gate-error');
+
+  function unlock() {
+    wrap.style.display = 'none';
+    content.classList.add('on');
+  }
+
+  if (sessionStorage.getItem('creativeUnlocked') === '1') unlock();
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const u = document.getElementById('gate-user').value.trim().toLowerCase();
+    const p = document.getElementById('gate-pass').value;
+    if (u === CREDS.user && p === CREDS.pass) {
+      sessionStorage.setItem('creativeUnlocked', '1');
+      unlock();
+    } else {
+      error.classList.add('show');
+      wrap.classList.remove('shake');
+      void wrap.offsetWidth;
+      wrap.classList.add('shake');
+    }
+  });
 }());
 </script>
 </body>
