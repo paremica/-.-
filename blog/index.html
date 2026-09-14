@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poemas e HisTOriAZ3</title>
+<meta name="description" content="Poemas e historias fantásticas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #EDEAE0;
+    --paper-2: #E3DECF;
+    --ink: #17171A;
+    --pink: #FF4759;
+    --pink-ink: #4A0A17;
+    --blue: #2549A6;
+    --blue-ink: #0C1D4F;
+    --yellow: #F0BE3D;
+    --yellow-ink: #4A3A08;
+    --violet: #6C4FA6;
+    --violet-ink: #2A1B4A;
+    --max-w: 720px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- Masthead ---------- */
+
+  header.masthead {
+    padding: 64px 24px 40px;
+    border-bottom: 3px solid var(--ink);
+  }
+
+  .masthead-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+  }
+
+  .masthead-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    color: var(--pink);
+    margin: 0 0 8px;
+  }
+
+  h1.title {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(2.6rem, 8vw, 4.6rem);
+    line-height: 0.98;
+    margin: 0;
+    letter-spacing: -0.01em;
+    position: relative;
+    display: inline-block;
+  }
+
+  h1.title .layer {
+    position: absolute;
+    top: 0; left: 0;
+    color: var(--pink);
+    z-index: -1;
+    transform: translate(6px, 6px);
+    opacity: 0.85;
+  }
+
+  .masthead-sub {
+    font-size: 16px;
+    color: var(--ink);
+    opacity: 0.75;
+    margin: 18px 0 0;
+    max-width: 46ch;
+  }
+
+  /* ---------- Post list ---------- */
+
+  main { padding: 8px 0 80px; }
+
+  ul.post-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li.post-row {
+    border-bottom: 1px solid rgba(23,23,26,0.15);
+  }
+
+  a.post-row-link {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 20px;
+    align-items: start;
+    padding: 28px 24px;
+    text-decoration: none;
+    transition: background 0.15s ease;
+  }
+
+  a.post-row-link:hover,
+  a.post-row-link:focus-visible {
+    background: var(--paper-2);
+  }
+
+  a.post-row-link:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: -2px;
+  }
+
+  .post-index {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    border-radius: 4px;
+    font-weight: 700;
+  }
+
+  .post-index.pink   { background: var(--pink);   color: #fff; }
+  .post-index.blue   { background: var(--blue);   color: #fff; }
+  .post-index.yellow { background: var(--yellow); color: var(--yellow-ink); }
+  .post-index.violet { background: var(--violet); color: #fff; }
+
+  .post-meta {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--ink);
+    opacity: 0.55;
+    margin: 0 0 6px;
+  }
+
+  h2.post-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(1.15rem, 3vw, 1.5rem);
+    margin: 0 0 8px;
+    line-height: 1.25;
+  }
+
+  p.post-excerpt {
+    margin: 0;
+    font-size: 15px;
+    color: var(--ink);
+    opacity: 0.7;
+    max-width: 60ch;
+  }
+
+  /* ---------- Loading / error / empty ---------- */
+
+  .state-msg {
+    padding: 60px 24px;
+    text-align: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    opacity: 0.7;
+  }
+
+  /* ---------- Post detail view ---------- */
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    text-decoration: none;
+    padding: 24px;
+    border-bottom: 1px solid rgba(23,23,26,0.15);
+    width: 100%;
+  }
+
+  .back-link:hover { text-decoration: underline; }
+
+  .post-band {
+    padding: 56px 24px 40px;
+  }
+
+  .post-band-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+  }
+
+  .post-band .post-meta { opacity: 0.6; }
+
+  h1.post-detail-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-style: italic;
+    font-size: clamp(1.9rem, 6vw, 3rem);
+    line-height: 1.08;
+    margin: 10px 0 0;
+  }
+
+  article.post-body {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 40px 24px 100px;
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  article.post-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin: 8px 0;
+  }
+
+  article.post-body a { text-decoration-color: var(--pink); text-decoration-thickness: 2px; }
+
+  article.post-body blockquote {
+    margin: 24px 0;
+    padding: 4px 0 4px 20px;
+    border-left: 3px solid var(--pink);
+    font-style: italic;
+    opacity: 0.85;
+  }
+
+  .source-link {
+    display: inline-block;
+    margin-top: 16px;
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    opacity: 0.6;
+  }
+
+  footer {
+    padding: 32px 24px 48px;
+    text-align: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    opacity: 0.5;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+
+  @media (max-width: 480px) {
+    a.post-row-link { grid-template-columns: 48px 1fr; gap: 14px; padding: 22px 20px; }
+    .post-index { height: 32px; font-size: 11px; }
+    header.masthead { padding: 48px 20px 32px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <p class="masthead-eyebrow">poemas e historiaz fantazticaz</p>
+    <h1 class="title">
+      <span class="layer" aria-hidden="true">HisTOriAZ3</span>
+      <span>HisTOriAZ3</span>
+    </h1>
+    <p class="masthead-sub">Un cuaderno digital de poemas e historias fantásticas, leído directo desde el blog original.</p>
+  </div>
+</header>
+
+<main id="app">
+  <div class="state-msg">Cargando publicaciones…</div>
+</main>
+
+<footer>Publicado originalmente en Blogger — actualizado en vivo</footer>
+
+<script>
+  // ---------- Configuración ----------
+
+  var API_KEY = "AIzaSyCerlNYSEs_-4E73yGAaS6ICgDmrUnHG-Q";
+  var BLOG_ID = "8992071560697129445";
+  var BASE_URL = "https://www.googleapis.com/blogger/v3";
+  var ACCENTS = ["pink", "blue", "yellow", "violet"];
+
+  var app = document.getElementById("app");
+  var postsCache = null;
+
+  function stripHtml(html) {
+    var div = document.createElement("div");
+    div.innerHTML = html;
+    return div.textContent || div.innerText || "";
+  }
+
+  function excerpt(html, len) {
+    var text = stripHtml(html).replace(/\s+/g, " ").trim();
+    if (text.length <= len) return text;
+    return text.slice(0, len).trim() + "…";
+  }
+
+  function formatDate(iso) {
+    var d = new Date(iso);
+    return d.toLocaleDateString("es-ES", { day: "2-digit", month: "short", year: "numeric" });
+  }
+
+  function readingTime(html) {
+    var words = stripHtml(html).trim().split(/\s+/).length;
+    var mins = Math.max(1, Math.round(words / 200));
+    return mins + " min de lectura";
+  }
+
+  function escapeAttr(str) {
+    return String(str).replace(/"/g, "&quot;");
+  }
+
+  async function fetchAllPosts() {
+    if (postsCache) return postsCache;
+    var items = [];
+    var pageToken = null;
+    do {
+      var url = BASE_URL + "/blogs/" + BLOG_ID + "/posts?key=" + API_KEY +
+        "&maxResults=500&fetchBodies=true&status=live" +
+        (pageToken ? "&pageToken=" + pageToken : "");
+      var resp = await fetch(url);
+      if (!resp.ok) throw new Error("HTTP " + resp.status);
+      var data = await resp.json();
+      items = items.concat(data.items || []);
+      pageToken = data.nextPageToken;
+    } while (pageToken);
+    postsCache = items;
+    return items;
+  }
+
+  function renderList(posts) {
+    if (!posts.length) {
+      app.innerHTML = '<div class="state-msg">Todavía no hay publicaciones.</div>';
+      return;
+    }
+
+    var rows = posts.map(function (post, i) {
+      var accent = ACCENTS[i % ACCENTS.length];
+      var num = String(i + 1).padStart(2, "0");
+      return (
+        '<li class="post-row">' +
+          '<a class="post-row-link" href="#/post/' + post.id + '">' +
+            '<span class="post-index ' + accent + '">' + num + '</span>' +
+            '<span>' +
+              '<p class="post-meta">' + formatDate(post.published) + ' · ' + readingTime(post.content) + '</p>' +
+              '<h2 class="post-title">' + post.title + '</h2>' +
+              '<p class="post-excerpt">' + excerpt(post.content, 140) + '</p>' +
+            '</span>' +
+          '</a>' +
+        '</li>'
+      );
+    }).join("");
+
+    app.innerHTML = '<ul class="post-list">' + rows + '</ul>';
+  }
+
+  function renderPost(post, index) {
+    var accent = ACCENTS[index % ACCENTS.length];
+    app.innerHTML =
+      '<a class="back-link" href="#/">&larr; volver a todas las historias</a>' +
+      '<div class="post-band">' +
+        '<div class="post-band-inner">' +
+          '<p class="post-meta">' + formatDate(post.published) + ' · ' + readingTime(post.content) + '</p>' +
+          '<h1 class="post-detail-title">' + post.title + '</h1>' +
+        '</div>' +
+      '</div>' +
+      '<article class="post-body">' + post.content +
+        '<div><a class="source-link" href="' + post.url + '" target="_blank" rel="noopener">ver publicación original en blogger &#8599;</a></div>' +
+      '</article>';
+    window.scrollTo(0, 0);
+  }
+
+  async function route() {
+    var hash = window.location.hash;
+    var match = hash.match(/^#\/post\/(.+)$/);
+
+    try {
+      var posts = await fetchAllPosts();
+
+      if (match) {
+        var id = match[1];
+        var index = posts.findIndex(function (p) { return p.id === id; });
+        var post = posts[index];
+        if (!post) {
+          app.innerHTML = '<div class="state-msg">No se encontró esa publicación. <a href="#/">volver</a></div>';
+          return;
+        }
+        renderPost(post, index === -1 ? 0 : index);
+      } else {
+        renderList(posts);
+      }
+    } catch (err) {
+      app.innerHTML = '<div class="state-msg">No se pudieron cargar las publicaciones.<br>Revisa que la API Key sea correcta.<br><small>' + err.message + '</small></div>';
+    }
+  }
+
+  window.addEventListener("hashchange", route);
+  window.addEventListener("DOMContentLoaded", route);
+</script>
+
+</body>
+</html>
