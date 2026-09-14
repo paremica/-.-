@@ -107,6 +107,7 @@
       grid-template-columns: 1fr 380px;
       gap: 80px;
       align-items: center;
+      perspective: 900px;
     }
 
     .hero-left { display: flex; flex-direction: column; gap: 32px; }
@@ -232,31 +233,9 @@
       object-position: center top;
       display: block;
       border: 1px solid var(--rule);
-    }
-
-    /* ── stickers: my-web illustrations as personal accents ── */
-    .sticker {
-      position: absolute;
-      width: var(--w, 70px);
-      top: var(--top, auto);
-      left: var(--left, auto);
-      right: var(--right, auto);
-      bottom: var(--bottom, auto);
-      pointer-events: none;
-      filter: drop-shadow(0 10px 20px rgba(26,23,20,0.14));
-      animation: stickerFloat 6s ease-in-out infinite;
-      animation-delay: var(--delay, 0s);
-      z-index: 2;
-    }
-    .sticker img {
-      display: block;
-      width: 100%;
-      height: auto;
-      transform: rotate(var(--rot, 0deg));
-    }
-    @keyframes stickerFloat {
-      0%, 100% { transform: translateY(0); }
-      50%      { transform: translateY(-10px); }
+      transition: transform 0.3s ease;
+      transform-style: preserve-3d;
+      will-change: transform;
     }
 
     /* professional two-col */
@@ -799,6 +778,7 @@
     }
     .creative-content { display: none; position: relative; z-index: 1; }
     .creative-content.on { display: block; }
+    .creative-block { max-width: 600px; margin-bottom: 56px; }
     .creative-teaser {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
@@ -869,7 +849,7 @@
 <div id="home" class="hero">
   <div class="hero-inner">
     <div class="hero-left">
-      <span class="hero-name">About <em>Me</em></span>
+      <span class="hero-name">My <em>Work</em></span>
 
       <p class="hero-tagline">
         I'm a physicist by training and a data scientist by trade — someone who finds the same quiet order in solar heat exchangers and percolation thresholds as in trading models and product dashboards. My work has moved between research labs and production systems: designing fiber-optic energy devices, detecting percolation transitions with computer vision, and now leading data science initiatives that turn raw numbers into decisions people actually use. I like problems that sit right at the edge of rigor and curiosity.
@@ -882,11 +862,31 @@
 
     </div>
 
-    <div class="hero-photo">
-      <div class="sticker" style="--w:92px; --top:-34px; --right:20px; --rot:-10deg; --delay:.1s;"><img src="my-web/dancing.png" alt=""></div>
-      <div class="sticker" style="--w:72px; --bottom:-20px; --left:-30px; --rot:8deg; --delay:1s;"><img src="my-web/sitting.png" alt=""></div>
+    <div class="hero-photo" id="hero-photo">
       <img src="foto_myrna.jpg" alt="Dinorah Ramírez">
     </div>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">Data Science<span class="ticker-dot">●</span></span>
+    <span class="ticker-item">Machine Learning<span class="ticker-dot">●</span></span>
+    <span class="ticker-item">Python<span class="ticker-dot">●</span></span>
+    <span class="ticker-item">Physics Research<span class="ticker-dot">●</span></span>
+    <span class="ticker-item">Computer Vision<span class="ticker-dot">●</span></span>
+    <span class="ticker-item">AWS<span class="ticker-dot">●</span></span>
+    <span class="ticker-item">Product Delivery<span class="ticker-dot">●</span></span>
+    <span class="ticker-item">MySQL<span class="ticker-dot">●</span></span>
+    <span class="ticker-item">Data Science<span class="ticker-dot">●</span></span>
+    <span class="ticker-item">Machine Learning<span class="ticker-dot">●</span></span>
+    <span class="ticker-item">Python<span class="ticker-dot">●</span></span>
+    <span class="ticker-item">Physics Research<span class="ticker-dot">●</span></span>
+    <span class="ticker-item">Computer Vision<span class="ticker-dot">●</span></span>
+    <span class="ticker-item">AWS<span class="ticker-dot">●</span></span>
+    <span class="ticker-item">Product Delivery<span class="ticker-dot">●</span></span>
+    <span class="ticker-item">MySQL<span class="ticker-dot">●</span></span>
   </div>
 </div>
 
@@ -925,7 +925,6 @@
 <section id="academic" class="sec reveal" data-n="02">
   <div class="sec-tag"><span class="dot"></span>02 · Academic</div>
   <h2 class="sec-title">Research </h2>
-  <div class="sticker" style="--w:80px; --top:0px; --right:60px; --rot:6deg; --delay:.4s;"><img src="my-web/meditating.png" alt=""></div>
 
   <!-- 1. Percolation → percolationz.gif -->
   <div class="ac-project">
@@ -1103,7 +1102,6 @@
 <section id="creative" class="sec reveal" data-n="05">
   <div class="sec-tag"><span class="dot"></span>05 · Creative</div>
   <h2 class="sec-title">Personal <em>portfolio.</em></h2>
-  <div class="sticker" style="--w:78px; --top:0px; --right:70px; --rot:8deg; --delay:.3s;"><img src="my-web/sprinting.gif" alt=""></div>
 
   <div class="gate-wrap" id="gate-wrap">
     <p class="gate-copy">This corner is just for me — a few close eyes only.<br>Enter the password to look inside.</p>
@@ -1116,33 +1114,18 @@
   </div>
 
   <div class="creative-content" id="creative-content">
-    <div class="ac-project">
-      <div class="ac-text">
-        <p class="ac-advisor">About Me</p>
-        <p class="ac-body">My spirit animal is the cockroach — resilient, adaptable, and impossible to get rid of. I'm a cyberpunk enthusiast, a self-declared multifunctional neurotic, and someone with absolutely zero editing experience. My favorite game is Tetris, and I have a soft spot for apples with cream. When sadness hits, I retreat into Come and See, my cinematic safe haven. I'm deeply drawn to alternative music and have a habit of falling for people who pour their souls into their own independent sounds. And when it comes to books, Clemencia holds a special place — not because it's comforting, but because it reminds me, that I am very much alone and that no one will ever love me quite like Fernando Valle.</p>
-      </div>
-      <div class="ac-media ac-media-grid">
-        <img src="my-web/Doggie.png" alt="">
-        <img src="my-web/sitting.png" alt="">
-        <img src="my-web/moshing.png" alt="">
-        <img src="my-web/reading-side.png" alt="">
-      </div>
+    <div class="creative-block">
+      <p class="ac-advisor">About Me</p>
+      <p class="ac-body">My spirit animal is the cockroach — resilient, adaptable, and impossible to get rid of. I'm a cyberpunk enthusiast, a self-declared multifunctional neurotic, and someone with absolutely zero editing experience. My favorite game is Tetris, and I have a soft spot for apples with cream. When sadness hits, I retreat into Come and See, my cinematic safe haven. I'm deeply drawn to alternative music and have a habit of falling for people who pour their souls into their own independent sounds. And when it comes to books, Clemencia holds a special place — not because it's comforting, but because it reminds me, that I am very much alone and that no one will ever love me quite like Fernando Valle.</p>
     </div>
 
-    <div class="ac-project flip">
-      <div class="ac-text">
-        <p class="ac-advisor">Writing</p>
-        <h3 class="ac-name">HisTOriAZ3</h3>
-        <p class="ac-body">A digital notebook of poems and fantastical stories, read live from the original Blogger feed.</p>
-        <a href="blog/index.html" class="pro-entry-link">Read the blog ↗</a>
-      </div>
-      <div class="ac-media ac-media-grid">
-        <img src="my-web/reading.png" alt="">
-        <img src="my-web/meditating.png" alt="">
-        <img src="my-web/dancing.png" alt="">
-        <img src="my-web/sitting-reading.png" alt="">
-      </div>
+    <div class="creative-block">
+      <p class="ac-advisor">Writing</p>
+      <h3 class="ac-name">HisTOriAZ3</h3>
+      <p class="ac-body">A digital notebook of poems and fantastical stories, read live from the original Blogger feed.</p>
+      <a href="blog/index.html" class="pro-entry-link">Read the blog ↗</a>
     </div>
+
     <p class="creative-teaser">More to come — this space is still being built.</p>
   </div>
 </section>
@@ -1164,6 +1147,20 @@ const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 50);
 }, { passive: true });
+
+/* ─── hero photo: mouse tilt ─────────────────────────── */
+(function () {
+  const photo = document.getElementById('hero-photo');
+  if (!photo || matchMedia('(hover: none)').matches) return;
+  const img = photo.querySelector('img');
+  photo.addEventListener('mousemove', (e) => {
+    const r = photo.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5;
+    const y = (e.clientY - r.top) / r.height - 0.5;
+    img.style.transform = `rotateY(${x * 10}deg) rotateX(${-y * 10}deg)`;
+  });
+  photo.addEventListener('mouseleave', () => { img.style.transform = ''; });
+}());
 
 /* ─── canvas: subtle floating circles ───────────────────── */
 (function () {
