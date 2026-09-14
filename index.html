@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dinorah Ramírez</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:ital,opsz,wght@0,12..96,200..800;1,12..96,200..800&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -13,7 +13,6 @@
     :root {
       --bg:    #121110;
       --ink:   #f3f1ec;
-      --rose:  #c05a78;
       --blue:  #3a8db0;
       --muted: rgba(243,241,236,0.55);
       --rule:  rgba(243,241,236,0.14);
@@ -54,7 +53,7 @@
       border-bottom: 1px solid var(--rule);
     }
     .nav-brand {
-      font-family: 'Fraunces', serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-weight: 500;
       font-size: 0.95rem;
       letter-spacing: 0.16em;
@@ -84,7 +83,7 @@
       content: '';
       width: 3px; height: 3px;
       border-radius: 50%;
-      background: var(--rose);
+      background: var(--ink);
       transform: scale(0);
       transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
     }
@@ -113,7 +112,7 @@
     .hero-left { display: flex; flex-direction: column; gap: 32px; }
 
     .hero-name {
-      font-family: 'Fraunces', serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-weight: 600;
       font-size: clamp(2.6rem, 5vw, 4.2rem);
       line-height: 1.0;
@@ -122,7 +121,7 @@
     }
     .hero-name em {
       font-style: italic;
-      color: var(--rose);
+      color: var(--ink);
     }
 
     .hero-tagline {
@@ -147,18 +146,18 @@
       transition: background 0.25s;
     }
     .hw-item:last-child { border-right: none; }
-    .hw-item:hover { background: rgba(192,90,120,0.04); }
+    .hw-item:hover { background: rgba(243,241,236,0.04); }
     .hw-label {
       font-family: 'Jost', sans-serif;
       font-weight: 200;
       font-size: 0.62rem;
       letter-spacing: 0.24em;
       text-transform: uppercase;
-      color: var(--rose);
+      color: var(--ink);
       margin-bottom: 5px;
     }
     .hw-value {
-      font-family: 'Fraunces', serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-weight: 400;
       font-size: 0.92rem;
       color: var(--ink);
@@ -173,16 +172,16 @@
       font-size: 0.7rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: #fff;
-      background: var(--rose);
+      color: var(--bg);
+      background: var(--ink);
       padding: 13px 34px;
       border-radius: 100px;
       text-decoration: none;
-      transition: background 0.3s, box-shadow 0.3s;
+      transition: opacity 0.3s, box-shadow 0.3s;
     }
     .btn-pill:hover {
-      background: #b54d6c;
-      box-shadow: 0 6px 24px rgba(192,90,120,0.22);
+      opacity: 0.82;
+      box-shadow: 0 6px 24px rgba(243,241,236,0.18);
     }
     .btn-line {
       font-family: 'Jost', sans-serif;
@@ -200,7 +199,7 @@
     .btn-line:hover { opacity: 0.8; border-color: var(--ink); }
 
     .hero-eq {
-      font-family: 'Fraunces', serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-weight: 300;
       font-style: italic;
       font-size: 0.82rem;
@@ -222,7 +221,7 @@
       content: '';
       position: absolute;
       inset: 20px -20px -20px 20px;
-      background: var(--rose);
+      background: var(--ink);
       opacity: 0.16;
       z-index: -1;
     }
@@ -266,13 +265,13 @@
       font-size: 0.68rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--rose);
+      color: var(--ink);
       text-decoration: none;
-      border-bottom: 1px solid rgba(192,90,120,0.25);
+      border-bottom: 1px solid rgba(243,241,236,0.25);
       padding-bottom: 1px;
       transition: border-color 0.2s, opacity 0.2s;
     }
-    .pro-entry-link:hover { border-color: var(--rose); opacity: 0.75; }
+    .pro-entry-link:hover { border-color: var(--ink); opacity: 0.75; }
     .pro-video {
       width: 100%;
       aspect-ratio: 16/9;
@@ -328,7 +327,7 @@
       white-space: nowrap;
       padding: 0 32px;
     }
-    .ticker-dot { color: var(--rose); padding: 0 6px; opacity: 0.5; }
+    .ticker-dot { color: var(--ink); padding: 0 6px; opacity: 0.5; }
     @keyframes ticker-go {
       from { transform: translateX(0); }
       to   { transform: translateX(-50%); }
@@ -348,7 +347,7 @@
       right: 56px;
       top: 50%;
       transform: translateY(-50%) rotate(90deg);
-      font-family: 'Fraunces', serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-weight: 200;
       font-size: 20rem;
       color: rgba(243,241,236,0.04);
@@ -373,13 +372,13 @@
     .sec-tag .dot {
       width: 4px; height: 4px;
       border-radius: 50%;
-      background: var(--rose);
+      background: var(--ink);
       opacity: 0.65;
       flex-shrink: 0;
     }
 
     .sec-title {
-      font-family: 'Fraunces', serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-weight: 600;
       font-size: clamp(2.2rem, 4.5vw, 4.6rem);
       line-height: 1.08;
@@ -390,7 +389,7 @@
       position: relative;
       z-index: 1;
     }
-    .sec-title em { font-style: italic; color: var(--rose); }
+    .sec-title em { font-style: italic; color: var(--ink); }
 
     /* ── professional ── */
     .pro-layout {
@@ -403,16 +402,16 @@
     .pro-sidebar { display: flex; flex-direction: column; gap: 34px; }
     .pro-sidebar-item { display: flex; flex-direction: column; gap: 5px; }
     .pro-roman {
-      font-family: 'Fraunces', serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-weight: 300;
       font-style: italic;
       font-size: 0.7rem;
       letter-spacing: 0.2em;
-      color: var(--rose);
+      color: var(--ink);
       opacity: 0.7;
     }
     .pro-company {
-      font-family: 'Fraunces', serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-weight: 500;
       font-size: 1.1rem;
       color: var(--ink);
@@ -432,9 +431,9 @@
       transition: border-color 0.3s;
     }
     .pro-entry:first-child { padding-top: 0; }
-    .pro-entry:hover { border-color: rgba(192,90,120,0.25); }
+    .pro-entry:hover { border-color: rgba(243,241,236,0.25); }
     .pro-entry-head {
-      font-family: 'Fraunces', serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-weight: 500;
       font-size: 1.55rem;
       color: var(--ink);
@@ -475,7 +474,7 @@
       margin-bottom: 18px;
     }
     .ac-name {
-      font-family: 'Fraunces', serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-weight: 500;
       font-size: clamp(1.5rem, 2.6vw, 2.4rem);
       line-height: 1.1;
@@ -509,7 +508,7 @@
     .ac-pair-item { display: flex; flex-direction: column; gap: 14px; }
     .ac-pair-sep {
       width: 20px; height: 1px;
-      background: var(--rose);
+      background: var(--ink);
       opacity: 0.4;
       margin-bottom: 4px;
     }
@@ -573,7 +572,7 @@
       z-index: 1;
     }
     .cert-count {
-      font-family: 'Fraunces', serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-weight: 300;
       font-style: italic;
       font-size: 0.88rem;
@@ -594,8 +593,8 @@
       transition: border-color 0.25s, background 0.25s, transform 0.25s;
     }
     .cert-btn:hover {
-      border-color: var(--rose);
-      background: rgba(192,90,120,0.06);
+      border-color: var(--ink);
+      background: rgba(243,241,236,0.06);
       transform: scale(1.08);
     }
 
@@ -615,7 +614,7 @@
     .resume-label::before {
       content: '';
       width: 18px; height: 1px;
-      background: var(--rose);
+      background: var(--ink);
       opacity: 0.45;
     }
     .resume-block iframe {
@@ -637,9 +636,9 @@
       transition: border-color 0.3s;
     }
     .proj-row:first-child { border-top: 1px solid var(--rule); }
-    .proj-row:hover { border-color: rgba(192,90,120,0.2); }
+    .proj-row:hover { border-color: rgba(243,241,236,0.2); }
     .proj-n {
-      font-family: 'Fraunces', serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-weight: 300;
       font-style: italic;
       font-size: 0.82rem;
@@ -648,7 +647,7 @@
       padding-top: 3px;
     }
     .proj-name {
-      font-family: 'Fraunces', serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-weight: 500;
       font-size: clamp(1.15rem, 2vw, 1.65rem);
       color: var(--ink);
@@ -685,7 +684,7 @@
       opacity: 0.5;
       transition: opacity 0.25s, border-color 0.25s, color 0.25s;
     }
-    .proj-dl:hover { opacity: 1; border-color: var(--rose); color: var(--rose); }
+    .proj-dl:hover { opacity: 1; border-color: var(--ink); color: var(--ink); }
 
     /* ── footer ── */
     .foot {
@@ -699,7 +698,7 @@
       gap: 48px;
     }
     .foot-eq {
-      font-family: 'Fraunces', serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-weight: 300;
       font-style: italic;
       font-size: 0.85rem;
@@ -745,27 +744,27 @@
       outline: none;
       transition: border-color 0.25s;
     }
-    .gate-input:focus { border-color: var(--rose); }
+    .gate-input:focus { border-color: var(--ink); }
     .gate-submit {
       font-family: 'Jost', sans-serif;
       font-weight: 300;
       font-size: 0.7rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: #fff;
-      background: var(--rose);
+      color: var(--bg);
+      background: var(--ink);
       padding: 14px 34px;
       border: none;
       border-radius: 100px;
       cursor: pointer;
-      transition: background 0.3s, box-shadow 0.3s;
+      transition: opacity 0.3s, box-shadow 0.3s;
     }
-    .gate-submit:hover { background: #b54d6c; box-shadow: 0 6px 24px rgba(192,90,120,0.22); }
+    .gate-submit:hover { opacity: 0.82; box-shadow: 0 6px 24px rgba(243,241,236,0.18); }
     .gate-error {
       font-family: 'Jost', sans-serif;
       font-size: 0.68rem;
       letter-spacing: 0.06em;
-      color: var(--rose);
+      color: var(--ink);
       opacity: 0;
       transition: opacity 0.2s;
     }
@@ -780,7 +779,7 @@
     .creative-content.on { display: block; }
     .creative-block { max-width: 600px; margin-bottom: 56px; }
     .creative-teaser {
-      font-family: 'Fraunces', serif;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-style: italic;
       font-size: 1.3rem;
       color: var(--muted);
@@ -956,7 +955,7 @@
   <div class="ac-project">
     <div class="ac-text">
       <h3 class="ac-name">Dynamic Load Transfer Systems</h3>
-      <p class="ac-body">Dynamic load transfer systems use advanced algorithms, real-time monitoring, and artificial intelligence to manage and transfer loads between multiple power sources and breakers seamlessly. These systems ensure uninterrupted power during maintenance activities by dynamically balancing loads based on real-time data and predictive analytics.<br><br><em style="font-family:'Fraunces',serif;font-size:0.9rem;opacity:0.6;">Summer Innovation Challenge · Schneider</em></p>
+      <p class="ac-body">Dynamic load transfer systems use advanced algorithms, real-time monitoring, and artificial intelligence to manage and transfer loads between multiple power sources and breakers seamlessly. These systems ensure uninterrupted power during maintenance activities by dynamically balancing loads based on real-time data and predictive analytics.<br><br><em style="font-family:'Bricolage Grotesque',sans-serif;font-size:0.9rem;opacity:0.6;">Summer Innovation Challenge · Schneider</em></p>
     </div>
     <div class="ac-media">
       <img src="https://raw.githubusercontent.com/paremica/-.-/master/anomaliez.gif" alt="Dynamic load anomalies">
@@ -1210,7 +1209,7 @@ window.addEventListener('scroll', () => {
       if (c.baseX > W + c.r) c.baseX = -c.r;
       if (c.baseX < -c.r)    c.baseX = W + c.r;
 
-      const color = c.rose ? '192,90,120' : '58,141,176';
+      const color = c.rose ? '243,241,236' : '58,141,176';
       ctx.beginPath();
       ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2);
       if (c.filled) {
