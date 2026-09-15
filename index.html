@@ -622,6 +622,7 @@
       transform: scale(1.08);
     }
 
+    .cert-details { position: relative; z-index: 1; }
     .resume-block { margin-top: 84px; position: relative; z-index: 1; }
     .resume-label {
       font-family: 'Jost', sans-serif;
@@ -886,10 +887,10 @@
 <div id="home" class="hero">
   <div class="hero-inner">
     <div class="hero-left">
-      <span class="hero-name" data-es="Mi <em>Trabajo</em>">My <em>Work</em></span>
+      <span class="hero-name" data-es="Profesional">My <em>Work</em></span>
 
-      <p class="hero-tagline" data-es="Soy física de formación y data scientist de profesión, atraída por el mismo orden silencioso en los intercambiadores de calor solares y los umbrales de percolación que en los modelos de trading y los dashboards de producto. Mi trabajo se ha movido entre laboratorios de investigación y sistemas en producción, desde diseñar dispositivos de energía con fibra óptica y detectar transiciones de percolación con visión por computadora, hasta liderar iniciativas de ciencia de datos que convierten números crudos en decisiones que la gente realmente usa. Me gustan los problemas que están justo en el borde entre el rigor y la curiosidad.">
-        I'm a physicist by training and a data scientist by trade, drawn to the same quiet order in solar heat exchangers and percolation thresholds as in trading models and product dashboards. My work has moved between research labs and production systems, from designing fiber-optic energy devices and detecting percolation transitions with computer vision to leading data science initiatives that turn raw numbers into decisions people actually use. I like problems that sit right at the edge of rigor and curiosity.
+      <p class="hero-tagline" data-es="Mi trabajo se ha movido entre laboratorios de investigación y sistemas en producción, desde diseñar dispositivos de energía con fibra óptica y detectar transiciones de percolación con visión por computadora, hasta liderar iniciativas de ciencia de datos que convierten números crudos en decisiones que la gente realmente usa. Me gustan los problemas que están justo en el borde entre el rigor y la curiosidad.">
+        My work has moved between research labs and production systems, from designing fiber-optic energy devices and detecting percolation transitions with computer vision to leading data science initiatives that turn raw numbers into decisions people actually use. I like problems that sit right at the edge of rigor and curiosity.
       </p>
 
       <div class="hero-actions">
@@ -1021,30 +1022,35 @@
   <div class="sec-tag" data-es="03 · Certificaciones"><span class="dot"></span>03 · Certifications</div>
   <h2 class="sec-title" data-es="Credenciales">Credentials</h2>
 
-  <div class="cert-wrap">
-    <div class="cert-slide" id="cert-slide">
-      <div class="cert-item">
-        <img src="https://raw.githubusercontent.com/paremica/-.-/master/C2.jpg" alt="Certification">
+  <details class="cert-details">
+    <summary class="resume-label"><span data-es="Ver certificaciones">View certifications</span><span class="ac-toggle">+</span></summary>
+    <div class="resume-content">
+      <div class="cert-wrap">
+        <div class="cert-slide" id="cert-slide">
+          <div class="cert-item">
+            <img src="https://raw.githubusercontent.com/paremica/-.-/master/C2.jpg" alt="Certification">
+          </div>
+          <div class="cert-item">
+            <img src="https://raw.githubusercontent.com/paremica/-.-/master/C3.jpg" alt="Certification">
+          </div>
+          <div class="cert-item">
+            <iframe src="https://docs.google.com/gview?url=https://raw.githubusercontent.com/paremica/-.-/master/CO1.pdf&embedded=true"></iframe>
+          </div>
+          <div class="cert-item">
+            <iframe src="https://docs.google.com/gview?url=https://raw.githubusercontent.com/paremica/-.-/master/CO2.pdf&embedded=true"></iframe>
+          </div>
+        </div>
       </div>
-      <div class="cert-item">
-        <img src="https://raw.githubusercontent.com/paremica/-.-/master/C3.jpg" alt="Certification">
-      </div>
-      <div class="cert-item">
-        <iframe src="https://docs.google.com/gview?url=https://raw.githubusercontent.com/paremica/-.-/master/CO1.pdf&embedded=true"></iframe>
-      </div>
-      <div class="cert-item">
-        <iframe src="https://docs.google.com/gview?url=https://raw.githubusercontent.com/paremica/-.-/master/CO2.pdf&embedded=true"></iframe>
-      </div>
-    </div>
-  </div>
 
-  <div class="cert-bar">
-    <span class="cert-count" id="cert-count">01 / 04</span>
-    <div class="cert-btns">
-      <button class="cert-btn" id="cprev">&#8592;</button>
-      <button class="cert-btn" id="cnext">&#8594;</button>
+      <div class="cert-bar">
+        <span class="cert-count" id="cert-count">01 / 04</span>
+        <div class="cert-btns">
+          <button class="cert-btn" id="cprev">&#8592;</button>
+          <button class="cert-btn" id="cnext">&#8594;</button>
+        </div>
+      </div>
     </div>
-  </div>
+  </details>
 
   <div class="resume-block">
     <details>
