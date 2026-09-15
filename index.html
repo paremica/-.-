@@ -90,6 +90,31 @@
     .nav-links a:hover { opacity: 1; }
     .nav-links a:hover::after { transform: scale(1); }
 
+    /* ── lang switch ── */
+    .lang-switch {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-left: 44px;
+    }
+    .lang-btn {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 0.64rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink);
+      background: none;
+      border: 1px solid var(--rule);
+      border-radius: 100px;
+      padding: 6px 13px;
+      cursor: pointer;
+      opacity: 0.4;
+      transition: opacity 0.25s, border-color 0.25s;
+    }
+    .lang-btn:hover { opacity: 0.8; }
+    .lang-btn.active { opacity: 1; border-color: var(--ink); }
+
     /* ── hero ── */
     .hero {
       position: relative;
@@ -859,6 +884,11 @@
       .proj-links { grid-column: 2; flex-direction: row; flex-wrap: wrap; align-items: flex-start; margin-top: 10px; }
       .foot { flex-direction: column; align-items: flex-start; padding: 48px 24px; }
       .foot-copy { text-align: left; }
+      .lang-switch { margin-left: 0; }
+    }
+    @media (max-width: 860px) {
+      .nav { flex-wrap: wrap; row-gap: 14px; }
+      .lang-switch { order: 3; width: 100%; justify-content: flex-start; margin-left: 0; }
     }
   </style>
 </head>
@@ -870,27 +900,31 @@
 <nav class="nav" id="nav">
   <a href="#home" class="nav-brand">Dinorah Ramírez</a>
   <ul class="nav-links">
-    <li><a href="#professional">Professional</a></li>
-    <li><a href="#academic">Academic</a></li>
-    <li><a href="#certifications">Certifications</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#creative">Creative</a></li>
+    <li><a href="#professional" data-es="Profesional">Professional</a></li>
+    <li><a href="#academic" data-es="Académico">Academic</a></li>
+    <li><a href="#certifications" data-es="Certificaciones">Certifications</a></li>
+    <li><a href="#projects" data-es="Proyectos">Projects</a></li>
+    <li><a href="#creative" data-es="Personal">Creative</a></li>
   </ul>
+  <div class="lang-switch" id="lang-switch">
+    <button type="button" class="lang-btn" data-lang="en">EN</button>
+    <button type="button" class="lang-btn" data-lang="es">ES</button>
+  </div>
 </nav>
 
 <!-- HERO -->
 <div id="home" class="hero">
   <div class="hero-inner">
     <div class="hero-left">
-      <span class="hero-name">My <em>Work</em></span>
+      <span class="hero-name" data-es="Mi <em>Trabajo</em>">My <em>Work</em></span>
 
-      <p class="hero-tagline">
+      <p class="hero-tagline" data-es="Soy física de formación y data scientist de profesión, atraída por el mismo orden silencioso en los intercambiadores de calor solares y los umbrales de percolación que en los modelos de trading y los dashboards de producto. Mi trabajo se ha movido entre laboratorios de investigación y sistemas en producción, desde diseñar dispositivos de energía con fibra óptica y detectar transiciones de percolación con visión por computadora, hasta liderar iniciativas de ciencia de datos que convierten números crudos en decisiones que la gente realmente usa. Me gustan los problemas que están justo en el borde entre el rigor y la curiosidad.">
         I'm a physicist by training and a data scientist by trade, drawn to the same quiet order in solar heat exchangers and percolation thresholds as in trading models and product dashboards. My work has moved between research labs and production systems, from designing fiber-optic energy devices and detecting percolation transitions with computer vision to leading data science initiatives that turn raw numbers into decisions people actually use. I like problems that sit right at the edge of rigor and curiosity.
       </p>
 
       <div class="hero-actions">
-        <a href="#professional" class="btn-pill">Explore work</a>
-        <a href="#projects" class="btn-line">Academical Work →</a>
+        <a href="#professional" class="btn-pill" data-es="Ver trabajo">Explore work</a>
+        <a href="#projects" class="btn-line" data-es="Trabajo académico →">Academical Work →</a>
       </div>
 
     </div>
@@ -904,51 +938,51 @@
 <!-- TICKER -->
 <div class="ticker">
   <div class="ticker-track">
-    <span class="ticker-item">Data Science<span class="ticker-dot">●</span></span>
-    <span class="ticker-item">Machine Learning<span class="ticker-dot">●</span></span>
-    <span class="ticker-item">Python<span class="ticker-dot">●</span></span>
-    <span class="ticker-item">Physics Research<span class="ticker-dot">●</span></span>
-    <span class="ticker-item">Computer Vision<span class="ticker-dot">●</span></span>
-    <span class="ticker-item">AWS<span class="ticker-dot">●</span></span>
-    <span class="ticker-item">Product Delivery<span class="ticker-dot">●</span></span>
-    <span class="ticker-item">MySQL<span class="ticker-dot">●</span></span>
-    <span class="ticker-item">Data Science<span class="ticker-dot">●</span></span>
-    <span class="ticker-item">Machine Learning<span class="ticker-dot">●</span></span>
-    <span class="ticker-item">Python<span class="ticker-dot">●</span></span>
-    <span class="ticker-item">Physics Research<span class="ticker-dot">●</span></span>
-    <span class="ticker-item">Computer Vision<span class="ticker-dot">●</span></span>
-    <span class="ticker-item">AWS<span class="ticker-dot">●</span></span>
-    <span class="ticker-item">Product Delivery<span class="ticker-dot">●</span></span>
-    <span class="ticker-item">MySQL<span class="ticker-dot">●</span></span>
+    <span class="ticker-item" data-es="Ciencia de Datos<span class=&quot;ticker-dot&quot;>●</span>">Data Science<span class="ticker-dot">●</span></span>
+    <span class="ticker-item" data-es="Aprendizaje Automático<span class=&quot;ticker-dot&quot;>●</span>">Machine Learning<span class="ticker-dot">●</span></span>
+    <span class="ticker-item" data-es="Python<span class=&quot;ticker-dot&quot;>●</span>">Python<span class="ticker-dot">●</span></span>
+    <span class="ticker-item" data-es="Investigación en Física<span class=&quot;ticker-dot&quot;>●</span>">Physics Research<span class="ticker-dot">●</span></span>
+    <span class="ticker-item" data-es="Visión por Computadora<span class=&quot;ticker-dot&quot;>●</span>">Computer Vision<span class="ticker-dot">●</span></span>
+    <span class="ticker-item" data-es="AWS<span class=&quot;ticker-dot&quot;>●</span>">AWS<span class="ticker-dot">●</span></span>
+    <span class="ticker-item" data-es="Entrega de Producto<span class=&quot;ticker-dot&quot;>●</span>">Product Delivery<span class="ticker-dot">●</span></span>
+    <span class="ticker-item" data-es="MySQL<span class=&quot;ticker-dot&quot;>●</span>">MySQL<span class="ticker-dot">●</span></span>
+    <span class="ticker-item" data-es="Ciencia de Datos<span class=&quot;ticker-dot&quot;>●</span>">Data Science<span class="ticker-dot">●</span></span>
+    <span class="ticker-item" data-es="Aprendizaje Automático<span class=&quot;ticker-dot&quot;>●</span>">Machine Learning<span class="ticker-dot">●</span></span>
+    <span class="ticker-item" data-es="Python<span class=&quot;ticker-dot&quot;>●</span>">Python<span class="ticker-dot">●</span></span>
+    <span class="ticker-item" data-es="Investigación en Física<span class=&quot;ticker-dot&quot;>●</span>">Physics Research<span class="ticker-dot">●</span></span>
+    <span class="ticker-item" data-es="Visión por Computadora<span class=&quot;ticker-dot&quot;>●</span>">Computer Vision<span class="ticker-dot">●</span></span>
+    <span class="ticker-item" data-es="AWS<span class=&quot;ticker-dot&quot;>●</span>">AWS<span class="ticker-dot">●</span></span>
+    <span class="ticker-item" data-es="Entrega de Producto<span class=&quot;ticker-dot&quot;>●</span>">Product Delivery<span class="ticker-dot">●</span></span>
+    <span class="ticker-item" data-es="MySQL<span class=&quot;ticker-dot&quot;>●</span>">MySQL<span class="ticker-dot">●</span></span>
   </div>
 </div>
 
 <!-- PROFESSIONAL -->
 <section id="professional" class="sec reveal" data-n="01">
-  <div class="sec-tag"><span class="dot"></span>01 · Professional</div>
-  <h2 class="sec-title">Projects </h2>
+  <div class="sec-tag" data-es="01 · Profesional"><span class="dot"></span>01 · Professional</div>
+  <h2 class="sec-title" data-es="Proyectos">Projects </h2>
 
   <div class="pro-two-col">
     <div class="pro-col">
       <div class="pro-entry-head">AI Product Delivery</div>
-      <p class="pro-entry-body">Designed and launched <strong>ai.momentocapital.com</strong>, a customer-centered machine learning platform with analytics and product-grade integration, built to feel precise, fast and intelligently human.</p>
-      <a href="https://ai.momentocapital.com/home" target="_blank" class="pro-entry-link">Visit site ↗</a>
+      <p class="pro-entry-body" data-es="Diseñé y lancé <strong>ai.momentocapital.com</strong>, una plataforma de machine learning centrada en el cliente, con analítica e integración a nivel de producto, construida para sentirse precisa, rápida e inteligentemente humana.">Designed and launched <strong>ai.momentocapital.com</strong>, a customer-centered machine learning platform with analytics and product-grade integration, built to feel precise, fast and intelligently human.</p>
+      <a href="https://ai.momentocapital.com/home" target="_blank" class="pro-entry-link" data-es="Visitar sitio ↗">Visit site ↗</a>
       <iframe class="pro-video" src="https://www.youtube.com/embed/sxSg-KKkcRk" allowfullscreen></iframe>
     </div>
     <div class="pro-col">
       <div class="pro-entry-head">Today I Learned</div>
-      <p class="pro-entry-body">An educational platform built to make learning structured, accessible and beautifully simple, a curated space for knowledge crafted with care for the learner's experience.</p>
-      <a href="https://todayilearnedu.netlify.app/" target="_blank" class="pro-entry-link">Visit site ↗</a>
+      <p class="pro-entry-body" data-es="Una plataforma educativa creada para hacer el aprendizaje estructurado, accesible y bellamente simple, un espacio curado de conocimiento diseñado con cuidado para la experiencia de quien aprende.">An educational platform built to make learning structured, accessible and beautifully simple, a curated space for knowledge crafted with care for the learner's experience.</p>
+      <a href="https://todayilearnedu.netlify.app/" target="_blank" class="pro-entry-link" data-es="Visitar sitio ↗">Visit site ↗</a>
       <iframe class="pro-video" src="https://www.youtube.com/embed/x4tmXkL90_0" allowfullscreen></iframe>
     </div>
     <div class="pro-col">
       <div class="pro-entry-head">Emotion Recognition</div>
-      <p class="pro-entry-body">A real-time facial emotion recognition system trained on image datasets using deep learning, classifying expressions into core emotional states with computer vision and a convolutional neural network pipeline.</p>
+      <p class="pro-entry-body" data-es="Un sistema de reconocimiento de emociones faciales en tiempo real, entrenado con datasets de imágenes mediante deep learning, que clasifica expresiones en estados emocionales centrales usando visión por computadora y una red neuronal convolucional.">A real-time facial emotion recognition system trained on image datasets using deep learning, classifying expressions into core emotional states with computer vision and a convolutional neural network pipeline.</p>
       <iframe class="pro-video" src="https://www.youtube.com/embed/LngZBPGNdlo" allowfullscreen></iframe>
     </div>
     <div class="pro-col">
       <div class="pro-entry-head">Ilumetria Challenge</div>
-      <p class="pro-entry-body">A hands-on innovation challenge exploring lighting and energy technology, documented here as part of an ongoing project record.</p>
+      <p class="pro-entry-body" data-es="Un reto de innovación práctico que exploró tecnología de iluminación y energía, documentado aquí como parte de un registro de proyectos en curso.">A hands-on innovation challenge exploring lighting and energy technology, documented here as part of an ongoing project record.</p>
       <iframe class="pro-video" src="https://www.youtube.com/embed/Rlk0x3gHjK0" allowfullscreen></iframe>
     </div>
   </div>
@@ -956,21 +990,21 @@
 
 <!-- ACADEMIC -->
 <section id="academic" class="sec reveal" data-n="02">
-  <div class="sec-tag"><span class="dot"></span>02 · Academic</div>
-  <h2 class="sec-title">Research </h2>
+  <div class="sec-tag" data-es="02 · Académico"><span class="dot"></span>02 · Academic</div>
+  <h2 class="sec-title" data-es="Investigación">Research </h2>
 
   <!-- 1. Percolation → percolationz.gif -->
   <details class="ac-project">
     <summary class="ac-summary">
       <div>
-        <p class="ac-advisor">Advisor · Pavel Vorobiev</p>
-        <h3 class="ac-name">Percolation Threshold Detection</h3>
+        <p class="ac-advisor" data-es="Asesor · Pavel Vorobiev">Advisor · Pavel Vorobiev</p>
+        <h3 class="ac-name" data-es="Detección del Umbral de Percolación">Percolation Threshold Detection</h3>
       </div>
       <span class="ac-toggle">+</span>
     </summary>
     <div class="ac-reveal">
       <div class="ac-text">
-        <p class="ac-body">Detected the percolation threshold using image classification algorithms by simulating circular particles in a 2D space and classifying images into "percolates" and "does not percolate" categories.<br><br>Trained an image detection algorithm with the Prophet library and validated against scanning electron microscopy images.</p>
+        <p class="ac-body" data-es="Detecté el umbral de percolación mediante algoritmos de clasificación de imágenes, simulando partículas circulares en un espacio 2D y clasificando las imágenes en categorías de &quot;percola&quot; y &quot;no percola&quot;.<br><br>Entrené un algoritmo de detección de imágenes con la librería Prophet y lo validé contra imágenes de microscopía electrónica de barrido.">Detected the percolation threshold using image classification algorithms by simulating circular particles in a 2D space and classifying images into "percolates" and "does not percolate" categories.<br><br>Trained an image detection algorithm with the Prophet library and validated against scanning electron microscopy images.</p>
       </div>
       <div class="ac-media">
         <img src="https://raw.githubusercontent.com/paremica/-.-/master/percolationz.gif" alt="Percolation simulation">
@@ -982,14 +1016,14 @@
   <details class="ac-project flip">
     <summary class="ac-summary">
       <div>
-        <p class="ac-advisor">Advisor · José Ignacio Huertas Cardozo</p>
+        <p class="ac-advisor" data-es="Asesor · José Ignacio Huertas Cardozo">Advisor · José Ignacio Huertas Cardozo</p>
         <h3 class="ac-name">Gemma Multi-device</h3>
       </div>
       <span class="ac-toggle">+</span>
     </summary>
     <div class="ac-reveal">
       <div class="ac-text">
-        <p class="ac-body">Developed a device combining luminous, voltaic and thermal energy using fiber optics, semi-transparent PV modules and a Fresnel-based heat exchanger.<br><br>Programmed an Arduino light tracker and used COMSOL Multiphysics 6.0 to optimize focal performance. Principal competitor in XIGNUX Challenge 2023 and presenter in EXPOINGENIERÍAS 2023.</p>
+        <p class="ac-body" data-es="Desarrollé un dispositivo que combina energía luminosa, voltaica y térmica usando fibra óptica, módulos fotovoltaicos semitransparentes y un intercambiador de calor basado en lentes de Fresnel.<br><br>Programé un rastreador solar con Arduino y usé COMSOL Multiphysics 6.0 para optimizar el desempeño focal. Competidor principal en el XIGNUX Challenge 2023 y presentador en EXPOINGENIERÍAS 2023.">Developed a device combining luminous, voltaic and thermal energy using fiber optics, semi-transparent PV modules and a Fresnel-based heat exchanger.<br><br>Programmed an Arduino light tracker and used COMSOL Multiphysics 6.0 to optimize focal performance. Principal competitor in XIGNUX Challenge 2023 and presenter in EXPOINGENIERÍAS 2023.</p>
       </div>
       <div class="ac-media ac-media-grid">
         <img src="https://raw.githubusercontent.com/paremica/-.-/master/J.jpeg" alt="">
@@ -1002,12 +1036,12 @@
   <!-- 3. Dynamic Load → anomaliez.gif -->
   <details class="ac-project">
     <summary class="ac-summary">
-      <h3 class="ac-name">Dynamic Load Transfer Systems</h3>
+      <h3 class="ac-name" data-es="Sistemas Dinámicos de Transferencia de Carga">Dynamic Load Transfer Systems</h3>
       <span class="ac-toggle">+</span>
     </summary>
     <div class="ac-reveal">
       <div class="ac-text">
-        <p class="ac-body">Dynamic load transfer systems use advanced algorithms, real-time monitoring, and artificial intelligence to manage and transfer loads between multiple power sources and breakers seamlessly. These systems ensure uninterrupted power during maintenance activities by dynamically balancing loads based on real-time data and predictive analytics.<br><br><em style="font-family:'Bricolage Grotesque',sans-serif;font-style:normal;font-size:0.9rem;opacity:0.6;">Summer Innovation Challenge · Schneider</em></p>
+        <p class="ac-body" data-es="Los sistemas dinámicos de transferencia de carga usan algoritmos avanzados, monitoreo en tiempo real e inteligencia artificial para gestionar y transferir cargas entre múltiples fuentes de energía e interruptores sin interrupciones. Estos sistemas garantizan un suministro eléctrico continuo durante actividades de mantenimiento, balanceando dinámicamente las cargas con base en datos en tiempo real y analítica predictiva.<br><br><em style=&quot;font-family:'Bricolage Grotesque',sans-serif;font-style:normal;font-size:0.9rem;opacity:0.6;&quot;>Reto de Innovación de Verano · Schneider</em>">Dynamic load transfer systems use advanced algorithms, real-time monitoring, and artificial intelligence to manage and transfer loads between multiple power sources and breakers seamlessly. These systems ensure uninterrupted power during maintenance activities by dynamically balancing loads based on real-time data and predictive analytics.<br><br><em style="font-family:'Bricolage Grotesque',sans-serif;font-style:normal;font-size:0.9rem;opacity:0.6;">Summer Innovation Challenge · Schneider</em></p>
       </div>
       <div class="ac-media">
         <img src="https://raw.githubusercontent.com/paremica/-.-/master/anomaliez.gif" alt="Dynamic load anomalies">
@@ -1018,12 +1052,12 @@
   <!-- 4. iSolenum → M.jpeg, M1.JPG, M2.png -->
   <details class="ac-project flip">
     <summary class="ac-summary">
-      <h3 class="ac-name">iSolenum Solar Stove</h3>
+      <h3 class="ac-name" data-es="Estufa Solar iSolenum">iSolenum Solar Stove</h3>
       <span class="ac-toggle">+</span>
     </summary>
     <div class="ac-reveal">
       <div class="ac-text">
-        <p class="ac-body">A thorough evaluation and redesign of the iSolenum solar stove, enhancing utility for communities in Chiapas, Mexico. The proposed innovation leverages a heliodome to concentrate solar radiation, generating adequate thermal energy for cooking, a sustainable alternative to wood-burning stoves rooted in thermodynamics and solar energy principles.</p>
+        <p class="ac-body" data-es="Una evaluación y rediseño a fondo de la estufa solar iSolenum, mejorando su utilidad para comunidades en Chiapas, México. La innovación propuesta aprovecha un heliodomo para concentrar la radiación solar, generando la energía térmica adecuada para cocinar, una alternativa sostenible a las estufas de leña basada en principios de termodinámica y energía solar.">A thorough evaluation and redesign of the iSolenum solar stove, enhancing utility for communities in Chiapas, Mexico. The proposed innovation leverages a heliodome to concentrate solar radiation, generating adequate thermal energy for cooking, a sustainable alternative to wood-burning stoves rooted in thermodynamics and solar energy principles.</p>
       </div>
       <div class="ac-media ac-media-grid">
         <img src="https://raw.githubusercontent.com/paremica/-.-/master/M.jpeg" alt="">
@@ -1036,8 +1070,8 @@
 
 <!-- CERTIFICATIONS -->
 <section id="certifications" class="sec reveal" data-n="03">
-  <div class="sec-tag"><span class="dot"></span>03 · Certifications</div>
-  <h2 class="sec-title">Credentials</h2>
+  <div class="sec-tag" data-es="03 · Certificaciones"><span class="dot"></span>03 · Certifications</div>
+  <h2 class="sec-title" data-es="Credenciales">Credentials</h2>
 
   <div class="cert-wrap">
     <div class="cert-slide" id="cert-slide">
@@ -1066,28 +1100,28 @@
 
   <div class="resume-block">
     <details>
-    <summary class="resume-label"><span>Full résumé</span><span class="ac-toggle">+</span></summary>
+    <summary class="resume-label"><span data-es="Currículum completo">Full résumé</span><span class="ac-toggle">+</span></summary>
     <div class="resume-content">
       <h3>Myrna Dinorah Ortiz Ramírez</h3>
       <p>myrnadinorah460@gmail.com · +52 81 4044 1304<br>Linkedin · github.com/paremica</p>
 
-      <h4>Experience</h4>
-      <p><strong>Momento + Capital</strong> Feb 2024 to Present<br>Data Scientist Specialist Mexico<br>• Leading a team of 3 technical specialists while driving data science and quantitative analysis initiatives.<br>• Designed and deployed an AI-driven solution for the business, building scalable analytics pipelines and decision-support tools using Python and aws infrastructure.</p>
-      <p><strong>Junior Quant</strong> Jun 2024 to Aug 2025<br>San Pedro Garza García, Nuevo Leon, Mexico On-site<br>• Performed quantitative analysis for financial products using Python and MySQL.<br>• Built models and scripts to support trading, reporting, and portfolio monitoring.<br>• Assisted in the development of data-driven investment tools and dashboards.</p>
-      <p><strong>Quant Intern</strong> Feb 2024 to Jun 2024<br>San Pedro Garza García, Nuevo Leon, Mexico On-site<br>• Supported quantitative research and data preprocessing tasks using Python.<br>• Assisted senior team members in model testing and validation workflows.</p>
-      <p><strong>Monterrey Institute of Technology and Higher Education</strong> Jan 2022 to Jul 2023<br>Data Analyst Monterrey, Nuevo Leon<br>• Developed monthly KPI dashboards and reports using Python, Excel, and Google Analytics.<br>• Led BI projects to support academic operations and strategic planning.<br>• Designed automated data pipelines and centralized data storage to improve internal reporting and decision-making.</p>
+      <h4 data-es="Experiencia">Experience</h4>
+      <p data-es="<strong>Momento + Capital</strong> Feb 2024 a la fecha<br>Especialista en Data Science México<br>• Lidero un equipo de 3 especialistas técnicos impulsando iniciativas de ciencia de datos y análisis cuantitativo.<br>• Diseñé e implementé una solución basada en IA para el negocio, construyendo pipelines de analítica escalables y herramientas de apoyo a decisiones usando Python e infraestructura de AWS."><strong>Momento + Capital</strong> Feb 2024 to Present<br>Data Scientist Specialist Mexico<br>• Leading a team of 3 technical specialists while driving data science and quantitative analysis initiatives.<br>• Designed and deployed an AI-driven solution for the business, building scalable analytics pipelines and decision-support tools using Python and aws infrastructure.</p>
+      <p data-es="<strong>Junior Quant</strong> Jun 2024 a Ago 2025<br>San Pedro Garza García, Nuevo León, México Presencial<br>• Realicé análisis cuantitativo de productos financieros usando Python y MySQL.<br>• Construí modelos y scripts para apoyar trading, reportería y monitoreo de portafolios.<br>• Colaboré en el desarrollo de herramientas y dashboards de inversión basados en datos."><strong>Junior Quant</strong> Jun 2024 to Aug 2025<br>San Pedro Garza García, Nuevo Leon, Mexico On-site<br>• Performed quantitative analysis for financial products using Python and MySQL.<br>• Built models and scripts to support trading, reporting, and portfolio monitoring.<br>• Assisted in the development of data-driven investment tools and dashboards.</p>
+      <p data-es="<strong>Quant Intern</strong> Feb 2024 a Jun 2024<br>San Pedro Garza García, Nuevo León, México Presencial<br>• Apoyé en investigación cuantitativa y tareas de preprocesamiento de datos usando Python.<br>• Asistí a miembros senior del equipo en flujos de prueba y validación de modelos."><strong>Quant Intern</strong> Feb 2024 to Jun 2024<br>San Pedro Garza García, Nuevo Leon, Mexico On-site<br>• Supported quantitative research and data preprocessing tasks using Python.<br>• Assisted senior team members in model testing and validation workflows.</p>
+      <p data-es="<strong>Tecnológico de Monterrey</strong> Ene 2022 a Jul 2023<br>Analista de Datos Monterrey, Nuevo León<br>• Desarrollé dashboards y reportes mensuales de KPIs usando Python, Excel y Google Analytics.<br>• Lideré proyectos de BI para apoyar la operación académica y la planeación estratégica.<br>• Diseñé pipelines de datos automatizados y almacenamiento centralizado para mejorar la reportería interna y la toma de decisiones."><strong>Monterrey Institute of Technology and Higher Education</strong> Jan 2022 to Jul 2023<br>Data Analyst Monterrey, Nuevo Leon<br>• Developed monthly KPI dashboards and reports using Python, Excel, and Google Analytics.<br>• Led BI projects to support academic operations and strategic planning.<br>• Designed automated data pipelines and centralized data storage to improve internal reporting and decision-making.</p>
 
-      <h4>Portfolio & Projects</h4>
-      <p><strong>Banorte</strong> March 2025 to May 2025<br>Data Scientist, Strategic Project (3 Months) Mexico City<br>• Developed advanced statistical analyses for pension fund performance using Python and R.<br>• Built predictive models to evaluate retirement outcomes and long-term fund sustainability.<br>• Automated analytical reports and dashboards to support strategic decision-making.</p>
+      <h4 data-es="Portafolio y Proyectos">Portfolio & Projects</h4>
+      <p data-es="<strong>Banorte</strong> Marzo 2025 a Mayo 2025<br>Data Scientist, Proyecto Estratégico (3 meses) Ciudad de México<br>• Desarrollé análisis estadísticos avanzados sobre el desempeño de fondos de pensión usando Python y R.<br>• Construí modelos predictivos para evaluar resultados de retiro y la sostenibilidad de los fondos a largo plazo.<br>• Automaticé reportes y dashboards analíticos para apoyar la toma de decisiones estratégicas."><strong>Banorte</strong> March 2025 to May 2025<br>Data Scientist, Strategic Project (3 Months) Mexico City<br>• Developed advanced statistical analyses for pension fund performance using Python and R.<br>• Built predictive models to evaluate retirement outcomes and long-term fund sustainability.<br>• Automated analytical reports and dashboards to support strategic decision-making.</p>
 
-      <h4>Education</h4>
-      <p><strong>Monterrey Institute of Technology and Higher Education</strong> June 2020 to June 2024<br>Bachelor of Science in Physics Monterrey, Nuevo Leon<br>GPA: 3.7 (Percent Grade: 93)<br>Relevant Coursework: Quantum Systems, Optical Systems, Stochastic Models<br>International Experience in Madrid, Spain: Bachelor of Business Administration (BA)</p>
+      <h4 data-es="Educación">Education</h4>
+      <p data-es="<strong>Tecnológico de Monterrey</strong> Junio 2020 a Junio 2024<br>Licenciatura en Física Monterrey, Nuevo León<br>Promedio: 3.7 (93 sobre 100)<br>Cursos relevantes: Sistemas Cuánticos, Sistemas Ópticos, Modelos Estocásticos<br>Experiencia internacional en Madrid, España: Licenciatura en Administración de Empresas (BA)"><strong>Monterrey Institute of Technology and Higher Education</strong> June 2020 to June 2024<br>Bachelor of Science in Physics Monterrey, Nuevo Leon<br>GPA: 3.7 (Percent Grade: 93)<br>Relevant Coursework: Quantum Systems, Optical Systems, Stochastic Models<br>International Experience in Madrid, Spain: Bachelor of Business Administration (BA)</p>
 
-      <h4>Technical Skills</h4>
-      <p><strong>Languages:</strong> Python, JavaScript, MySQL, C++, MATLAB, AWS, HTML, CSS, Git<br><strong>Technologies:</strong> AWS, Jupyter, Jupyterlab, Visual Studio Code, AI Technologies, Google Collab, PowerBI, MongoDB, Docker Hub<br><strong>Concepts:</strong> Machine Learning, Neural Networks, Data Mining, Business Intelligence, Cloud Integration</p>
+      <h4 data-es="Habilidades Técnicas">Technical Skills</h4>
+      <p data-es="<strong>Lenguajes:</strong> Python, JavaScript, MySQL, C++, MATLAB, AWS, HTML, CSS, Git<br><strong>Tecnologías:</strong> AWS, Jupyter, Jupyterlab, Visual Studio Code, tecnologías de IA, Google Colab, PowerBI, MongoDB, Docker Hub<br><strong>Conceptos:</strong> Machine Learning, redes neuronales, minería de datos, inteligencia de negocios, integración en la nube"><strong>Languages:</strong> Python, JavaScript, MySQL, C++, MATLAB, AWS, HTML, CSS, Git<br><strong>Technologies:</strong> AWS, Jupyter, Jupyterlab, Visual Studio Code, AI Technologies, Google Collab, PowerBI, MongoDB, Docker Hub<br><strong>Concepts:</strong> Machine Learning, Neural Networks, Data Mining, Business Intelligence, Cloud Integration</p>
 
-      <h4>Languages</h4>
-      <p>English: Advanced (IELTS)<br>Spanish: Native</p>
+      <h4 data-es="Idiomas">Languages</h4>
+      <p data-es="Inglés: Avanzado (IELTS)<br>Español: Nativo">English: Advanced (IELTS)<br>Spanish: Native</p>
     </div>
     </details>
   </div>
@@ -1095,15 +1129,15 @@
 
 <!-- PROJECTS -->
 <section id="projects" class="sec reveal" data-n="04">
-  <div class="sec-tag"><span class="dot"></span>04 · Technical Work</div>
-  <h2 class="sec-title">Technical work,<br>analysis and <em>academic builds.</em></h2>
+  <div class="sec-tag" data-es="04 · Trabajo Técnico"><span class="dot"></span>04 · Technical Work</div>
+  <h2 class="sec-title" data-es="Trabajo técnico,<br>análisis y <em>proyectos académicos.</em>">Technical work,<br>analysis and <em>academic builds.</em></h2>
 
   <div class="proj-list">
     <div class="proj-row">
       <span class="proj-n">001</span>
       <div>
-        <div class="proj-name">Statistical Analysis MA1001B</div>
-        <p class="proj-desc">Scientific modeling with a predator-prey / Lotka-Volterra approach and pandemic analysis using Ministry of Health data for Mexico.</p>
+        <div class="proj-name" data-es="Análisis Estadístico MA1001B">Statistical Analysis MA1001B</div>
+        <p class="proj-desc" data-es="Modelado científico con un enfoque depredador-presa / Lotka-Volterra y análisis de pandemia usando datos de la Secretaría de Salud de México.">Scientific modeling with a predator-prey / Lotka-Volterra approach and pandemic analysis using Ministry of Health data for Mexico.</p>
       </div>
       <div class="proj-links">
         <a href="https://github.com/paremica/-.-/raw/master/SA1.pdf" download class="proj-dl">↓ PDF I</a>
@@ -1114,8 +1148,8 @@
     <div class="proj-row">
       <span class="proj-n">002</span>
       <div>
-        <div class="proj-name">Mathematics &amp; Data Science MA1042</div>
-        <p class="proj-desc">Analysis of obesity reduction over three months and Python validation for a data-driven health outcome study.</p>
+        <div class="proj-name" data-es="Matemáticas y Ciencia de Datos MA1042">Mathematics &amp; Data Science MA1042</div>
+        <p class="proj-desc" data-es="Análisis de la reducción de obesidad a lo largo de tres meses y validación en Python para un estudio de resultados de salud basado en datos.">Analysis of obesity reduction over three months and Python validation for a data-driven health outcome study.</p>
       </div>
       <div class="proj-links">
         <a href="https://github.com/paremica/-.-/raw/master/MA1.pdf" download class="proj-dl">↓ PDF</a>
@@ -1125,8 +1159,8 @@
     <div class="proj-row">
       <span class="proj-n">003</span>
       <div>
-        <div class="proj-name">Mathematical Methods for Physics F1009</div>
-        <p class="proj-desc">Developed a song recognition algorithm inspired by FFT-based apps like Shazam, using audio datasets and MATLAB workflows.</p>
+        <div class="proj-name" data-es="Métodos Matemáticos para Física F1009">Mathematical Methods for Physics F1009</div>
+        <p class="proj-desc" data-es="Desarrollé un algoritmo de reconocimiento de canciones inspirado en apps basadas en FFT como Shazam, usando datasets de audio y flujos de trabajo en MATLAB.">Developed a song recognition algorithm inspired by FFT-based apps like Shazam, using audio datasets and MATLAB workflows.</p>
       </div>
       <div class="proj-links">
         <a href="https://github.com/paremica/-.-/raw/master/AM1.pdf" download class="proj-dl">↓ PDF</a>
@@ -1136,8 +1170,8 @@
     <div class="proj-row">
       <span class="proj-n">004</span>
       <div>
-        <div class="proj-name">Analysis of Optical Phenomena F2005B</div>
-        <p class="proj-desc">Designed a waveguide-coupled chip solution and simulation using COMSOL Multiphysics for ion trap optics at 70 µm.</p>
+        <div class="proj-name" data-es="Análisis de Fenómenos Ópticos F2005B">Analysis of Optical Phenomena F2005B</div>
+        <p class="proj-desc" data-es="Diseñé una solución de chip acoplado a guía de onda y una simulación con COMSOL Multiphysics para óptica de trampas de iones a 70 µm.">Designed a waveguide-coupled chip solution and simulation using COMSOL Multiphysics for ion trap optics at 70 µm.</p>
       </div>
       <div class="proj-links">
         <a href="https://github.com/paremica/-.-/raw/master/AO1.pdf" download class="proj-dl">↓ PDF</a>
@@ -1147,8 +1181,8 @@
     <div class="proj-row">
       <span class="proj-n">005</span>
       <div>
-        <div class="proj-name">Experimental Characterization of Optical Systems</div>
-        <p class="proj-desc">Implemented fringe projection techniques for 3D surface reconstruction in an optical system built for depth imaging.</p>
+        <div class="proj-name" data-es="Caracterización Experimental de Sistemas Ópticos">Experimental Characterization of Optical Systems</div>
+        <p class="proj-desc" data-es="Implementé técnicas de proyección de franjas para reconstrucción de superficies 3D en un sistema óptico construido para imágenes de profundidad.">Implemented fringe projection techniques for 3D surface reconstruction in an optical system built for depth imaging.</p>
       </div>
       <div class="proj-links">
         <a href="https://github.com/paremica/-.-/raw/master/OS1.pdf" download class="proj-dl">↓ PDF</a>
@@ -1159,36 +1193,36 @@
 
 <!-- CREATIVE PORTFOLIO (protected) -->
 <section id="creative" class="sec reveal" data-n="05">
-  <div class="sec-tag"><span class="dot"></span>05 · Creative</div>
-  <h2 class="sec-title">Personal <em>portfolio.</em></h2>
+  <div class="sec-tag" data-es="05 · Personal"><span class="dot"></span>05 · Creative</div>
+  <h2 class="sec-title" data-es="Portafolio <em>personal.</em>">Personal <em>portfolio.</em></h2>
 
   <div class="gate-wrap" id="gate-wrap">
-    <p class="gate-copy">This corner is just for me, only a few close eyes allowed.<br>Enter the password to look inside.</p>
+    <p class="gate-copy" data-es="Este rincón es solo para mí, solo unos pocos ojos cercanos están permitidos.<br>Ingresa la contraseña para ver dentro.">This corner is just for me, only a few close eyes allowed.<br>Enter the password to look inside.</p>
     <form class="gate-form" id="gate-form" autocomplete="off">
-      <input type="text" class="gate-input" id="gate-user" placeholder="Username" autocomplete="username">
-      <input type="password" class="gate-input" id="gate-pass" placeholder="Password" autocomplete="current-password">
-      <button type="submit" class="gate-submit">Enter</button>
-      <p class="gate-error" id="gate-error">Incorrect username or password.</p>
+      <input type="text" class="gate-input" id="gate-user" placeholder="Username" data-es-placeholder="Usuario" autocomplete="username">
+      <input type="password" class="gate-input" id="gate-pass" placeholder="Password" data-es-placeholder="Contraseña" autocomplete="current-password">
+      <button type="submit" class="gate-submit" data-es="Entrar">Enter</button>
+      <p class="gate-error" id="gate-error" data-es="Usuario o contraseña incorrectos.">Incorrect username or password.</p>
     </form>
   </div>
 
   <div class="creative-content" id="creative-content">
     <div class="creative-block">
-      <p class="ac-advisor">About Me</p>
-      <p class="ac-body">My spirit animal is the cockroach, resilient, adaptable, and impossible to get rid of. I'm a cyberpunk enthusiast, a self-declared multifunctional neurotic, and someone with absolutely zero editing experience. My favorite game is Tetris, and I have a soft spot for apples with cream. When sadness hits, I retreat into Come and See, my cinematic safe haven. I'm deeply drawn to alternative music and have a habit of falling for people who pour their souls into their own independent sounds. And when it comes to books, Clemencia holds a special place, not because it's comforting, but because it reminds me that I am very much alone and that no one will ever love me quite like Fernando Valle.</p>
+      <p class="ac-advisor" data-es="Sobre mí">About Me</p>
+      <p class="ac-body" data-es="Mi animal espiritual es la cucaracha, resiliente, adaptable e imposible de eliminar. Soy entusiasta del cyberpunk, una neurótica multifuncional autodeclarada, y alguien con absolutamente cero experiencia en edición. Mi juego favorito es Tetris, y tengo debilidad por las manzanas con crema. Cuando la tristeza llega, me refugio en Come and See, mi santuario cinematográfico. Me atrae profundamente la música alternativa y tengo la costumbre de enamorarme de personas que vuelcan su alma en sus propios sonidos independientes. Y en cuanto a libros, Clemencia tiene un lugar especial, no porque sea reconfortante, sino porque me recuerda que estoy muy sola y que nadie me amará jamás como Fernando Valle.">My spirit animal is the cockroach, resilient, adaptable, and impossible to get rid of. I'm a cyberpunk enthusiast, a self-declared multifunctional neurotic, and someone with absolutely zero editing experience. My favorite game is Tetris, and I have a soft spot for apples with cream. When sadness hits, I retreat into Come and See, my cinematic safe haven. I'm deeply drawn to alternative music and have a habit of falling for people who pour their souls into their own independent sounds. And when it comes to books, Clemencia holds a special place, not because it's comforting, but because it reminds me that I am very much alone and that no one will ever love me quite like Fernando Valle.</p>
     </div>
 
     <div class="creative-block">
-      <p class="ac-advisor">Writing</p>
+      <p class="ac-advisor" data-es="Escritura">Writing</p>
       <h3 class="ac-name">HisTOriAZ3</h3>
-      <p class="ac-body">A digital notebook of poems and fantastical stories, read live from the original Blogger feed.</p>
-      <a href="blog/index.html" class="pro-entry-link">Read the blog ↗</a>
+      <p class="ac-body" data-es="Un cuaderno digital de poemas e historias fantásticas, leído en vivo desde el feed original de Blogger.">A digital notebook of poems and fantastical stories, read live from the original Blogger feed.</p>
+      <a href="blog/index.html" class="pro-entry-link" data-es="Leer el blog ↗">Read the blog ↗</a>
     </div>
 
     <div class="creative-block">
-      <p class="ac-advisor">Art</p>
-      <h3 class="ac-name">Paintings &amp; sketches</h3>
-      <p class="ac-body">A few pieces made away from the screen, paint, pencil and whatever else was on hand.</p>
+      <p class="ac-advisor" data-es="Arte">Art</p>
+      <h3 class="ac-name" data-es="Pinturas y bocetos">Paintings &amp; sketches</h3>
+      <p class="ac-body" data-es="Algunas piezas hechas lejos de la pantalla, pintura, lápiz y lo que hubiera a la mano.">A few pieces made away from the screen, paint, pencil and whatever else was on hand.</p>
     </div>
 
     <div class="gallery" style="grid-template-columns: repeat(3, 1fr);">
@@ -1201,12 +1235,12 @@
     </div>
 
     <div class="ac-media-grid" style="margin-bottom:68px;">
-      <video src="https://raw.githubusercontent.com/paremica/-.-/master/art/art-video-1.mp4" controls style="width:100%;display:block;"></video>
-      <video src="https://raw.githubusercontent.com/paremica/-.-/master/art/art-video-2.mp4" controls style="width:100%;display:block;"></video>
-      <video src="https://raw.githubusercontent.com/paremica/-.-/master/art/art-video-3.mp4" controls style="width:100%;display:block;"></video>
+      <video src="https://raw.githubusercontent.com/paremica/-.-/master/art/art-video-1.mp4" controls muted style="width:100%;display:block;"></video>
+      <video src="https://raw.githubusercontent.com/paremica/-.-/master/art/art-video-2.mp4" controls muted style="width:100%;display:block;"></video>
+      <video src="https://raw.githubusercontent.com/paremica/-.-/master/art/art-video-3.mp4" controls muted style="width:100%;display:block;"></video>
     </div>
 
-    <p class="creative-teaser">More to come. This space is still being built.</p>
+    <p class="creative-teaser" data-es="Más por venir. Este espacio sigue en construcción.">More to come. This space is still being built.</p>
   </div>
 </section>
 
@@ -1215,7 +1249,7 @@
   <div class="foot-eq">
     E = mc² &nbsp;·&nbsp; Δx Δp ≥ ℏ/2 &nbsp;·&nbsp; ∫<sub>−∞</sub><sup>∞</sup> e<sup>−x²</sup>dx = √π
   </div>
-  <p class="foot-copy">
+  <p class="foot-copy" data-es="Sistemas de IA · Intuición física · Automatización<br>© 2025 Dinorah Ramírez">
     AI systems · Physics intuition · Automation<br>
     © 2025 Dinorah Ramírez
   </p>
@@ -1368,6 +1402,34 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
       wrap.classList.add('shake');
     }
   });
+}());
+
+/* ─── language switch ───────────────────────────────────
+   toggles every [data-es] node between its original
+   (English) markup and the Spanish translation ─── */
+(function () {
+  const btns = document.querySelectorAll('.lang-btn');
+  const textNodes = document.querySelectorAll('[data-es]');
+  const placeholderNodes = document.querySelectorAll('[data-es-placeholder]');
+
+  function applyLang(lang) {
+    textNodes.forEach(el => {
+      if (el.dataset.en === undefined) el.dataset.en = el.innerHTML;
+      el.innerHTML = lang === 'es' ? el.dataset.es : el.dataset.en;
+    });
+    placeholderNodes.forEach(el => {
+      if (el.dataset.enPlaceholder === undefined) el.dataset.enPlaceholder = el.placeholder;
+      el.placeholder = lang === 'es' ? el.dataset.esPlaceholder : el.dataset.enPlaceholder;
+    });
+    document.documentElement.setAttribute('lang', lang);
+    btns.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+    localStorage.setItem('siteLang', lang);
+  }
+
+  btns.forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang)));
+
+  const saved = localStorage.getItem('siteLang');
+  applyLang(saved === 'es' ? 'es' : 'en');
 }());
 </script>
 </body>
