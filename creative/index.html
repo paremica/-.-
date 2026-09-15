@@ -136,7 +136,6 @@
       text-transform: uppercase;
       background: none;
       border: 1px solid var(--rule);
-      border-radius: 100px;
       padding: 6px 13px;
       color: var(--ink);
       opacity: 0.45;
@@ -212,18 +211,8 @@
     }
     .head-text { grid-column: 1 / 8; position: relative; z-index: 1; }
     .head-eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 14px;
       margin-bottom: 30px;
       margin-left: 6%;
-    }
-    .head-eyebrow::before {
-      content: '';
-      width: 40px; height: 1px;
-      background: var(--ink);
-      opacity: 0.4;
-      flex-shrink: 0;
     }
     .display-1, .display-2 {
       display: block;
@@ -300,7 +289,6 @@
       background: var(--ink);
       padding: 14px 30px;
       border: none;
-      border-radius: 100px;
       cursor: pointer;
       transition: background 0.25s;
     }
