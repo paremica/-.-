@@ -260,6 +260,15 @@
       padding: 130px 24px 170px;
       text-align: center;
     }
+    /* while locked the sign in stands alone, nothing else on screen */
+    body.locked .head { display: none; }
+    body.locked .gate-wrap {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 24px;
+    }
     .gate-copy {
       font-family: 'Jost', sans-serif;
       font-size: 0.94rem;
@@ -429,7 +438,7 @@
     }
   </style>
 </head>
-<body>
+<body class="locked">
 
 <div class="grain" aria-hidden="true"></div>
 
@@ -578,9 +587,10 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
   const error   = document.getElementById('gate-error');
 
   function unlock() {
+    document.body.classList.remove('locked');
     wrap.style.display = 'none';
     content.classList.add('on');
-    content.querySelectorAll('.reveal').forEach(el => el.classList.add('on'));
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('on'));
   }
 
   if (sessionStorage.getItem('creativeUnlocked') === '1') unlock();
