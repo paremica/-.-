@@ -452,17 +452,45 @@
 
     /* ── academic ── */
     .ac-project {
+      display: block;
+      margin-bottom: 56px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--rule);
+      position: relative;
+      z-index: 1;
+    }
+    .ac-project:last-of-type { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .ac-summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      cursor: pointer;
+      list-style: none;
+    }
+    .ac-summary::-webkit-details-marker { display: none; }
+    .ac-toggle {
+      flex-shrink: 0;
+      width: 30px; height: 30px;
+      border: 1px solid var(--rule);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      color: var(--ink);
+      transition: transform 0.3s ease, border-color 0.25s;
+    }
+    details[open] .ac-toggle { transform: rotate(45deg); border-color: var(--ink); }
+    .ac-reveal {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 80px;
       align-items: start;
-      margin-bottom: 96px;
-      position: relative;
-      z-index: 1;
+      margin-top: 32px;
     }
-    .ac-project:last-of-type { margin-bottom: 0; }
-    .ac-project.flip .ac-text  { order: 2; }
-    .ac-project.flip .ac-media { order: 1; }
+    .ac-project.flip .ac-reveal .ac-text  { order: 2; }
+    .ac-project.flip .ac-reveal .ac-media { order: 1; }
 
     .ac-advisor {
       font-family: 'Jost', sans-serif;
@@ -607,17 +635,22 @@
       letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 20px;
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 12px;
+      cursor: pointer;
+      list-style: none;
     }
-    .resume-label::before {
+    .resume-label::-webkit-details-marker { display: none; }
+    .resume-label span:first-child { display: flex; align-items: center; gap: 12px; }
+    .resume-label span:first-child::before {
       content: '';
       width: 18px; height: 1px;
       background: var(--ink);
       opacity: 0.45;
     }
+    .resume-content { margin-top: 24px; }
     .resume-block iframe {
       width: 100%;
       height: 560px;
@@ -927,54 +960,78 @@
   <h2 class="sec-title">Research </h2>
 
   <!-- 1. Percolation → percolationz.gif -->
-  <div class="ac-project">
-    <div class="ac-text">
-      <p class="ac-advisor">Advisor · Pavel Vorobiev</p>
-      <h3 class="ac-name">Percolation Threshold Detection</h3>
-      <p class="ac-body">Detected the percolation threshold using image classification algorithms by simulating circular particles in a 2D space and classifying images into "percolates" and "does not percolate" categories.<br><br>Trained an image detection algorithm with the Prophet library and validated against scanning electron microscopy images.</p>
+  <details class="ac-project">
+    <summary class="ac-summary">
+      <div>
+        <p class="ac-advisor">Advisor · Pavel Vorobiev</p>
+        <h3 class="ac-name">Percolation Threshold Detection</h3>
+      </div>
+      <span class="ac-toggle">+</span>
+    </summary>
+    <div class="ac-reveal">
+      <div class="ac-text">
+        <p class="ac-body">Detected the percolation threshold using image classification algorithms by simulating circular particles in a 2D space and classifying images into "percolates" and "does not percolate" categories.<br><br>Trained an image detection algorithm with the Prophet library and validated against scanning electron microscopy images.</p>
+      </div>
+      <div class="ac-media">
+        <img src="https://raw.githubusercontent.com/paremica/-.-/master/percolationz.gif" alt="Percolation simulation">
+      </div>
     </div>
-    <div class="ac-media">
-      <img src="https://raw.githubusercontent.com/paremica/-.-/master/percolationz.gif" alt="Percolation simulation">
-    </div>
-  </div>
+  </details>
 
   <!-- 2. Gemma → J.jpeg, J1.jpeg, J2.jpeg -->
-  <div class="ac-project flip">
-    <div class="ac-text">
-      <p class="ac-advisor">Advisor · José Ignacio Huertas Cardozo</p>
-      <h3 class="ac-name">Gemma Multi-device</h3>
-      <p class="ac-body">Developed a device combining luminous, voltaic and thermal energy using fiber optics, semi-transparent PV modules and a Fresnel-based heat exchanger.<br><br>Programmed an Arduino light tracker and used COMSOL Multiphysics 6.0 to optimize focal performance. Principal competitor in XIGNUX Challenge 2023 and presenter in EXPOINGENIERÍAS 2023.</p>
+  <details class="ac-project flip">
+    <summary class="ac-summary">
+      <div>
+        <p class="ac-advisor">Advisor · José Ignacio Huertas Cardozo</p>
+        <h3 class="ac-name">Gemma Multi-device</h3>
+      </div>
+      <span class="ac-toggle">+</span>
+    </summary>
+    <div class="ac-reveal">
+      <div class="ac-text">
+        <p class="ac-body">Developed a device combining luminous, voltaic and thermal energy using fiber optics, semi-transparent PV modules and a Fresnel-based heat exchanger.<br><br>Programmed an Arduino light tracker and used COMSOL Multiphysics 6.0 to optimize focal performance. Principal competitor in XIGNUX Challenge 2023 and presenter in EXPOINGENIERÍAS 2023.</p>
+      </div>
+      <div class="ac-media ac-media-grid">
+        <img src="https://raw.githubusercontent.com/paremica/-.-/master/J.jpeg" alt="">
+        <img src="https://raw.githubusercontent.com/paremica/-.-/master/J1.jpeg" alt="">
+        <img src="https://raw.githubusercontent.com/paremica/-.-/master/J2.jpeg" alt="">
+      </div>
     </div>
-    <div class="ac-media ac-media-grid">
-      <img src="https://raw.githubusercontent.com/paremica/-.-/master/J.jpeg" alt="">
-      <img src="https://raw.githubusercontent.com/paremica/-.-/master/J1.jpeg" alt="">
-      <img src="https://raw.githubusercontent.com/paremica/-.-/master/J2.jpeg" alt="">
-    </div>
-  </div>
+  </details>
 
   <!-- 3. Dynamic Load → anomaliez.gif -->
-  <div class="ac-project">
-    <div class="ac-text">
+  <details class="ac-project">
+    <summary class="ac-summary">
       <h3 class="ac-name">Dynamic Load Transfer Systems</h3>
-      <p class="ac-body">Dynamic load transfer systems use advanced algorithms, real-time monitoring, and artificial intelligence to manage and transfer loads between multiple power sources and breakers seamlessly. These systems ensure uninterrupted power during maintenance activities by dynamically balancing loads based on real-time data and predictive analytics.<br><br><em style="font-family:'Bricolage Grotesque',sans-serif;font-style:normal;font-size:0.9rem;opacity:0.6;">Summer Innovation Challenge · Schneider</em></p>
+      <span class="ac-toggle">+</span>
+    </summary>
+    <div class="ac-reveal">
+      <div class="ac-text">
+        <p class="ac-body">Dynamic load transfer systems use advanced algorithms, real-time monitoring, and artificial intelligence to manage and transfer loads between multiple power sources and breakers seamlessly. These systems ensure uninterrupted power during maintenance activities by dynamically balancing loads based on real-time data and predictive analytics.<br><br><em style="font-family:'Bricolage Grotesque',sans-serif;font-style:normal;font-size:0.9rem;opacity:0.6;">Summer Innovation Challenge · Schneider</em></p>
+      </div>
+      <div class="ac-media">
+        <img src="https://raw.githubusercontent.com/paremica/-.-/master/anomaliez.gif" alt="Dynamic load anomalies">
+      </div>
     </div>
-    <div class="ac-media">
-      <img src="https://raw.githubusercontent.com/paremica/-.-/master/anomaliez.gif" alt="Dynamic load anomalies">
-    </div>
-  </div>
+  </details>
 
   <!-- 4. iSolenum → M.jpeg, M1.JPG, M2.png -->
-  <div class="ac-project flip">
-    <div class="ac-text">
+  <details class="ac-project flip">
+    <summary class="ac-summary">
       <h3 class="ac-name">iSolenum Solar Stove</h3>
-      <p class="ac-body">A thorough evaluation and redesign of the iSolenum solar stove, enhancing utility for communities in Chiapas, Mexico. The proposed innovation leverages a heliodome to concentrate solar radiation, generating adequate thermal energy for cooking, a sustainable alternative to wood-burning stoves rooted in thermodynamics and solar energy principles.</p>
+      <span class="ac-toggle">+</span>
+    </summary>
+    <div class="ac-reveal">
+      <div class="ac-text">
+        <p class="ac-body">A thorough evaluation and redesign of the iSolenum solar stove, enhancing utility for communities in Chiapas, Mexico. The proposed innovation leverages a heliodome to concentrate solar radiation, generating adequate thermal energy for cooking, a sustainable alternative to wood-burning stoves rooted in thermodynamics and solar energy principles.</p>
+      </div>
+      <div class="ac-media ac-media-grid">
+        <img src="https://raw.githubusercontent.com/paremica/-.-/master/M.jpeg" alt="">
+        <img src="https://raw.githubusercontent.com/paremica/-.-/master/M1.JPG" alt="">
+        <img src="https://raw.githubusercontent.com/paremica/-.-/master/M2.png" alt="">
+      </div>
     </div>
-    <div class="ac-media ac-media-grid">
-      <img src="https://raw.githubusercontent.com/paremica/-.-/master/M.jpeg" alt="">
-      <img src="https://raw.githubusercontent.com/paremica/-.-/master/M1.JPG" alt="">
-      <img src="https://raw.githubusercontent.com/paremica/-.-/master/M2.png" alt="">
-    </div>
-  </div>
+  </details>
 </section>
 
 <!-- CERTIFICATIONS -->
@@ -1008,7 +1065,8 @@
   </div>
 
   <div class="resume-block">
-    <p class="resume-label">Full résumé</p>
+    <details>
+    <summary class="resume-label"><span>Full résumé</span><span class="ac-toggle">+</span></summary>
     <div class="resume-content">
       <h3>Myrna Dinorah Ortiz Ramírez</h3>
       <p>myrnadinorah460@gmail.com · +52 81 4044 1304<br>Linkedin · github.com/paremica</p>
@@ -1031,6 +1089,7 @@
       <h4>Languages</h4>
       <p>English: Advanced (IELTS)<br>Spanish: Native</p>
     </div>
+    </details>
   </div>
 </section>
 
