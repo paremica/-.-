@@ -3,24 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Poemas e HisTOriAZ3</title>
+<title>Blog — Dinorah Ramírez</title>
 <meta name="description" content="Poemas e historias fantásticas.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:ital,opsz,wght@0,12..96,200..800;1,12..96,200..800&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --paper: #EDEAE0;
-    --paper-2: #E3DECF;
-    --ink: #17171A;
-    --pink: #FF4759;
-    --pink-ink: #4A0A17;
-    --blue: #2549A6;
-    --blue-ink: #0C1D4F;
-    --yellow: #F0BE3D;
-    --yellow-ink: #4A3A08;
-    --violet: #6C4FA6;
-    --violet-ink: #2A1B4A;
+    --bg:    #121110;
+    --ink:   #f3f1ec;
+    --blue:  #3a8db0;
+    --muted: rgba(243,241,236,0.55);
+    --rule:  rgba(243,241,236,0.14);
+    --soft:  rgba(243,241,236,0.05);
     --max-w: 720px;
   }
 
@@ -30,10 +25,11 @@
 
   body {
     margin: 0;
-    background: var(--paper);
+    background: var(--bg);
     color: var(--ink);
-    font-family: 'Inter', sans-serif;
-    line-height: 1.6;
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -48,8 +44,8 @@
   /* ---------- Masthead ---------- */
 
   header.masthead {
-    padding: 64px 24px 40px;
-    border-bottom: 3px solid var(--ink);
+    padding: 72px 24px 44px;
+    border-bottom: 1px solid var(--rule);
   }
 
   .masthead-inner {
@@ -57,40 +53,61 @@
     margin: 0 auto;
   }
 
+  .back-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 200;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    opacity: 0.45;
+    margin-bottom: 28px;
+    transition: opacity 0.25s;
+  }
+  .back-home:hover { opacity: 0.85; }
+
   .masthead-eyebrow {
-    font-family: 'Space Mono', monospace;
-    font-size: 13px;
-    letter-spacing: 0.02em;
-    color: var(--pink);
-    margin: 0 0 8px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 200;
+    font-size: 0.64rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0 0 22px;
+  }
+  .masthead-eyebrow .dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--ink);
+    opacity: 0.65;
+    flex-shrink: 0;
   }
 
   h1.title {
-    font-family: 'Fraunces', serif;
+    font-family: 'Bricolage Grotesque', sans-serif;
     font-weight: 600;
-    font-size: clamp(2.6rem, 8vw, 4.6rem);
-    line-height: 0.98;
+    font-size: clamp(2.4rem, 7vw, 3.8rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
     margin: 0;
-    letter-spacing: -0.01em;
-    position: relative;
-    display: inline-block;
-  }
-
-  h1.title .layer {
-    position: absolute;
-    top: 0; left: 0;
-    color: var(--pink);
-    z-index: -1;
-    transform: translate(6px, 6px);
-    opacity: 0.85;
+    color: var(--ink);
   }
 
   .masthead-sub {
-    font-size: 16px;
-    color: var(--ink);
-    opacity: 0.75;
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 0.95rem;
+    color: var(--muted);
     margin: 18px 0 0;
     max-width: 46ch;
+    line-height: 1.8;
   }
 
   /* ---------- Post list ---------- */
@@ -104,67 +121,66 @@
   }
 
   li.post-row {
-    border-bottom: 1px solid rgba(23,23,26,0.15);
+    border-bottom: 1px solid var(--rule);
   }
+  li.post-row:first-child { border-top: 1px solid var(--rule); }
 
   a.post-row-link {
     display: grid;
-    grid-template-columns: 72px 1fr;
+    grid-template-columns: 60px 1fr;
     gap: 20px;
     align-items: start;
-    padding: 28px 24px;
+    padding: 32px 24px;
     text-decoration: none;
-    transition: background 0.15s ease;
+    transition: background 0.2s ease;
   }
 
   a.post-row-link:hover,
   a.post-row-link:focus-visible {
-    background: var(--paper-2);
+    background: var(--soft);
   }
 
   a.post-row-link:focus-visible {
-    outline: 2px solid var(--ink);
-    outline-offset: -2px;
+    outline: 1px solid var(--rule);
+    outline-offset: -1px;
   }
 
   .post-index {
-    font-family: 'Space Mono', monospace;
-    font-size: 13px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
-    border-radius: 4px;
-    font-weight: 700;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 300;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    padding-top: 3px;
   }
 
-  .post-index.pink   { background: var(--pink);   color: #fff; }
-  .post-index.blue   { background: var(--blue);   color: #fff; }
-  .post-index.yellow { background: var(--yellow); color: var(--yellow-ink); }
-  .post-index.violet { background: var(--violet); color: #fff; }
-
   .post-meta {
-    font-family: 'Space Mono', monospace;
-    font-size: 12px;
-    color: var(--ink);
-    opacity: 0.55;
-    margin: 0 0 6px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 200;
+    font-size: 0.64rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blue);
+    opacity: 0.8;
+    margin: 0 0 10px;
   }
 
   h2.post-title {
-    font-family: 'Fraunces', serif;
+    font-family: 'Bricolage Grotesque', sans-serif;
     font-weight: 500;
-    font-style: italic;
     font-size: clamp(1.15rem, 3vw, 1.5rem);
-    margin: 0 0 8px;
+    margin: 0 0 10px;
     line-height: 1.25;
+    color: var(--ink);
   }
 
   p.post-excerpt {
     margin: 0;
-    font-size: 15px;
-    color: var(--ink);
-    opacity: 0.7;
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.85;
     max-width: 60ch;
   }
 
@@ -173,10 +189,13 @@
   .state-msg {
     padding: 60px 24px;
     text-align: center;
-    font-family: 'Space Mono', monospace;
-    font-size: 14px;
-    opacity: 0.7;
+    font-family: 'Jost', sans-serif;
+    font-weight: 200;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    color: var(--muted);
   }
+  .state-msg a { color: var(--blue); }
 
   /* ---------- Post detail view ---------- */
 
@@ -184,18 +203,24 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-family: 'Space Mono', monospace;
-    font-size: 13px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 200;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
     text-decoration: none;
+    color: var(--ink);
+    opacity: 0.5;
     padding: 24px;
-    border-bottom: 1px solid rgba(23,23,26,0.15);
+    border-bottom: 1px solid var(--rule);
     width: 100%;
+    transition: opacity 0.25s;
   }
 
-  .back-link:hover { text-decoration: underline; }
+  .back-link:hover { opacity: 0.9; }
 
   .post-band {
-    padding: 56px 24px 40px;
+    padding: 56px 24px 36px;
   }
 
   .post-band-inner {
@@ -203,57 +228,73 @@
     margin: 0 auto;
   }
 
-  .post-band .post-meta { opacity: 0.6; }
+  .post-band .post-meta { opacity: 0.8; }
 
   h1.post-detail-title {
-    font-family: 'Fraunces', serif;
+    font-family: 'Bricolage Grotesque', sans-serif;
     font-weight: 600;
-    font-style: italic;
-    font-size: clamp(1.9rem, 6vw, 3rem);
+    font-size: clamp(1.9rem, 6vw, 2.9rem);
     line-height: 1.08;
+    letter-spacing: -0.01em;
     margin: 10px 0 0;
+    color: var(--ink);
   }
 
   article.post-body {
     max-width: var(--max-w);
     margin: 0 auto;
     padding: 40px 24px 100px;
-    font-family: 'Inter', sans-serif;
-    font-size: 17px;
-    line-height: 1.75;
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.9;
+    color: var(--ink);
   }
 
   article.post-body img {
     max-width: 100%;
     height: auto;
-    border-radius: 4px;
-    margin: 8px 0;
+    display: block;
+    border: 1px solid var(--rule);
+    margin: 12px 0;
   }
 
-  article.post-body a { text-decoration-color: var(--pink); text-decoration-thickness: 2px; }
+  article.post-body a { color: var(--blue); text-decoration-thickness: 1px; }
 
   article.post-body blockquote {
-    margin: 24px 0;
+    margin: 28px 0;
     padding: 4px 0 4px 20px;
-    border-left: 3px solid var(--pink);
+    border-left: 2px solid var(--blue);
+    color: var(--muted);
     font-style: italic;
-    opacity: 0.85;
   }
 
   .source-link {
     display: inline-block;
-    margin-top: 16px;
-    font-family: 'Space Mono', monospace;
-    font-size: 13px;
-    opacity: 0.6;
+    margin-top: 20px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 200;
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+    opacity: 0.45;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 2px;
+    text-decoration: none;
+    transition: opacity 0.25s;
   }
+  .source-link:hover { opacity: 0.85; }
 
   footer {
-    padding: 32px 24px 48px;
+    padding: 40px 24px 56px;
     text-align: center;
-    font-family: 'Space Mono', monospace;
-    font-size: 12px;
-    opacity: 0.5;
+    font-family: 'Jost', sans-serif;
+    font-weight: 200;
+    font-size: 0.64rem;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    border-top: 1px solid var(--rule);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -262,9 +303,8 @@
   }
 
   @media (max-width: 480px) {
-    a.post-row-link { grid-template-columns: 48px 1fr; gap: 14px; padding: 22px 20px; }
-    .post-index { height: 32px; font-size: 11px; }
-    header.masthead { padding: 48px 20px 32px; }
+    a.post-row-link { grid-template-columns: 40px 1fr; gap: 14px; padding: 24px 20px; }
+    header.masthead { padding: 56px 20px 32px; }
   }
 </style>
 </head>
@@ -272,11 +312,9 @@
 
 <header class="masthead">
   <div class="masthead-inner">
-    <p class="masthead-eyebrow">poemas e historiaz fantazticaz</p>
-    <h1 class="title">
-      <span class="layer" aria-hidden="true">HisTOriAZ3</span>
-      <span>HisTOriAZ3</span>
-    </h1>
+    <a class="back-home" href="../index.html#creative">← Volver al portafolio</a>
+    <p class="masthead-eyebrow"><span class="dot"></span>Poemas e historiaz fantazticaz</p>
+    <h1 class="title">Blog</h1>
     <p class="masthead-sub">Un cuaderno digital de poemas e historias fantásticas, leído directo desde el blog original.</p>
   </div>
 </header>
@@ -293,7 +331,6 @@
   var API_KEY = "AIzaSyCerlNYSEs_-4E73yGAaS6ICgDmrUnHG-Q";
   var BLOG_ID = "8992071560697129445";
   var BASE_URL = "https://www.googleapis.com/blogger/v3";
-  var ACCENTS = ["pink", "blue", "yellow", "violet"];
 
   var app = document.getElementById("app");
   var postsCache = null;
@@ -350,12 +387,11 @@
     }
 
     var rows = posts.map(function (post, i) {
-      var accent = ACCENTS[i % ACCENTS.length];
       var num = String(i + 1).padStart(2, "0");
       return (
         '<li class="post-row">' +
           '<a class="post-row-link" href="#/post/' + post.id + '">' +
-            '<span class="post-index ' + accent + '">' + num + '</span>' +
+            '<span class="post-index">' + num + '</span>' +
             '<span>' +
               '<p class="post-meta">' + formatDate(post.published) + ' · ' + readingTime(post.content) + '</p>' +
               '<h2 class="post-title">' + post.title + '</h2>' +
@@ -369,8 +405,7 @@
     app.innerHTML = '<ul class="post-list">' + rows + '</ul>';
   }
 
-  function renderPost(post, index) {
-    var accent = ACCENTS[index % ACCENTS.length];
+  function renderPost(post) {
     app.innerHTML =
       '<a class="back-link" href="#/">&larr; volver a todas las historias</a>' +
       '<div class="post-band">' +
@@ -394,13 +429,12 @@
 
       if (match) {
         var id = match[1];
-        var index = posts.findIndex(function (p) { return p.id === id; });
-        var post = posts[index];
+        var post = posts.find(function (p) { return p.id === id; });
         if (!post) {
           app.innerHTML = '<div class="state-msg">No se encontró esa publicación. <a href="#/">volver</a></div>';
           return;
         }
-        renderPost(post, index === -1 ? 0 : index);
+        renderPost(post);
       } else {
         renderList(posts);
       }
