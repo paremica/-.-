@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creative — Dinorah Ramírez</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:ital,opsz,wght@0,12..96,200..800;1,12..96,200..800&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --bg:    #121110;
+      --ink:   #f3f1ec;
+      --blue:  #3a8db0;
+      --muted: rgba(243,241,236,0.55);
+      --rule:  rgba(243,241,236,0.14);
+      --soft:  rgba(243,241,236,0.05);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Jost', system-ui, sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    /* ── canvas ── */
+    #bg-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ── nav ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 72px;
+      transition: background 0.5s, backdrop-filter 0.5s, border-color 0.5s;
+    }
+    .nav.scrolled {
+      background: rgba(18,17,16,0.88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-brand {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.16em;
+      color: var(--ink);
+      text-decoration: none;
+      opacity: 0.6;
+      transition: opacity 0.3s;
+    }
+    .nav-brand:hover { opacity: 1; }
+    .nav-links { display: flex; gap: 44px; list-style: none; }
+    .nav-links a {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 0.68rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      opacity: 0.4;
+      transition: opacity 0.25s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+    .nav-links a::after {
+      content: '';
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: var(--ink);
+      transform: scale(0);
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .nav-links a:hover { opacity: 1; }
+    .nav-links a:hover::after { transform: scale(1); }
+    .nav-links a.current { opacity: 1; }
+
+    /* ── lang switch ── */
+    .lang-switch {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-left: 44px;
+    }
+    .lang-btn {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 0.64rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink);
+      background: none;
+      border: 1px solid var(--rule);
+      border-radius: 100px;
+      padding: 6px 13px;
+      cursor: pointer;
+      opacity: 0.4;
+      transition: opacity 0.25s, border-color 0.25s;
+    }
+    .lang-btn:hover { opacity: 0.8; }
+    .lang-btn.active { opacity: 1; border-color: var(--ink); }
+
+    /* ── sections ── */
+    .sec {
+      position: relative;
+      z-index: 1;
+      padding: 172px 72px 112px;
+      overflow: hidden;
+    }
+    .sec::before {
+      content: attr(data-n);
+      position: absolute;
+      right: 56px;
+      top: 50%;
+      transform: translateY(-50%) rotate(90deg);
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 200;
+      font-size: 20rem;
+      color: rgba(243,241,236,0.04);
+      letter-spacing: -0.06em;
+      pointer-events: none;
+      user-select: none;
+      line-height: 1;
+    }
+
+    .sec-tag {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 0.64rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 56px;
+    }
+    .sec-tag .dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--ink);
+      opacity: 0.65;
+      flex-shrink: 0;
+    }
+
+    .sec-title {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 600;
+      font-size: clamp(2.2rem, 4.5vw, 4.6rem);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 68px;
+      max-width: 800px;
+      position: relative;
+      z-index: 1;
+    }
+    .sec-title em { font-style: normal; font-weight: 400; color: var(--ink); }
+
+    .ac-advisor {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 0.64rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--blue);
+      opacity: 0.7;
+      margin-bottom: 18px;
+    }
+    .ac-name {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 500;
+      font-size: clamp(1.5rem, 2.6vw, 2.4rem);
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+    .ac-body {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.94rem;
+      color: var(--muted);
+      line-height: 1.95;
+    }
+
+    .pro-entry-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 14px;
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(243,241,236,0.25);
+      padding-bottom: 1px;
+      transition: border-color 0.2s, opacity 0.2s;
+    }
+    .pro-entry-link:hover { border-color: var(--ink); opacity: 0.75; }
+
+    .ac-media-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 68px 0;
+      position: relative;
+      z-index: 1;
+    }
+    .gallery img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease, filter 0.5s ease;
+    }
+    .gallery img:hover { transform: scale(1.02); filter: brightness(1.04); }
+    .gallery img:nth-child(2) { transform: translateY(20px); }
+    .gallery img:nth-child(2):hover { transform: translateY(20px) scale(1.02); }
+
+    /* ── creative portfolio gate ── */
+    .gate-wrap {
+      max-width: 420px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .gate-copy {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin-bottom: 36px;
+      line-height: 1.8;
+    }
+    .gate-form { display: flex; flex-direction: column; gap: 14px; }
+    .gate-input {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.85rem;
+      padding: 14px 18px;
+      border: 1px solid var(--rule);
+      background: var(--soft);
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.25s;
+    }
+    .gate-input:focus { border-color: var(--ink); }
+    .gate-submit {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--bg);
+      background: var(--ink);
+      padding: 14px 34px;
+      border: none;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: opacity 0.3s, box-shadow 0.3s;
+    }
+    .gate-submit:hover { opacity: 0.82; box-shadow: 0 6px 24px rgba(243,241,236,0.18); }
+    .gate-error {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .gate-error.show { opacity: 1; }
+    .gate-wrap.shake { animation: gateShake 0.4s; }
+    @keyframes gateShake {
+      0%, 100% { transform: translateX(0); }
+      25%      { transform: translateX(-8px); }
+      75%      { transform: translateX(8px); }
+    }
+    .creative-content { display: none; position: relative; z-index: 1; }
+    .creative-content.on { display: block; }
+    .creative-block { max-width: 600px; margin-bottom: 56px; }
+    .creative-teaser {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-style: normal;
+      font-size: 1.3rem;
+      color: var(--muted);
+      text-align: center;
+      padding: 40px 0;
+    }
+
+    /* ── footer ── */
+    .foot {
+      position: relative;
+      z-index: 1;
+      padding: 64px 72px;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 48px;
+    }
+    .foot-eq {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 300;
+      font-style: normal;
+      font-size: 0.85rem;
+      color: rgba(58,141,176,0.35);
+      letter-spacing: 0.06em;
+      line-height: 2.4;
+    }
+    .foot-copy {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 0.64rem;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      text-align: right;
+      line-height: 2;
+    }
+
+    /* ── reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    .reveal.on { opacity: 1; transform: none; }
+
+    /* ── responsive ── */
+    @media (max-width: 1100px) {
+      .nav { padding: 24px 40px; }
+      .sec { padding: 148px 40px 88px; }
+      .foot { padding: 56px 40px; }
+    }
+    @media (max-width: 860px) {
+      .nav { padding: 18px 24px; }
+      .nav-links { gap: 20px; }
+      .sec { padding: 128px 24px 64px; }
+      .sec::before { font-size: 12rem; right: 12px; }
+      .gallery { grid-template-columns: 1fr; gap: 10px; }
+      .gallery img:nth-child(2) { transform: none; }
+      .gallery img:nth-child(2):hover { transform: scale(1.02); }
+      .foot { flex-direction: column; align-items: flex-start; padding: 48px 24px; }
+      .foot-copy { text-align: left; }
+      .lang-switch { margin-left: 0; }
+    }
+    @media (max-width: 860px) {
+      .nav { flex-wrap: wrap; row-gap: 14px; }
+      .lang-switch { order: 3; width: 100%; justify-content: flex-start; margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="../index.html#home" class="nav-brand">Dinorah Ramírez</a>
+  <ul class="nav-links">
+    <li><a href="../index.html#professional" data-es="Profesional">Professional</a></li>
+    <li><a href="../index.html#academic" data-es="Académico">Academic</a></li>
+    <li><a href="../index.html#certifications" data-es="Certificaciones">Certifications</a></li>
+    <li><a href="../index.html#projects" data-es="Proyectos">Projects</a></li>
+    <li><a href="index.html" class="current" data-es="Personal">Creative</a></li>
+  </ul>
+  <div class="lang-switch" id="lang-switch">
+    <button type="button" class="lang-btn" data-lang="en">EN</button>
+    <button type="button" class="lang-btn" data-lang="es">ES</button>
+  </div>
+</nav>
+
+<!-- CREATIVE PORTFOLIO (protected) -->
+<section class="sec reveal" data-n="01">
+  <div class="sec-tag" data-es="Personal"><span class="dot"></span>Creative</div>
+  <h2 class="sec-title" data-es="Portafolio <em>personal.</em>">Personal <em>portfolio.</em></h2>
+
+  <div class="gate-wrap" id="gate-wrap">
+    <p class="gate-copy" data-es="Este rincón es solo para mí, solo unos pocos ojos cercanos están permitidos.<br>Ingresa la contraseña para ver dentro.">This corner is just for me, only a few close eyes allowed.<br>Enter the password to look inside.</p>
+    <form class="gate-form" id="gate-form" autocomplete="off">
+      <input type="text" class="gate-input" id="gate-user" placeholder="Username" data-es-placeholder="Usuario" autocomplete="username">
+      <input type="password" class="gate-input" id="gate-pass" placeholder="Password" data-es-placeholder="Contraseña" autocomplete="current-password">
+      <button type="submit" class="gate-submit" data-es="Entrar">Enter</button>
+      <p class="gate-error" id="gate-error" data-es="Usuario o contraseña incorrectos.">Incorrect username or password.</p>
+    </form>
+  </div>
+
+  <div class="creative-content" id="creative-content">
+    <div class="creative-block">
+      <p class="ac-advisor" data-es="Sobre mí">About Me</p>
+      <p class="ac-body" data-es="Mi animal espiritual es la cucaracha, resiliente, adaptable e imposible de eliminar. Soy entusiasta del cyberpunk, una neurótica multifuncional autodeclarada, y alguien con absolutamente cero experiencia en edición. Mi juego favorito es Tetris, y tengo debilidad por las manzanas con crema. Cuando la tristeza llega, me refugio en Come and See, mi santuario cinematográfico. Me atrae profundamente la música alternativa y tengo la costumbre de enamorarme de personas que vuelcan su alma en sus propios sonidos independientes. Y en cuanto a libros, Clemencia tiene un lugar especial, no porque sea reconfortante, sino porque me recuerda que estoy muy sola y que nadie me amará jamás como Fernando Valle.">My spirit animal is the cockroach, resilient, adaptable, and impossible to get rid of. I'm a cyberpunk enthusiast, a self-declared multifunctional neurotic, and someone with absolutely zero editing experience. My favorite game is Tetris, and I have a soft spot for apples with cream. When sadness hits, I retreat into Come and See, my cinematic safe haven. I'm deeply drawn to alternative music and have a habit of falling for people who pour their souls into their own independent sounds. And when it comes to books, Clemencia holds a special place, not because it's comforting, but because it reminds me that I am very much alone and that no one will ever love me quite like Fernando Valle.</p>
+    </div>
+
+    <div class="creative-block">
+      <p class="ac-advisor" data-es="Escritura">Writing</p>
+      <h3 class="ac-name">Blog</h3>
+      <p class="ac-body" data-es="Un cuaderno digital de poemas e historias fantásticas, leído en vivo desde el feed original de Blogger.">A digital notebook of poems and fantastical stories, read live from the original Blogger feed.</p>
+      <a href="../blog/index.html" class="pro-entry-link" data-es="Leer el blog ↗">Read the blog ↗</a>
+    </div>
+
+    <div class="creative-block">
+      <p class="ac-advisor" data-es="Arte">Art</p>
+      <h3 class="ac-name" data-es="Pinturas y bocetos">Paintings &amp; sketches</h3>
+      <p class="ac-body" data-es="Algunas piezas hechas lejos de la pantalla, pintura, lápiz y lo que hubiera a la mano.">A few pieces made away from the screen, paint, pencil and whatever else was on hand.</p>
+    </div>
+
+    <div class="gallery">
+      <img src="https://raw.githubusercontent.com/paremica/-.-/master/art/art-1.jpeg" alt="Art piece 1">
+      <img src="https://raw.githubusercontent.com/paremica/-.-/master/art/art-2.jpeg" alt="Art piece 2">
+      <img src="https://raw.githubusercontent.com/paremica/-.-/master/art/art-3.jpeg" alt="Art piece 3">
+      <img src="https://raw.githubusercontent.com/paremica/-.-/master/art/art-4.jpeg" alt="Art piece 4">
+      <img src="https://raw.githubusercontent.com/paremica/-.-/master/art/art-5.jpeg" alt="Art piece 5">
+      <img src="https://raw.githubusercontent.com/paremica/-.-/master/art/art-paint.jpeg" alt="Paint piece">
+    </div>
+
+    <div class="ac-media-grid" style="margin-bottom:68px;">
+      <video src="https://raw.githubusercontent.com/paremica/-.-/master/art/art-video-1.mp4" controls muted style="width:100%;display:block;"></video>
+      <video src="https://raw.githubusercontent.com/paremica/-.-/master/art/art-video-2.mp4" controls muted style="width:100%;display:block;"></video>
+      <video src="https://raw.githubusercontent.com/paremica/-.-/master/art/art-video-3.mp4" controls muted style="width:100%;display:block;"></video>
+    </div>
+
+    <p class="creative-teaser" data-es="Más por venir. Este espacio sigue en construcción.">More to come. This space is still being built.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="foot-eq">
+    E = mc² &nbsp;·&nbsp; Δx Δp ≥ ℏ/2 &nbsp;·&nbsp; ∫<sub>−∞</sub><sup>∞</sup> e<sup>−x²</sup>dx = √π
+  </div>
+  <p class="foot-copy" data-es="Sistemas de IA · Intuición física · Automatización<br>© 2025 Dinorah Ramírez">
+    AI systems · Physics intuition · Automation<br>
+    © 2025 Dinorah Ramírez
+  </p>
+</footer>
+
+<script>
+/* ─── nav scroll ─────────────────────────────────────── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+}, { passive: true });
+
+/* ─── canvas: subtle floating circles ───────────────────── */
+(function () {
+  const canvas = document.getElementById('bg-canvas');
+  const ctx    = canvas.getContext('2d');
+  let W, H;
+  const circles = [];
+  const N = 18;
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  function init() {
+    circles.length = 0;
+    for (let i = 0; i < N; i++) {
+      const r = Math.random() * 90 + 20;
+      circles.push({
+        x:      Math.random() * W,
+        y:      Math.random() * H,
+        baseX:  0,
+        baseY:  0,
+        r,
+        speedY: Math.random() * 0.0003 + 0.00015,
+        speedX: Math.random() * 0.0002 + 0.0001,
+        phaseY: Math.random() * Math.PI * 2,
+        phaseX: Math.random() * Math.PI * 2,
+        drift:  (Math.random() - 0.5) * 0.08,
+        alpha:  Math.random() * 0.04 + 0.008,
+        rose:   Math.random() < 0.5,
+        filled: Math.random() < 0.25,
+      });
+      circles[i].baseX = circles[i].x;
+      circles[i].baseY = circles[i].y;
+    }
+  }
+
+  let t = 0;
+  function loop() {
+    ctx.clearRect(0, 0, W, H);
+
+    for (const c of circles) {
+      c.x = c.baseX + Math.sin(t * c.speedX * 4000 + c.phaseX) * 14;
+      c.y = c.baseY + Math.sin(t * c.speedY * 6000 + c.phaseY) * 20;
+      c.baseX += c.drift * 0.18;
+      if (c.baseX > W + c.r) c.baseX = -c.r;
+      if (c.baseX < -c.r)    c.baseX = W + c.r;
+
+      const color = c.rose ? '243,241,236' : '58,141,176';
+      ctx.beginPath();
+      ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2);
+      if (c.filled) {
+        ctx.fillStyle = `rgba(${color},${c.alpha * 0.35})`;
+        ctx.fill();
+      } else {
+        ctx.strokeStyle = `rgba(${color},${c.alpha})`;
+        ctx.lineWidth = 0.7;
+        ctx.stroke();
+      }
+    }
+
+    t += 0.016;
+    requestAnimationFrame(loop);
+  }
+
+  resize(); init(); loop();
+  window.addEventListener('resize', () => { resize(); init(); }, { passive: true });
+}());
+
+/* ─── scroll reveal ──────────────────────────────────── */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.06 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ─── creative portfolio gate ───────────────────────────
+   change the username/password here whenever you want ─── */
+(function () {
+  const CREDS = { user: 'dinorah', pass: 'cockroach' };
+
+  const wrap    = document.getElementById('gate-wrap');
+  const form    = document.getElementById('gate-form');
+  const content = document.getElementById('creative-content');
+  const error   = document.getElementById('gate-error');
+
+  function unlock() {
+    wrap.style.display = 'none';
+    content.classList.add('on');
+  }
+
+  if (sessionStorage.getItem('creativeUnlocked') === '1') unlock();
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const u = document.getElementById('gate-user').value.trim().toLowerCase();
+    const p = document.getElementById('gate-pass').value;
+    if (u === CREDS.user && p === CREDS.pass) {
+      sessionStorage.setItem('creativeUnlocked', '1');
+      unlock();
+    } else {
+      error.classList.add('show');
+      wrap.classList.remove('shake');
+      void wrap.offsetWidth;
+      wrap.classList.add('shake');
+    }
+  });
+}());
+
+/* ─── language switch ───────────────────────────────────
+   toggles every [data-es] node between its original
+   (English) markup and the Spanish translation ─── */
+(function () {
+  const btns = document.querySelectorAll('.lang-btn');
+  const textNodes = document.querySelectorAll('[data-es]');
+  const placeholderNodes = document.querySelectorAll('[data-es-placeholder]');
+
+  function applyLang(lang) {
+    textNodes.forEach(el => {
+      if (el.dataset.en === undefined) el.dataset.en = el.innerHTML;
+      el.innerHTML = lang === 'es' ? el.dataset.es : el.dataset.en;
+    });
+    placeholderNodes.forEach(el => {
+      if (el.dataset.enPlaceholder === undefined) el.dataset.enPlaceholder = el.placeholder;
+      el.placeholder = lang === 'es' ? el.dataset.esPlaceholder : el.dataset.enPlaceholder;
+    });
+    document.documentElement.setAttribute('lang', lang);
+    btns.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+    localStorage.setItem('siteLang', lang);
+  }
+
+  btns.forEach(b => b.addEventListener('click', () => applyLang(b.dataset.lang)));
+
+  const saved = localStorage.getItem('siteLang');
+  applyLang(saved === 'es' ? 'es' : 'en');
+}());
+</script>
+</body>
+</html>

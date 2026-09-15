@@ -537,25 +537,6 @@
       margin-bottom: 4px;
     }
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin: 68px 0;
-      position: relative;
-      z-index: 1;
-    }
-    .gallery img {
-      width: 100%;
-      aspect-ratio: 4/3;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s ease, filter 0.5s ease;
-    }
-    .gallery img:hover { transform: scale(1.02); filter: brightness(1.04); }
-    .gallery img:nth-child(2) { transform: translateY(20px); }
-    .gallery img:nth-child(2):hover { transform: translateY(20px) scale(1.02); }
-
     /* ── certifications ── */
     .cert-wrap {
       overflow: hidden;
@@ -746,77 +727,6 @@
       line-height: 2;
     }
 
-    /* ── creative portfolio gate ── */
-    .gate-wrap {
-      max-width: 420px;
-      margin: 0 auto;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-    .gate-copy {
-      font-family: 'Jost', sans-serif;
-      font-weight: 300;
-      font-size: 0.92rem;
-      color: var(--muted);
-      margin-bottom: 36px;
-      line-height: 1.8;
-    }
-    .gate-form { display: flex; flex-direction: column; gap: 14px; }
-    .gate-input {
-      font-family: 'Jost', sans-serif;
-      font-weight: 300;
-      font-size: 0.85rem;
-      padding: 14px 18px;
-      border: 1px solid var(--rule);
-      background: var(--soft);
-      color: var(--ink);
-      outline: none;
-      transition: border-color 0.25s;
-    }
-    .gate-input:focus { border-color: var(--ink); }
-    .gate-submit {
-      font-family: 'Jost', sans-serif;
-      font-weight: 300;
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--bg);
-      background: var(--ink);
-      padding: 14px 34px;
-      border: none;
-      border-radius: 100px;
-      cursor: pointer;
-      transition: opacity 0.3s, box-shadow 0.3s;
-    }
-    .gate-submit:hover { opacity: 0.82; box-shadow: 0 6px 24px rgba(243,241,236,0.18); }
-    .gate-error {
-      font-family: 'Jost', sans-serif;
-      font-size: 0.68rem;
-      letter-spacing: 0.06em;
-      color: var(--ink);
-      opacity: 0;
-      transition: opacity 0.2s;
-    }
-    .gate-error.show { opacity: 1; }
-    .gate-wrap.shake { animation: gateShake 0.4s; }
-    @keyframes gateShake {
-      0%, 100% { transform: translateX(0); }
-      25%      { transform: translateX(-8px); }
-      75%      { transform: translateX(8px); }
-    }
-    .creative-content { display: none; position: relative; z-index: 1; }
-    .creative-content.on { display: block; }
-    .creative-block { max-width: 600px; margin-bottom: 56px; }
-    .creative-teaser {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-style: normal;
-      font-size: 1.3rem;
-      color: var(--muted);
-      text-align: center;
-      padding: 40px 0;
-    }
-
     /* ── reveal ── */
     .reveal {
       opacity: 0;
@@ -848,9 +758,6 @@
       .ac-project, .ac-pair { grid-template-columns: 1fr; gap: 36px; }
       .ac-project.flip .ac-text,
       .ac-project.flip .ac-media { order: initial; }
-      .gallery { grid-template-columns: 1fr; gap: 10px; }
-      .gallery img:nth-child(2) { transform: none; }
-      .gallery img:nth-child(2):hover { transform: scale(1.02); }
       .proj-row { grid-template-columns: 48px 1fr; gap: 20px; }
       .proj-links { grid-column: 2; flex-direction: row; flex-wrap: wrap; align-items: flex-start; margin-top: 10px; }
       .foot { flex-direction: column; align-items: flex-start; padding: 48px 24px; }
@@ -875,7 +782,7 @@
     <li><a href="#academic" data-es="Académico">Academic</a></li>
     <li><a href="#certifications" data-es="Certificaciones">Certifications</a></li>
     <li><a href="#projects" data-es="Proyectos">Projects</a></li>
-    <li><a href="#creative" data-es="Personal">Creative</a></li>
+    <li><a href="creative/index.html" data-es="Personal">Creative</a></li>
   </ul>
   <div class="lang-switch" id="lang-switch">
     <button type="button" class="lang-btn" data-lang="en">EN</button>
@@ -1145,59 +1052,6 @@
   </div>
 </section>
 
-<!-- CREATIVE PORTFOLIO (protected) -->
-<section id="creative" class="sec reveal" data-n="05">
-  <div class="sec-tag" data-es="05 · Personal"><span class="dot"></span>05 · Creative</div>
-  <h2 class="sec-title" data-es="Portafolio <em>personal.</em>">Personal <em>portfolio.</em></h2>
-
-  <div class="gate-wrap" id="gate-wrap">
-    <p class="gate-copy" data-es="Este rincón es solo para mí, solo unos pocos ojos cercanos están permitidos.<br>Ingresa la contraseña para ver dentro.">This corner is just for me, only a few close eyes allowed.<br>Enter the password to look inside.</p>
-    <form class="gate-form" id="gate-form" autocomplete="off">
-      <input type="text" class="gate-input" id="gate-user" placeholder="Username" data-es-placeholder="Usuario" autocomplete="username">
-      <input type="password" class="gate-input" id="gate-pass" placeholder="Password" data-es-placeholder="Contraseña" autocomplete="current-password">
-      <button type="submit" class="gate-submit" data-es="Entrar">Enter</button>
-      <p class="gate-error" id="gate-error" data-es="Usuario o contraseña incorrectos.">Incorrect username or password.</p>
-    </form>
-  </div>
-
-  <div class="creative-content" id="creative-content">
-    <div class="creative-block">
-      <p class="ac-advisor" data-es="Sobre mí">About Me</p>
-      <p class="ac-body" data-es="Mi animal espiritual es la cucaracha, resiliente, adaptable e imposible de eliminar. Soy entusiasta del cyberpunk, una neurótica multifuncional autodeclarada, y alguien con absolutamente cero experiencia en edición. Mi juego favorito es Tetris, y tengo debilidad por las manzanas con crema. Cuando la tristeza llega, me refugio en Come and See, mi santuario cinematográfico. Me atrae profundamente la música alternativa y tengo la costumbre de enamorarme de personas que vuelcan su alma en sus propios sonidos independientes. Y en cuanto a libros, Clemencia tiene un lugar especial, no porque sea reconfortante, sino porque me recuerda que estoy muy sola y que nadie me amará jamás como Fernando Valle.">My spirit animal is the cockroach, resilient, adaptable, and impossible to get rid of. I'm a cyberpunk enthusiast, a self-declared multifunctional neurotic, and someone with absolutely zero editing experience. My favorite game is Tetris, and I have a soft spot for apples with cream. When sadness hits, I retreat into Come and See, my cinematic safe haven. I'm deeply drawn to alternative music and have a habit of falling for people who pour their souls into their own independent sounds. And when it comes to books, Clemencia holds a special place, not because it's comforting, but because it reminds me that I am very much alone and that no one will ever love me quite like Fernando Valle.</p>
-    </div>
-
-    <div class="creative-block">
-      <p class="ac-advisor" data-es="Escritura">Writing</p>
-      <h3 class="ac-name">Blog</h3>
-      <p class="ac-body" data-es="Un cuaderno digital de poemas e historias fantásticas, leído en vivo desde el feed original de Blogger.">A digital notebook of poems and fantastical stories, read live from the original Blogger feed.</p>
-      <a href="blog/index.html" class="pro-entry-link" data-es="Leer el blog ↗">Read the blog ↗</a>
-    </div>
-
-    <div class="creative-block">
-      <p class="ac-advisor" data-es="Arte">Art</p>
-      <h3 class="ac-name" data-es="Pinturas y bocetos">Paintings &amp; sketches</h3>
-      <p class="ac-body" data-es="Algunas piezas hechas lejos de la pantalla, pintura, lápiz y lo que hubiera a la mano.">A few pieces made away from the screen, paint, pencil and whatever else was on hand.</p>
-    </div>
-
-    <div class="gallery" style="grid-template-columns: repeat(3, 1fr);">
-      <img src="https://raw.githubusercontent.com/paremica/-.-/master/art/art-1.jpeg" alt="Art piece 1">
-      <img src="https://raw.githubusercontent.com/paremica/-.-/master/art/art-2.jpeg" alt="Art piece 2">
-      <img src="https://raw.githubusercontent.com/paremica/-.-/master/art/art-3.jpeg" alt="Art piece 3">
-      <img src="https://raw.githubusercontent.com/paremica/-.-/master/art/art-4.jpeg" alt="Art piece 4">
-      <img src="https://raw.githubusercontent.com/paremica/-.-/master/art/art-5.jpeg" alt="Art piece 5">
-      <img src="https://raw.githubusercontent.com/paremica/-.-/master/art/art-paint.jpeg" alt="Paint piece">
-    </div>
-
-    <div class="ac-media-grid" style="margin-bottom:68px;">
-      <video src="https://raw.githubusercontent.com/paremica/-.-/master/art/art-video-1.mp4" controls muted style="width:100%;display:block;"></video>
-      <video src="https://raw.githubusercontent.com/paremica/-.-/master/art/art-video-2.mp4" controls muted style="width:100%;display:block;"></video>
-      <video src="https://raw.githubusercontent.com/paremica/-.-/master/art/art-video-3.mp4" controls muted style="width:100%;display:block;"></video>
-    </div>
-
-    <p class="creative-teaser" data-es="Más por venir. Este espacio sigue en construcción.">More to come. This space is still being built.</p>
-  </div>
-</section>
-
 <!-- FOOTER -->
 <footer class="foot">
   <div class="foot-eq">
@@ -1323,39 +1177,6 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
   document.getElementById('cnext').addEventListener('click', () => go(cur + 1));
   document.getElementById('cprev').addEventListener('click', () => go(cur - 1));
-}());
-
-/* ─── creative portfolio gate ───────────────────────────
-   change the username/password here whenever you want ─── */
-(function () {
-  const CREDS = { user: 'dinorah', pass: 'cockroach' };
-
-  const wrap    = document.getElementById('gate-wrap');
-  const form    = document.getElementById('gate-form');
-  const content = document.getElementById('creative-content');
-  const error   = document.getElementById('gate-error');
-
-  function unlock() {
-    wrap.style.display = 'none';
-    content.classList.add('on');
-  }
-
-  if (sessionStorage.getItem('creativeUnlocked') === '1') unlock();
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const u = document.getElementById('gate-user').value.trim().toLowerCase();
-    const p = document.getElementById('gate-pass').value;
-    if (u === CREDS.user && p === CREDS.pass) {
-      sessionStorage.setItem('creativeUnlocked', '1');
-      unlock();
-    } else {
-      error.classList.add('show');
-      wrap.classList.remove('shake');
-      void wrap.offsetWidth;
-      wrap.classList.add('shake');
-    }
-  });
 }());
 
 /* ─── language switch ───────────────────────────────────
