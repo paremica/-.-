@@ -6,7 +6,7 @@
   <title>Creative — Dinorah Ramírez</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;500&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -42,6 +42,58 @@
       background-size: 200px 200px;
     }
 
+    /* ── ink drawings ── */
+    .ink {
+      position: absolute;
+      z-index: 0;
+      color: var(--ink);
+      pointer-events: none;
+      overflow: visible;
+    }
+    .ink path, .ink circle, .ink ellipse { vector-effect: non-scaling-stroke; }
+
+    .ink-enso {
+      width: 290px; height: 290px;
+      top: 104px; right: 30%;
+      opacity: 0.12;
+      transform: rotate(-8deg);
+    }
+    .ink-scribble {
+      width: 240px; height: 320px;
+      top: -46px; left: -34px;
+      opacity: 0.15;
+    }
+    .ink-sweep {
+      width: 700px; height: 170px;
+      top: -6px; left: 14%;
+      opacity: 0.13;
+    }
+    .ink-drape {
+      width: 200px; height: 480px;
+      top: 66px; left: -26px;
+      opacity: 0.11;
+    }
+    .ink-splat {
+      width: 300px; height: 210px;
+      top: 150px; right: 6%;
+      opacity: 0.1;
+    }
+
+    .stain {
+      position: absolute;
+      z-index: -1;
+      top: 110px;
+      right: 4%;
+      width: 540px;
+      height: 540px;
+      max-width: 52vw;
+      max-height: 52vw;
+      background: radial-gradient(circle at 40% 35%, rgba(142,59,44,0.16), rgba(142,59,44,0.04) 55%, transparent 72%);
+      border-radius: 44% 56% 62% 38% / 48% 42% 58% 52%;
+      filter: blur(60px);
+      pointer-events: none;
+    }
+
     /* ── nav ── */
     .nav {
       position: fixed;
@@ -51,8 +103,8 @@
       justify-content: space-between;
       align-items: center;
       padding: 26px 64px;
-      transition: background 0.4s, border-color 0.4s, backdrop-filter 0.4s;
       border-bottom: 1px solid transparent;
+      transition: background 0.4s, border-color 0.4s, backdrop-filter 0.4s;
     }
     .nav.scrolled {
       background: rgba(239,237,230,0.92);
@@ -60,128 +112,181 @@
       border-bottom-color: var(--rule);
     }
     .nav-brand {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Bricolage Grotesque', sans-serif;
       font-weight: 500;
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
+      font-size: 0.95rem;
+      letter-spacing: 0.16em;
       color: var(--ink);
       text-decoration: none;
-      opacity: 0.8;
-      transition: opacity 0.2s;
+      opacity: 0.75;
+      transition: opacity 0.3s;
     }
     .nav-brand:hover { opacity: 1; }
-    .nav-links { display: flex; gap: 26px; list-style: none; }
+    .nav-links { display: flex; gap: 34px; list-style: none; }
     .nav-links a {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.66rem;
-      letter-spacing: 0.14em;
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 0.68rem;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
       color: var(--ink);
       text-decoration: none;
       opacity: 0.45;
-      transition: opacity 0.2s, color 0.2s;
+      transition: opacity 0.25s, color 0.25s;
     }
     .nav-links a:hover { opacity: 1; color: var(--rust); }
     .nav-links a.current {
       opacity: 1;
       color: var(--rust);
       text-decoration: underline;
-      text-underline-offset: 4px;
+      text-underline-offset: 5px;
     }
 
-    .lang-switch { display: flex; gap: 5px; margin-left: 26px; }
+    .lang-switch { display: flex; gap: 6px; margin-left: 30px; }
     .lang-btn {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.12em;
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 0.64rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
       background: none;
       border: 1px solid var(--rule);
-      padding: 5px 10px;
+      border-radius: 100px;
+      padding: 6px 13px;
       color: var(--ink);
       opacity: 0.45;
       cursor: pointer;
-      transition: opacity 0.2s, border-color 0.2s;
+      transition: opacity 0.25s, border-color 0.25s;
     }
     .lang-btn:hover { opacity: 0.85; }
     .lang-btn.active { opacity: 1; border-color: var(--ink); }
+
+    /* ── shared type ── */
+    .label {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 0.64rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--rust);
+    }
+    .display {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 0.96;
+    }
+    .h2 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 500;
+      font-size: clamp(1.6rem, 3vw, 2.6rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    .copy {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.96rem;
+      line-height: 2;
+      color: var(--muted);
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: none;
+    }
+    .link {
+      display: inline-block;
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 0.66rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--rust);
+      text-decoration: underline;
+      text-underline-offset: 5px;
+      transition: opacity 0.25s;
+    }
+    .link:hover { opacity: 0.65; }
+
+    .num {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 200;
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+    }
 
     /* ── head ── */
     .head {
       position: relative;
       z-index: 0;
-      padding: 200px 64px 0;
+      padding: 190px 64px 0;
       display: grid;
-      grid-template-columns: 1fr 320px;
-      gap: 72px;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 24px;
       align-items: end;
     }
-    .stain {
-      position: absolute;
-      z-index: -1;
-      top: 90px;
-      right: 6%;
-      width: 560px;
-      height: 560px;
-      max-width: 54vw;
-      max-height: 54vw;
-      background: radial-gradient(circle at 40% 35%, rgba(142,59,44,0.18), rgba(142,59,44,0.05) 55%, transparent 72%);
-      border-radius: 44% 56% 62% 38% / 48% 42% 58% 52%;
-      filter: blur(60px);
-      pointer-events: none;
-    }
-    .eyebrow {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.66rem;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--muted);
+    .head-text { grid-column: 1 / 8; position: relative; z-index: 1; }
+    .head-eyebrow {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 28px;
+      gap: 14px;
+      margin-bottom: 30px;
+      margin-left: 6%;
     }
-    .eyebrow::before {
+    .head-eyebrow::before {
       content: '';
-      width: 22px; height: 1px;
+      width: 40px; height: 1px;
       background: var(--ink);
       opacity: 0.4;
       flex-shrink: 0;
     }
-    .display {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-weight: 700;
-      font-size: clamp(2.6rem, 6vw, 5rem);
-      line-height: 0.98;
-      letter-spacing: -0.03em;
-    }
-    .head-fig img {
-      width: 100%;
-      height: auto;
+    .display-1, .display-2 {
       display: block;
+      font-size: clamp(2.6rem, 6.4vw, 5.4rem);
+    }
+    .display-2 {
+      margin-left: 27%;
+      font-weight: 200;
+    }
+    .head-fig {
+      grid-column: 9 / 13;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 14px;
+    }
+    .head-fig img { width: 100%; height: auto; display: block; }
+    .head-fig figcaption {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 0.6rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 12px;
+      text-align: right;
     }
 
     /* ── gate ── */
     .gate-wrap {
-      max-width: 400px;
-      margin: 0 auto;
-      padding: 120px 24px 160px;
-      text-align: center;
       position: relative;
       z-index: 1;
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 130px 24px 170px;
+      text-align: center;
     }
     .gate-copy {
       font-family: 'Jost', sans-serif;
-      font-size: 0.95rem;
+      font-size: 0.94rem;
       color: var(--muted);
-      line-height: 1.85;
+      line-height: 1.9;
       margin-bottom: 34px;
     }
     .gate-form { display: flex; flex-direction: column; gap: 12px; }
     .gate-input {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.74rem;
-      letter-spacing: 0.08em;
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.85rem;
       padding: 13px 16px;
       border: 1px solid var(--rule);
       background: transparent;
@@ -192,21 +297,23 @@
     .gate-input::placeholder { color: rgba(20,19,15,0.4); }
     .gate-input:focus { border-color: var(--ink); }
     .gate-submit {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem;
-      letter-spacing: 0.18em;
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--paper);
       background: var(--ink);
-      padding: 13px 28px;
+      padding: 14px 30px;
       border: none;
+      border-radius: 100px;
       cursor: pointer;
       transition: background 0.25s;
     }
     .gate-submit:hover { background: var(--rust); }
     .gate-error {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.64rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.68rem;
       letter-spacing: 0.06em;
       color: var(--rust);
       opacity: 0;
@@ -220,52 +327,40 @@
       75%      { transform: translateX(8px); }
     }
 
-    /* ── content ── */
+    /* ── content blocks ── */
     .creative-content { display: none; }
     .creative-content.on { display: block; }
 
     .block {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 24px;
       padding: 0 64px;
-      margin-bottom: 120px;
+      margin-bottom: 170px;
     }
-    .block:first-child { padding-top: 130px; }
-    .label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.64rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--rust);
-      margin-bottom: 18px;
-    }
-    .h2 {
-      font-family: 'Bricolage Grotesque', sans-serif;
-      font-weight: 700;
-      font-size: clamp(1.7rem, 3.2vw, 2.8rem);
-      line-height: 1.04;
-      letter-spacing: -0.02em;
-      margin-bottom: 20px;
-    }
-    .copy {
-      font-family: 'Jost', sans-serif;
-      font-weight: 300;
-      font-size: 0.98rem;
-      line-height: 1.9;
-      color: var(--muted);
-      max-width: 58ch;
-    }
-    .link {
-      display: inline-block;
-      margin-top: 20px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.66rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--rust);
-      text-decoration: underline;
-      text-underline-offset: 4px;
-      transition: opacity 0.2s;
-    }
-    .link:hover { opacity: 0.7; }
+    .block > *:not(svg) { position: relative; z-index: 1; }
+
+    /* 01 · about me, pulled left and narrow */
+    .b-about .num   { grid-column: 1 / 2; padding-top: 6px; }
+    .b-about .label { grid-column: 2 / 6; margin-bottom: 26px; }
+    .b-about .copy  { grid-column: 2 / 7; }
+
+    /* 02 · writing, pushed to the right edge */
+    .b-writing { text-align: right; }
+    .b-writing .num   { grid-column: 12 / 13; padding-top: 6px; text-align: right; }
+    .b-writing .label { grid-column: 7 / 12; margin-bottom: 18px; }
+    .b-writing .h2    { grid-column: 7 / 12; margin-bottom: 20px; }
+    .b-writing .copy  { grid-column: 8 / 12; text-align: right; }
+    .b-writing .link  { grid-column: 8 / 12; justify-self: end; margin-top: 22px; }
+
+    /* 03 · theatre, stepped down and across */
+    .b-theatre .num   { grid-column: 1 / 2; padding-top: 6px; }
+    .b-theatre .label { grid-column: 3 / 8; margin-bottom: 22px; }
+    .b-theatre .h2    { grid-column: 2 / 9; margin-bottom: 0; }
+    .b-theatre .copy  { grid-column: 7 / 12; margin-top: 38px; }
+    .b-theatre .collage { grid-column: 1 / 13; margin-top: 76px; }
+    .b-theatre .reel    { grid-column: 1 / 13; margin-top: 16px; }
 
     /* ── collage ── */
     .collage {
@@ -273,7 +368,6 @@
       grid-template-columns: repeat(4, 1fr);
       grid-auto-rows: 190px;
       gap: 16px;
-      margin-top: 56px;
     }
     .collage img {
       width: 100%;
@@ -294,15 +388,10 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      margin-top: 16px;
     }
-    .reel video {
-      width: 100%;
-      display: block;
-      background: var(--paper-2);
-    }
+    .reel video { width: 100%; display: block; background: var(--paper-2); }
 
-    .tail { height: 160px; }
+    .tail { height: 150px; }
 
     /* ── reveal ── */
     .reveal {
@@ -315,28 +404,43 @@
     /* ── responsive ── */
     @media (max-width: 1100px) {
       .nav { padding: 22px 40px; }
-      .head { padding: 170px 40px 0; grid-template-columns: 1fr 260px; gap: 48px; }
-      .block { padding: 0 40px; }
+      .head { padding: 170px 40px 0; }
+      .block { padding: 0 40px; margin-bottom: 130px; }
       .collage { grid-auto-rows: 150px; }
+      .ink-enso { right: 12%; }
     }
     @media (max-width: 860px) {
       .nav { padding: 16px 24px; flex-wrap: wrap; row-gap: 12px; }
-      .nav-links { gap: 16px; }
+      .nav-links { gap: 18px; }
       .lang-switch { order: 3; width: 100%; justify-content: flex-start; margin-left: 0; }
-      .head { padding: 190px 24px 0; grid-template-columns: 1fr; gap: 36px; }
-      .head-fig { max-width: 300px; }
-      .stain { top: 40px; right: -20%; }
-      .block { padding: 0 24px; margin-bottom: 88px; }
-      .block:first-child { padding-top: 96px; }
-      .gate-wrap { padding: 88px 24px 120px; }
+
+      .head { padding: 190px 24px 0; row-gap: 40px; }
+      .head-text { grid-column: 1 / 13; }
+      .head-fig  { grid-column: 1 / 10; }
+      .head-eyebrow { margin-left: 0; }
+      .display-2 { margin-left: 14%; }
+
+      .block { padding: 0 24px; margin-bottom: 96px; }
+      .b-about .num, .b-theatre .num { grid-column: 1 / 13; margin-bottom: 10px; }
+      .b-about .label, .b-about .copy { grid-column: 1 / 13; }
+      .b-writing { text-align: left; }
+      .b-writing .num { grid-column: 1 / 13; text-align: left; margin-bottom: 10px; }
+      .b-writing .label, .b-writing .h2, .b-writing .copy { grid-column: 1 / 13; text-align: left; }
+      .b-writing .link { grid-column: 1 / 13; justify-self: start; }
+      .b-theatre .label, .b-theatre .h2, .b-theatre .copy { grid-column: 1 / 13; }
+      .b-theatre .copy { margin-top: 22px; }
+      .b-theatre .collage { margin-top: 48px; }
+
       .collage { grid-template-columns: 1fr; grid-auto-rows: auto; gap: 12px; }
-      .collage img {
-        grid-column: auto !important;
-        grid-row: auto !important;
-        aspect-ratio: 4/3;
-      }
+      .collage img { grid-column: auto !important; grid-row: auto !important; aspect-ratio: 4/3; }
       .reel { grid-template-columns: 1fr; }
-      .tail { height: 100px; }
+
+      .ink-enso  { width: 180px; height: 180px; top: 132px; right: 6%; }
+      .ink-sweep { width: 400px; left: -30px; }
+      .ink-scribble { width: 190px; height: 250px; top: -30px; left: -50px; }
+      .ink-drape { display: none; }
+      .ink-splat { display: none; }
+      .tail { height: 80px; }
     }
   </style>
 </head>
@@ -363,10 +467,27 @@
 <!-- HEAD -->
 <header class="head reveal">
   <div class="stain" aria-hidden="true"></div>
+
+  <svg class="ink ink-enso" viewBox="0 0 300 300" fill="none" aria-hidden="true">
+    <path d="M198 40C122 12 42 62 32 140c-10 78 50 138 124 138s126-58 118-130c-6-54-42-92-90-104" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
+    <path d="M190 46C126 28 58 72 48 144" stroke="currentColor" stroke-width="6" stroke-linecap="round" opacity="0.55"/>
+  </svg>
+
+  <svg class="ink ink-drape" viewBox="0 0 210 500" fill="none" aria-hidden="true">
+    <path d="M20 8c14 110 2 230 20 350 8 56 0 108-10 134" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+    <path d="M68 4c16 124 0 244 18 366 8 56 0 100-10 122" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"/>
+    <path d="M122 10c16 114 2 234 20 354 8 54 0 96-10 118" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+    <path d="M174 6c16 120 2 240 20 360" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  </svg>
+
   <div class="head-text">
-    <p class="eyebrow" data-es="Personal">Creative</p>
-    <h1 class="display" data-es="Portafolio personal.">Personal portfolio.</h1>
+    <p class="label head-eyebrow" data-es="Personal">Creative</p>
+    <h1 class="display">
+      <span class="display-1" data-es="Portafolio">Personal</span>
+      <span class="display-2" data-es="personal.">portfolio.</span>
+    </h1>
   </div>
+
   <figure class="head-fig">
     <img src="https://raw.githubusercontent.com/paremica/-.-/master/art/art-paint.jpeg" alt="Paint piece">
   </figure>
@@ -386,19 +507,46 @@
 <!-- CONTENT -->
 <div class="creative-content" id="creative-content">
 
-  <div class="block reveal">
+  <!-- 01 · about me -->
+  <div class="block b-about reveal">
+    <svg class="ink ink-scribble" viewBox="0 0 240 320" fill="none" aria-hidden="true">
+      <path d="M84 22c48-8 82 28 74 72-6 34-36 50-54 72s-12 46 12 54c36 12 74-8 86-42" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+      <path d="M56 236c36-14 80-6 108 18 22 20 18 48-10 54-34 8-74-10-88-38" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M26 112c14 36 10 80-8 112" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+    </svg>
+
+    <span class="num">01</span>
     <p class="label" data-es="Sobre mí">About Me</p>
     <p class="copy" data-es="Mi animal espiritual es la cucaracha, resiliente, adaptable e imposible de eliminar. Soy entusiasta del cyberpunk, una neurótica multifuncional autodeclarada, y alguien con absolutamente cero experiencia en edición. Mi juego favorito es Tetris, y tengo debilidad por las manzanas con crema. Cuando la tristeza llega, me refugio en Come and See, mi santuario cinematográfico. Me atrae profundamente la música alternativa y tengo la costumbre de enamorarme de personas que vuelcan su alma en sus propios sonidos independientes. Y en cuanto a libros, Clemencia tiene un lugar especial, no porque sea reconfortante, sino porque me recuerda que estoy muy sola y que nadie me amará jamás como Fernando Valle.">My spirit animal is the cockroach, resilient, adaptable, and impossible to get rid of. I'm a cyberpunk enthusiast, a self-declared multifunctional neurotic, and someone with absolutely zero editing experience. My favorite game is Tetris, and I have a soft spot for apples with cream. When sadness hits, I retreat into Come and See, my cinematic safe haven. I'm deeply drawn to alternative music and have a habit of falling for people who pour their souls into their own independent sounds. And when it comes to books, Clemencia holds a special place, not because it's comforting, but because it reminds me that I am very much alone and that no one will ever love me quite like Fernando Valle.</p>
   </div>
 
-  <div class="block reveal">
+  <!-- 02 · writing -->
+  <div class="block b-writing reveal">
+    <span class="num">02</span>
     <p class="label" data-es="Escritura">Writing</p>
     <h2 class="h2">Blog</h2>
     <p class="copy" data-es="Un cuaderno digital de poemas e historias fantásticas, leído en vivo desde el feed original de Blogger.">A digital notebook of poems and fantastical stories, read live from the original Blogger feed.</p>
     <a href="../blog/index.html" class="link" data-es="Leer el blog ↗">Read the blog ↗</a>
   </div>
 
-  <div class="block reveal">
+  <!-- 03 · theatre -->
+  <div class="block b-theatre reveal">
+    <svg class="ink ink-sweep" viewBox="0 0 760 170" fill="none" aria-hidden="true">
+      <path d="M10 44c140-28 280 18 420-6 130-22 260 16 330-6" stroke="currentColor" stroke-width="12" stroke-linecap="round"/>
+      <path d="M30 90c140-22 270 12 410-10 130-20 250 14 310-4" stroke="currentColor" stroke-width="6" stroke-linecap="round" opacity="0.7"/>
+      <path d="M78 130c120-14 240 10 370-6" stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+    </svg>
+
+    <svg class="ink ink-splat" viewBox="0 0 320 220" fill="none" aria-hidden="true">
+      <ellipse cx="60" cy="60" rx="34" ry="26" fill="currentColor" opacity="0.5"/>
+      <ellipse cx="146" cy="118" rx="12" ry="9" fill="currentColor" opacity="0.7"/>
+      <ellipse cx="196" cy="44" rx="7" ry="6" fill="currentColor" opacity="0.6"/>
+      <ellipse cx="246" cy="150" rx="20" ry="15" fill="currentColor" opacity="0.45"/>
+      <ellipse cx="102" cy="178" rx="5" ry="4" fill="currentColor" opacity="0.8"/>
+      <ellipse cx="288" cy="92" rx="4" ry="3" fill="currentColor" opacity="0.8"/>
+    </svg>
+
+    <span class="num">03</span>
     <p class="label" data-es="Teatro">Theatre</p>
     <h2 class="h2" data-es="Trabajo escénico">Stage work</h2>
     <p class="copy" data-es="Trabajo hecho lejos de la pantalla, en el escenario, en los ensayos y en todo lo que pasa entre medias.">Work made away from the screen, on stage, in rehearsal, and in everything that happens in between.</p>
